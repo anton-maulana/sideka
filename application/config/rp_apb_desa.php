@@ -80,3 +80,34 @@ $config['rp_master_apb_desa'] = array(
 //        'showTableToggleBtn' => FALSE
     )
 );
+
+$config['content_rp_apb_desa'] = array(
+    'colModel' => array(
+        'id_apbdes' => array('ID', 30, TRUE, 'center', 0),
+        'id_m_apbdes' => array('ID M APBDES', 30, TRUE, 'center', 0, 1),
+        'id_coa' => array('ID AKUN', 30, TRUE, 'center', 0, 1),
+        'kode_rekening' => array('Kode Rekening', 250, TRUE, 'left', 2),
+        'anggaran' => array('Anggaran', 100, TRUE, 'right', 2),
+        'keterangan' => array('Keterangan', 220, TRUE, 'center', 2)
+    ),
+    'buttons' => array(
+//        array('Select All', 'check', 'btn'),
+//        array('separator'),
+        array('Tambah Detail', 'add', 'btn'),
+        array('separator'),
+//        array('separator'),
+//        array('Delete Selected Items', 'delete', 'btn'),
+//        array('separator')
+    ),
+    'gridParams' => array(
+        'height' => 300,
+        'width' => 'auto',
+        'usepager' => FALSE,
+//        'rp' => 10,
+//        'rpOptions' => '[10,20,30,40]', /* jumlah opsi untuk mengganti jumlah halaman */
+//        'pagestat' => 'Displaying: {from} to {to} of {total} items.',
+//        'blockOpacity' => 0.5,
+        'title' => 'Detail APB Desa',
+        'showTableToggleBtn' => FALSE
+    )
+);

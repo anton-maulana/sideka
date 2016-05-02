@@ -45,7 +45,7 @@ class C_rpjmdes extends CI_Controller {
 		$this->load->view('templateHome',$temp);
 	}
     public function detail($id) {   
-        $r_rpjm_desa_config = $this->config->item('rp_rancangan_rpjm_desa');
+        $r_rpjm_desa_config = $this->config->item('content_rp_rancangan_rpjm_desa');
         $colModel = $r_rpjm_desa_config['colModel'];
 
         //Populate flexigrid buttons..
@@ -106,9 +106,7 @@ class C_rpjmdes extends CI_Controller {
                 $row->sumber_biaya,
                 ($row->swakelola != 0 ? '<i class="fa fa-check"></i>' : ' '),
                 ($row->kerjasama_antar_desa != 0 ? '<i class="fa fa-check"></i>' : ' '),
-                ($row->kerjasama_pihak_ketiga != 0 ? '<i class="fa fa-check"></i>' : ' '),
-                '<a  title="Download Excel" href="' . base_url() . 'rencanaPembangunan/c_rancangan_rpjm_desa/export_excel/'.$row->id_m_rancangan_rpjm_desa.'" class="btn btn-success btn-xs"><i class="fa fa-file-excel-o"></i></a>'
-            
+                ($row->kerjasama_pihak_ketiga != 0 ? '<i class="fa fa-check"></i>' : ' ')
            );
         }
         //Print please

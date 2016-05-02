@@ -47,7 +47,7 @@ class C_apbdes extends CI_Controller {
         //var_dump($grid_js);exit;
 	}
     public function detail($id) {
-        $r_m_rpjm_desa_config = $this->config->item('rp_apb_desa');
+        $r_m_rpjm_desa_config = $this->config->item('content_rp_apb_desa');
 
         $colModelM = $r_m_rpjm_desa_config['colModel'];
         $gridParams = $r_m_rpjm_desa_config['gridParams'];
@@ -89,8 +89,7 @@ class C_apbdes extends CI_Controller {
                     $row->id_coa,
                     $row->kode_rekening,
                     rupiah_display($row->anggaran),
-                    $row->keterangan,
-                    '<a  title="Download Excel" href="' . base_url() . 'rencanaPembangunan/c_apbdes/export_excel/' . $row->id_m_apbdes . '" class="btn btn-success btn-xs"><i class="fa fa-file-excel-o"></i></a>'
+                    $row->keterangan
             );
             }
         }

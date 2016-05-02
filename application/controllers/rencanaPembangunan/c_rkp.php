@@ -65,7 +65,7 @@ class C_rkp extends C_baseRencanaPembangunan {
         $gridParams = $r_m_rpjm_desa_config['gridParams'];
 
         $grid_js = build_grid_js('flex1', site_url('rencanaPembangunan/c_rkp/load_data_detail/'.$id), $colModelM, 'id_rkp', 'desc', $gridParams, $buttons);
-
+        
         $attention_message = $this->session->flashdata('attention_message');
         $this->set('id_m_rkp', $id);
         $this->set('attention_message', $attention_message);
@@ -76,7 +76,7 @@ class C_rkp extends C_baseRencanaPembangunan {
     public function load_data_detail($id_m_rkp = FALSE) {
         $this->load->library('flexigrid');
         $valid_fields = array('id_rkp');
-
+       
         $this->flexigrid->validate_post('id_rkp', 'ASC', $valid_fields);
         $records = $this->m_rkp->getFlexigrid($id_m_rkp);
 
@@ -85,7 +85,9 @@ class C_rkp extends C_baseRencanaPembangunan {
         $record_items = array();
 
         if ($records['records']) {
+           
             foreach ($records['records']->result() as $row) {
+               
                 $record_items[] = array(
                     $row->id_rkp,
                     $row->id_rkp,
@@ -106,6 +108,7 @@ class C_rkp extends C_baseRencanaPembangunan {
                 );
             }
         }
+
         //Print please
         $this->output->set_output($this->flexigrid->json_build($records['record_count'], $record_items));
     }
@@ -165,7 +168,7 @@ class C_rkp extends C_baseRencanaPembangunan {
 
     function add($id_m_rkp = FALSE) {
         $master_rpjm = $this->m_master_rancangan_rpjm_desa->getArray(date('Y') - 2);
-
+        
         $post_data = array();
         $attention_message = "";
         if (count($_POST) > 0) {
@@ -223,23 +226,24 @@ class C_rkp extends C_baseRencanaPembangunan {
 
         $post_data = array();
         $attention_message = "";
-
-
+        
         if (!$id_m_rkp || !$this->m_master_rkp->isIdValid($id_m_rkp)) {
             $this->session->set_flashdata('attention_message', 'Maaf, RPJM tidak ditemukan.');
             redirect('rencanaPembangunan/c_rkp', 'refresh');
         }
 
         $detail_master_rkp = $this->m_master_rkp->getDetail($id_m_rkp);
+        
+      
         if (count($_POST) > 0 && $this->m_rkp->getPostData($id_m_rkp)) {
-
+     
             $response = $this->m_rkp->save($id_rkp);
 
             $this->m_master_rkp->setSubTotal($id_m_rkp);
 
             if ($response["error_number"] != '0') {
                 $sub_total = $this->m_rkp->reCalculateSubTotal($id_m_rkp, $response["post_data"]["id_bidang"]);
-//var_dump($sub_total);exit;
+                //var_dump($sub_total);exit;
                 if ($sub_total) {
                     $this->m_master_rkp->setSubTotal($id_m_rkp, $response["post_data"]["id_bidang"], $sub_total);
                 }
@@ -271,8 +275,9 @@ class C_rkp extends C_baseRencanaPembangunan {
             'rencanaPembangunan/m_bidang'));
 
         $bidang = $this->m_coa->getDeskripsiBidangFromConfig();
-
+   
         $master_rpjm_desa = $this->m_master_rancangan_rpjm_desa->getDetail($detail_master_rkp->id_m_rancangan_rpjm_desa);
+        
         $and_tahun_pelaksanaan = FALSE;
         if ($master_rpjm_desa) {
             $tahun_ke = (intval($detail_master_rkp->rkp_tahun) - intval($master_rpjm_desa->tahun_awal)) + 1;
@@ -284,7 +289,7 @@ class C_rkp extends C_baseRencanaPembangunan {
         unset($master_rpjm_desa);
 
         $rkp_grouped_by_bidang = $this->m_rancangan_rpjm_desa->getByIdMasterRpjm($detail_master_rkp->id_m_rancangan_rpjm_desa, TRUE, $and_tahun_pelaksanaan);
-
+ 
         $this->set('js_rkp_add_detail', $this->load->view('rencanaPembangunan/rkp/js/rkp_detail', array("rpjm_grouped_by_bidang" => json_encode($rkp_grouped_by_bidang)), TRUE));
         $this->set('js_general_helper', $this->load->view('rencanaPembangunan/rancangan_rpjm_desa/js/general_helper', array(), TRUE));
         $this->set('deskripsi_title', 'Formulir Detail RPJM Desa');

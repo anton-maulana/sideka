@@ -183,7 +183,7 @@ class M_rkp extends CI_Model {
 
         //Get contents
         $return['records'] = $this->db->get();
-
+       
         //Build count query
         $this->db->select("count(" . $this->_table . ".id_rancangan_rpjm_desa) as record_count")->from($this->_table);
         $this->db->where($this->_table . '.id_m_rkp', $master_id);
@@ -229,7 +229,7 @@ class M_rkp extends CI_Model {
         $this->db->select($select);
         $this->db->join('tbl_rp_rancangan_rpjm_desa', 'tbl_rp_rancangan_rpjm_desa.id_rancangan_rpjm_desa = ' . $this->_table . '.id_rancangan_rpjm_desa');
         $this->db->join('tbl_rp_m_rkp', 'tbl_rp_m_rkp.id_m_rkp = ' . $this->_table . '.id_m_rkp');
-        $this->db->join('ref_rp_coa', 'ref_rp_coa.id_coa = tbl_rp_rancangan_rpjm_desa.id_coa');
+        $this->db->join('ref_rp_coa', 'ref_rp_coa.id_coa = ' .$this->_table . '.id_bidang');
         
         $this->db->order_by("ref_rp_coa.kode_rekening", "asc");
     }

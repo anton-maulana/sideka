@@ -46,7 +46,7 @@ class C_rkpdes extends CI_Controller {
         //var_dump($grid_js);exit;
 	}
     public function detail($id) {
-        $r_m_rpjm_desa_config = $this->config->item('rp_rkp_desa');
+        $r_m_rpjm_desa_config = $this->config->item('content_rp_rkp_desa');
 
         $colModelM = $r_m_rpjm_desa_config['colModel'];
         $gridParams = $r_m_rpjm_desa_config['gridParams'];
@@ -96,8 +96,7 @@ class C_rkpdes extends CI_Controller {
                     ($row->swakelola != 0 ? '<i class="fa fa-check"></i>' : ' '),
                     ($row->kerjasama_antar_desa != 0 ? '<i class="fa fa-check"></i>' : ' '),
                     ($row->kerjasama_pihak_ketiga != 0 ? '<i class="fa fa-check"></i>' : ' '),
-                    $row->rencana_pelaksanaan_kegiatan,
-                    '<a  title="Download Excel" href="' . base_url() . 'rencanaPembangunan/c_rkp/export_excel/' . $id_m_rkp . '/'.$row->id_rkp.'" class="btn btn-success btn-xs"><i class="fa fa-file-excel-o"></i></a>'
+                    $row->rencana_pelaksanaan_kegiatan
                     //.'<a  title="Download Excel" href="' . base_url() . 'rencanaPembangunan/c_rkp/export_excel/' . $row->id_m_rkp . '" class="btn btn-success btn-xs"><i class="fa fa-file-excel-o"></i></a>'
             );
             }
