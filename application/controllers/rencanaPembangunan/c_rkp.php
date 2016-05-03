@@ -236,7 +236,8 @@ class C_rkp extends C_baseRencanaPembangunan {
         
       
         if (count($_POST) > 0 && $this->m_rkp->getPostData($id_m_rkp)) {
-     
+            
+            $temp['id_m_rkp']=$id_m_rkp;
             $response = $this->m_rkp->save($id_rkp);
 
             $this->m_master_rkp->setSubTotal($id_m_rkp);
@@ -251,9 +252,9 @@ class C_rkp extends C_baseRencanaPembangunan {
 
             $attention_message = $response["message_error"];
             if ($response["error_number"] != '0' && $id_rkp) {
-                redirect('rencanaPembangunan/c_rkp');
+                redirect('rencanaPembangunan/c_rkp/detail/'.$temp['id_m_rkp']);
             } elseif ($response["error_number"] != '0' && !$id_rkp) {
-                redirect('rencanaPembangunan/c_rkp/add_detail');
+                redirect('rencanaPembangunan/c_rkp/detail/'.$temp['id_m_rkp']);
             }
             $post_data = $response["post_data"];
         } elseif (count($_POST) == 0 && $id_rkp) {
@@ -412,7 +413,9 @@ class C_rkp extends C_baseRencanaPembangunan {
             $excel_active_sheet->setCellValue('D'.$current_table_row, '( '.strtoupper($detail_master_rkp->kepala_desa).' )');
             $excel_active_sheet->setCellValue('K'.$current_table_row, '( '.strtoupper($detail_master_rkp->disusun_oleh).' )');
             
-            
+            //foreach($excel_active_sheet = $this->excel->getActiveSheet()->getRowDimensions() as $rd) { 
+            //    $rd->setRowHeight(-1); 
+            //}
 
             $this->excel->stream('rkp_tahun_anggaran_'.  str_replace(' ', '', $detail_master_rkp->rkp_tahun).'.xls');
         }

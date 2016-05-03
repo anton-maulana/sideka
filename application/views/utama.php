@@ -72,6 +72,8 @@
                         <a href=" <?php
                         if ($role == 'Administrator') {
                             echo site_url('admin/c_admin');
+                        } elseif ($role == 'Perencana Pembangunan') {
+                            echo site_url('rencanaPembangunan/c_rencanaPembangunan');
                         } else {
                             echo site_url('c_pengelolaData');
                         }
@@ -86,7 +88,7 @@
                         <li class="dropdown">
                             <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                                 <i class="fa fa-user fa-fw"></i>
-<?php echo $nama ?> | <b><?php echo $role ?></b>
+                                    <?php echo $nama ?> | <b><?php echo $role ?></b>
                                 <i class="fa fa-caret-down"> </i> 
                             </a>
                             <ul class="dropdown-menu dropdown-user">		
@@ -141,12 +143,12 @@
             }
             $(document).ready(function () {
 
-<?php $flashmessage = $this->session->flashdata('message');
-echo!empty($flashmessage) ? 'alertify.success("' . $flashmessage . '")' : '';
-?>
-<?php $flashexist = $this->session->flashdata('exist');
-echo!empty($flashexist) ? 'alertify.error("' . $flashexist . '")' : '';
-?>
+                <?php $flashmessage = $this->session->flashdata('message');
+                echo!empty($flashmessage) ? 'alertify.success("' . $flashmessage . '")' : '';
+                ?>
+                <?php $flashexist = $this->session->flashdata('exist');
+                echo!empty($flashexist) ? 'alertify.error("' . $flashexist . '")' : '';
+                ?>
             });
         </script>
 

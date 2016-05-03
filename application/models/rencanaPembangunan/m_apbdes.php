@@ -225,7 +225,7 @@ class M_apbdes extends CI_Model {
 
         //Get contents
         $return['records'] = $this->db->get();
-
+        
         //Build count query
         $this->db->join('ref_rp_coa ref_rp_coa_a', 'ref_rp_coa_a.id_coa = ' . $this->_table . '.id_top_coa');
         $this->db->join('ref_rp_coa ref_rp_coa_b', 'ref_rp_coa_b.id_coa = ' . $this->_table . '.id_coa');

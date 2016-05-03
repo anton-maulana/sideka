@@ -61,9 +61,8 @@ class C_rpjmdes extends CI_Controller {
         $data['id_m_rancangan_rpjm_desa']= $id;
 
         $data['page_title'] = 'DATA RPJMDes';
-        $data['deskripsi_title'] = 'Rencana Pembangunan Jangka Menengah Desa';
+        $data['deskripsi_title'] = 'Detail Rencana Pembangunan Jangka Menengah Desa';
 
-		
 		$data['data_sso'] = $this->m_sso->getSso(1);	
         $data['konten_logo'] = $this->m_logo->getLogo();
 		$data['logo'] = $this->load->view('v_logo', $data, TRUE);		

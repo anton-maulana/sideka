@@ -95,15 +95,16 @@ echo $attention_message ? '<p class="message">' . $attention_message . '</p>' : 
 </div>
 
 <div class="form-group">
-    <label class="col-md-5 control-label" for="tanggal_disusun"> Prakiraan biaya *</label> 
+    <label class="col-md-5 control-label" for="jumlah_biaya"> Prakiraan biaya *</label>
     <div class="col-md-9">
-        <input class="form-control input-md required" type="text" name="jumlah_biaya" id="inp_jumlah_biaya" size="80" value="<?php echo $post_data ? $post_data["jumlah_biaya"] : ''; ?>" aria-describedby="hlpBlock9" /> 
-
-        <span id="hlpBlock9" class="help-block">
-            <div id="dvAlertinp_jumlah_biaya" class="dvAlert"></div>
+        <input class="form-control input-md required" type="text" name="jumlah_biaya" id="jumlah_biaya" size="80" value="<?php echo $post_data ? $post_data["jumlah_biaya"] : ''; ?>"  />
+        <span class="help-block">
+            <div class="dvAlert"></div>
         </span>
     </div>
 </div>
+
+
 
 <div class="form-group">
     <label class="col-md-5 control-label" for="tanggal_disusun"> Rencana Pelaksanaan Kegiatan</label> 
@@ -168,7 +169,7 @@ echo isset($js_rkp_add_detail) ? $js_rkp_add_detail : '';
             formvalid = formvalid && ValidateInput("inp_lokasi", "dvAlertinp_lokasi", "Lokasi harus diisi");
             formvalid = formvalid && ValidateInput("inp_volume", "dvAlertinp_volume", "Volume harus diisi");
             formvalid = formvalid && ValidateInput("inp_waktu_pelaksanaan", "dvAlertdvAlertinp_waktu_pelaksanaan", "Waktu Pelaksanaan harus diisi");
-            formvalid = formvalid && ValidateInput("inp_jumlah_biaya", "dvAlertinp_jumlah_biaya", "Jumlah Biaya harus diisi");
+            formvalid = formvalid && ValidateInput("jumlah_biaya", "dvAlertinp_jumlah_biaya", "Jumlah Biaya harus diisi");
 
             var optMetodePelaksanaanOk = $("#swakelola").attr("checked") || $("#kerjasama_antar_desa").attr("checked") || $("#kerjasama_pihak_ketiga").attr("checked");
 
@@ -274,9 +275,9 @@ $("#slc_id_rancangan_rpjm_desa").change();
 
     <?php
     foreach (array(
-"swakelola",
- "kerjasama_antar_desa",
- "kerjasama_pihak_ketiga",
+        "swakelola",
+        "kerjasama_antar_desa",
+        "kerjasama_pihak_ketiga",
     ) as $inp_check) {
         if (!is_null($post_data[$inp_check]) && $post_data[$inp_check] != FALSE):
             echo "setCheck('" . $inp_check . "');";

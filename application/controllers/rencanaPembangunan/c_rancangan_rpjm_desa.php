@@ -305,7 +305,10 @@ class C_rancangan_rpjm_desa extends C_baseRencanaPembangunan {
             $excel_active_sheet->setCellValue('Q'.$current_table_row, '( '.strtoupper($detail_master_rpjm->disusun_oleh).' )');
             
             //exit;
-
+            foreach($excel_active_sheet = $this->excel->getActiveSheet()->getRowDimensions() as $rd) { 
+                $rd->setRowHeight(-1); 
+            }
+            
             $this->excel->stream('rpjm_tahun_anggaran_'.  str_replace(' ', '', $detail_master_rpjm->tahun_anggaran).'.xls');
         }
 
@@ -364,7 +367,7 @@ class C_rancangan_rpjm_desa extends C_baseRencanaPembangunan {
         }
 
         if (count($_POST) > 0 && $this->m_rancangan_rpjm_desa->getPostData($id_m_rancangan_rpjm_desa)) {
-           
+            //var_dump($_POST);exit;
 
             $detail_master_rpjm = $this->m_master_rancangan_rpjm_desa->getDetail($id_m_rancangan_rpjm_desa);
             $this->m_rancangan_rpjm_desa->calculateTahunPelaksanaan($detail_master_rpjm->tahun_awal);

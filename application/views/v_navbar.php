@@ -58,8 +58,7 @@
 				<li><a href="<?php echo site_url('web/c_statistik_buruh_migran');?>">Buruh Migran</a></li>
 				<li><a href="<?php echo site_url('web/c_statistik_bsm');?>">Bantuan Siswa Miskin</a></li>						
 				<li><a href="<?php echo site_url('web/c_statistik_piramida');?>">Piramida Penduduk</a></li>				
-			</ul>
-			<li id="nav-regulasi"><a href="<?php echo site_url('web/c_regulasi/');?>">Regulasi</a></li>
+			</ul>			
 		</li>
 		
 		<li id="nav-keuangan" class="dropdown">
@@ -70,6 +69,8 @@
 				<li><a href="<?php echo site_url('web/c_apbdes/');?>">APBDES</a></li>
 			</ul>
 		</li>
+		
+		<li id="nav-regulasi"><a href="<?php echo site_url('web/c_regulasi/');?>">Regulasi</a></li>
 
 	</ul>
 

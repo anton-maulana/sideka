@@ -197,7 +197,11 @@ class M_rancangan_rpjm_desa extends CI_Model {
             if ($id_rancangan_rpjm_desa) {
                 $response["error_message"] = "Perubahan ";
                 $response["error_number"] = "1.2";
-
+                
+                if($this->post_data['swakelola']== null)$this->post_data['swakelola']=0;
+                if($this->post_data['kerjasama_antar_desa']== null)$this->post_data['kerjasama_antar_desa']=0;
+                if($this->post_data['kerjasama_pihak_ketiga']== null)$this->post_data['kerjasama_pihak_ketiga']=0;
+                
                 $this->db->where($this->_table . '.id_rancangan_rpjm_desa', $id_rancangan_rpjm_desa);
                 $this->db->update($this->_table, $this->post_data);
             } else {

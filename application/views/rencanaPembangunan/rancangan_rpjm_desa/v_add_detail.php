@@ -121,15 +121,13 @@ echo $attention_message ? '<p class="message">' . $attention_message . '</p>' : 
 </div>
 
 <div class="form-group">
-    <label class="col-md-3 control-label" for="kepala_desa"> Pola Pelaksanaan *</label>
+    <label class="col-md-3 control-label" for="pola_pelaksanaan"> Pola Pelaksanaan *</label>
     <div class="col-md-9">
-
         <input type="checkbox" value="1" name="swakelola" id="swakelola" autocomplete="off"> Swakelola
         <br />
         <input type="checkbox" value="1" name="kerjasama_antar_desa" id="kerjasama_antar_desa" autocomplete="off"> Kerjasama Antar Desa
         <br />
         <input type="checkbox" value="1" name="kerjasama_pihak_ketiga" id="kerjasama_pihak_ketiga" autocomplete="off"> Kerjasama Pihak Ketiga
-
     </div>
     <span class="help-block">
         <div class="dvAlert"></div>
@@ -229,8 +227,9 @@ echo isset($js_general_helper) ? $js_general_helper : '';
             echo "remCheck('" . $inp_check . "');";
         endif;
     }
+    
     ?>
 
 <?php endif; ?>
-    });
+});
 </script>

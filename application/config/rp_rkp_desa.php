@@ -39,7 +39,7 @@ $config['rp_rkp_desa'] = array(
     ),
     'gridParams' => array(
         'height' => 300,
-        'width' => 855,
+        'width' => 'auto',
         'usepager' => FALSE,
 //        'rp' => 10,
 //        'rpOptions' => '[10,20,30,40]', /* jumlah opsi untuk mengganti jumlah halaman */

@@ -141,7 +141,7 @@ class C_apbdes extends C_baseRencanaPembangunan {
     function add($id_m_apbdes = FALSE) {
         $master_rkp = $this->m_master_rkp->getArray(2016, 2089, array());
 //        $master_rkp = $this->m_master_rkp->getArray(date('Y') - 2, FALSE, array());
-
+        
         $post_data = array();
         $attention_message = "";
         if (count($_POST) > 0) {
@@ -189,7 +189,8 @@ class C_apbdes extends C_baseRencanaPembangunan {
         $top_level_coa = $this->m_coa->getTopLevelCoa();
         $post_data = array();
         $attention_message = "";
-
+        
+        //fvar_dump($id_m_apbdes);exit;
 
         if (!$id_m_apbdes || !$this->m_master_apbdes->isIdValid($id_m_apbdes)) {
             $this->session->set_flashdata('attention_message', 'Maaf, APBDES tidak ditemukan.');
