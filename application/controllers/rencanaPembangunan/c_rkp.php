@@ -413,9 +413,9 @@ class C_rkp extends C_baseRencanaPembangunan {
             $excel_active_sheet->setCellValue('D'.$current_table_row, '( '.strtoupper($detail_master_rkp->kepala_desa).' )');
             $excel_active_sheet->setCellValue('K'.$current_table_row, '( '.strtoupper($detail_master_rkp->disusun_oleh).' )');
             
-            //foreach($excel_active_sheet = $this->excel->getActiveSheet()->getRowDimensions() as $rd) { 
-            //    $rd->setRowHeight(-1); 
-            //}
+            foreach($excel_active_sheet = $this->excel->getActiveSheet()->getRowDimensions() as $rd) { 
+                $rd->setRowHeight(-1); 
+            }
 
             $this->excel->stream('rkp_tahun_anggaran_'.  str_replace(' ', '', $detail_master_rkp->rkp_tahun).'.xls');
         }
