@@ -107,13 +107,18 @@ class M_rancangan_rpjm_desa extends CI_Model {
                 $this->load->model('rencanaPembangunan/m_coa');
 
                 $arr_id_bidang = $this->m_coa->getIdFromConfig();
-                $this->_setSelectAndJoin();
+                
                 foreach ($arr_id_bidang as $id_bidang) {
+                    
+                    $this->_setSelectAndJoin();
                     $this->db->where($this->_table . '.id_bidang = ' . $id_bidang);
+                    
                     if(!array_key_exists($id_bidang, $this->_grouped) || !is_array($this->_grouped[$id_bidang])){
                         $this->_grouped[$id_bidang] = array();
                     }
+
                     $this->_grouped[$id_bidang][] = $this->_getByIdMasterRpjm($id_m_rancangan_rpjm_desa, $tahun_pelaksanaan);
+                   
                 }
 
                 return $this->_grouped;
