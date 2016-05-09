@@ -21,7 +21,7 @@
 			<a class="dropdown-toggle dropdownhover" data-toggle="dropdown" href="#">Berita <span class="caret"></span></a>
 			<ul class="dropdown-menu">
 				<li><a href="<?php echo site_url('web/c_berita/');?>">Berita</a></li>
-				<li><a href="<?php echo site_url('web/c_jurnal_warga/');?>">Jurnalisme Warga</a></li>
+				<li><a href="<?php echo site_url('web/c_jurnal_warga/');?>">Jurnalisme Desa</a></li>
 			</ul>
 		</li>
 		<li id="nav-peta"><a href="<?php echo site_url('web/c_peta/');?>">Peta Desa</a></li>
@@ -62,7 +62,7 @@
 		</li>
 		
 		<li id="nav-keuangan" class="dropdown">
-			<a class="dropdown-toggle dropdownhover" data-toggle="dropdown" href="#">RENCANA DESA <span class="caret"></span></a>
+			<a class="dropdown-toggle dropdownhover" data-toggle="dropdown" href="#">KEUANGAN DESA <span class="caret"></span></a>
 			<ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
 				<li><a href="<?php echo site_url('web/c_rpjmdes/');?>">RPJMDES</a></li>
 				<li><a href="<?php echo site_url('web/c_rkpdes/');?>">RKPDES</a></li>
@@ -95,9 +95,7 @@
 		<?php echo form_close(); ?>
 		
 			
-		<li><a id="sso" href="https://auth.klikindonesia.or.id/authorize.php?scope=authorizations&appid=<?php echo $data_sso->app_id;?>&access_type=login"><i class="fa fa-user fa-fw"></i> LOGIN</a></li>
-		
-		
+		<li><a id="sso" href="<?php echo site_url('c_login/');?>"><i class="fa fa-user fa-fw"></i> LOGIN</a></li>		
 		</div>
 	</li>	
 </ul>

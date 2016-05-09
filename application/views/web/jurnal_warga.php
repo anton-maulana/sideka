@@ -1,6 +1,6 @@
 
 
-<h1>Jurnalisme Warga</h1>
+<h1>Jurnalisme Desa</h1>
 <?php $flashmessage = $this->session->flashdata('exist');
 	echo ! empty($flashmessage) ? '<p class="message">' . $flashmessage . '</p>': ''; ?>
 
@@ -57,7 +57,7 @@ echo form_open('web/c_jurnal_warga/simpan_jurnal/', $attributes); ?>
 	<div class="form-group has-success"> 
 		<input type="submit" class="btn btn-success" value="Kirim" id="kirimJurnal" style="display:none;"/>
 		<div class="alert alert-success" id="infoJurnal">
-			Menu <b>Jurnalisme Warga</b> dapat digunakan setelah anda melakukan <a href="https://auth.klikindonesia.or.id/authorize.php?scope=authorizations&appid=<?php echo $data_sso->app_id;?>&access_type=login">login</a>.				
+			Menu <b>Jurnalisme Desa</b> dapat digunakan setelah anda melakukan <a href="<?php echo site_url('c_login/')?>">login</a>.				
 		</div>	
 	</div>
 

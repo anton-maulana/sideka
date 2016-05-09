@@ -63,7 +63,7 @@ class C_jurnalisme extends CI_Controller {
 
 		$data['js_grid'] = $grid_js;
 
-        $data['page_title'] = 'JURNALISME WARGA';		
+        $data['page_title'] = 'JURNALISME DESA';		
 		$data['menu'] = $this->load->view('menu/v_admin', $data, TRUE);
         $data['content'] = $this->load->view('jurnalisme/v_list', $data, TRUE);
         $this->load->view('utama', $data);
