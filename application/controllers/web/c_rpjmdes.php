@@ -229,7 +229,10 @@ class C_rpjmdes extends CI_Controller {
                         }
 
                         if ($current_bidang_text != $row_current_bidang->bidang) {
-                            $excel_active_sheet->setCellValue('B' . $current_table_row, $row_current_bidang->bidang);
+                            $subject=$row_current_bidang->bidang;
+                            $search = "Bidang";
+                            $trimmed = str_replace($search, '', $subject);
+                            $excel_active_sheet->setCellValue('B' . $current_table_row, $trimmed);
                         }
 //                        if ($current_table_row > 12 && $current_bidang_text == $row_current_bidang->bidang) {
 //                            $excel_active_sheet->mergetCells('B' . $current_table_row . ':B' . ($current_table_row - 1));
