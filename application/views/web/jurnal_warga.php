@@ -5,14 +5,14 @@
 	echo ! empty($flashmessage) ? '<p class="message">' . $flashmessage . '</p>': ''; ?>
 
 
-<?php  $attributes = array('id' => 'formJurnal'); 
+<?php  $attributes = array('id' => 'formJurnal');
 echo form_open('web/c_jurnal_warga/simpan_jurnal/', $attributes); ?>
 <legend></legend>
 
 <div class="panel panel-success col-md-12">
-<div class="panel-body">	
+<div class="panel-body">
 <div class="col-md-12">
-	<div class="form-group has-success"> 
+	<div class="form-group has-success">
 		<label class="col-md-2 control-label" for="">Judul Berita*</label>
 		<div class="col-md-10 col-sm-12 col-xs-12">
 		<input class="form-control input-md"  type="text" name="judul" id="judul" placeholder="Judul Berita" required/>
@@ -20,32 +20,32 @@ echo form_open('web/c_jurnal_warga/simpan_jurnal/', $attributes); ?>
 		</span>
 		</div>
 	</div>
-	<div class="form-group has-success"> 
+	<div class="form-group has-success">
 		<label class="col-md-2 control-label" for="">Penulis Berita*</label>
 		<div class="col-md-10 col-sm-12 col-xs-12">
 		<input class="form-control input-md"  type="text" name="penulis" id="penulis" placeholder="Penulis Berita" required/>
 		<span class="help-block"><?php echo form_error('penulis', '<p class="field_error">', '</p>'); ?>
 		</span>
-		</div>		
+		</div>
 	</div>
-	<div class="form-group has-success"> 
+	<div class="form-group has-success">
 			<div class="image-editor">
 			<label class="col-md-2 control-label" for="">Gambar Berita*</label>
 				<div class="col-md-10">
 					<div id="lihat">
-						<div class="cropit-image-preview" ></div>				
+						<div class="cropit-image-preview" ></div>
 						<input type="range" class="cropit-image-zoom-input" style="width:692px">
 						<input type="file" id="userfile" class="cropit-image-input custom" accept="image/*">
-						<input type="hidden" name="image-data" class="hidden-image-data" />	
+						<input type="hidden" name="image-data" class="hidden-image-data" />
 						 <span class="help-block">
 							<div align="left">Gambar harus bertipe .jpg</div>
 						</span>
 					</div>
 				</div>
-			</div>				
+			</div>
 		</div>
-	<legend></legend>	
-	<div class="form-group has-success"> 
+	<legend></legend>
+	<div class="form-group has-success">
 		<label class="col-md-2 control-label" for="">Isi Berita*</label>
 		<div class="col-md-10">
 			 <textarea class="form-control input-md textarea" id="some-textarea" placeholder="Tulis Berita" name="isi" rows="8" ></textarea>
@@ -54,18 +54,31 @@ echo form_open('web/c_jurnal_warga/simpan_jurnal/', $attributes); ?>
 	</div>
 
 	<legend></legend>
-	<div class="form-group has-success"> 
+	<div class="form-group has-success">
 		<input type="submit" class="btn btn-success" value="Kirim" id="kirimJurnal" style="display:none;"/>
 		<div class="alert alert-success" id="infoJurnal">
-			Menu <b>Jurnalisme Desa</b> dapat digunakan setelah anda melakukan <a href="<?php echo site_url('c_login/')?>">login</a>.				
-		</div>	
+			Menu <b>Jurnalisme Desa</b> dapat digunakan setelah anda melakukan <a href="<?php echo site_url('c_login/')?>">login</a>.
+		</div>
 	</div>
 
-	
+
 </div>
 </div>
 
-
+<?php
+	if($session['hasil'] = $this->session->userdata('logged_in')){
+			$nama = $session['hasil']->nama_pengguna;
+			$role = $session['hasil']->role;
+		if ($role=="Administrator"){
+			?>
+			<script type="text/javascript">
+				document.getElementById("kirimJurnal").style.display = 'inline';
+				document.getElementById("infoJurnal").style.display = 'none';
+			</script>
+			<?php
+		}
+	}
+	?>
 <?php echo form_close(); ?>
 
 <!--script src="<?php echo base_url();?>nic/nicEdit.js"  type="text/javascript"></script>
@@ -79,7 +92,7 @@ echo form_open('web/c_jurnal_warga/simpan_jurnal/', $attributes); ?>
 			buttonList:['upload']
 		}).panelInstance('xx1');
 	});
-	
+
 	bkLib.onDomLoaded(function() {
         new nicEditor().panelInstance('xx1');
         new nicEditor({fullPanel : true}).panelInstance('xx1');
@@ -100,7 +113,7 @@ echo form_open('web/c_jurnal_warga/simpan_jurnal/', $attributes); ?>
 <!--script src="<?php echo base_url(); ?>assetku/fronteditor/dist/bootstrap3-wysihtml5.js"></script-->
 <link rel="Stylesheet" type="text/css" href="<?php echo base_url(); ?>assetku/fronteditor/dist/bootstrap3-wysihtml5.css" />
 
-<script src="<?php echo base_url(); ?>assetku/cropit/jquery.cropit.js"></script> 
+<script src="<?php echo base_url(); ?>assetku/cropit/jquery.cropit.js"></script>
 <style>
 	/* Show load indicator when image is being loaded */
 	.cropit-image-preview.cropit-image-loading .spinner {
@@ -117,7 +130,7 @@ echo form_open('web/c_jurnal_warga/simpan_jurnal/', $attributes); ?>
 	opacity: .2;
 	}
 
-	
+
   .cropit-image-preview {
 	background-color: #f8f8f8;
 	background-size: cover;
@@ -143,20 +156,20 @@ echo form_open('web/c_jurnal_warga/simpan_jurnal/', $attributes); ?>
   }
 
  }
-</style>	
+</style>
 
 <script>
 $(function() {
 /* var editor = new wysihtml5.Editor("wysihtml5-textarea", { // id of textarea element
   toolbar:      "wysihtml5-toolbar", // id of toolbar element
-  parserRules:  wysihtml5ParserRules, // defined in parser rules set 
-  	
+  parserRules:  wysihtml5ParserRules, // defined in parser rules set
+
 }); */
 
 
 $('#some-textarea').wysihtml5({
   toolbar: {
-    
+
     link: false, //Button to insert a link. Default true
     image: false, //Button to insert an image. Default true
   }
@@ -167,16 +180,16 @@ $('.image-editor').cropit({
 	src: '<?php echo site_url('uploads/defaultFotoPenduduk.jpg');?>'
   }
 });
-  
+
 $('form').submit(function() {
 	  // Move cropped image data to hidden input
 	 var imageData = $('.image-editor').cropit('export', {
 		  type: 'image/jpeg',
 		  quality: 1,
 		  originalSize: false
-		});		
+		});
 	  $('.hidden-image-data').val(imageData);
-		
+
 	  // Prevent the form from actually submitting
 	  return true;
 	});
@@ -185,12 +198,12 @@ $('form').submit(function() {
  function nav_active(){
 				var r = document.getElementById("nav-home");
 				r.className = "";
-				
+
 				var d = document.getElementById("nav-berita");
 				d.className = d.className + "active";
-				
+
 				}
- 
+
 // very simple to use!
 $(document).ready(function() {
   nav_active();
@@ -206,7 +219,7 @@ function readURL(input) {
         var reader = new FileReader();
 
         reader.onload = function (e) {
-            $('#userfile').attr('src', e.target.result);		
+            $('#userfile').attr('src', e.target.result);
         }
         reader.readAsDataURL(input.files[0]);
     }

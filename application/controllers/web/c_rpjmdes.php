@@ -7,20 +7,20 @@ class C_rpjmdes extends CI_Controller {
         parent::__construct();
         $this->load->model('m_logo');
         $this->load->model('sso/m_sso');
-                
+
         $this->load->library('flexigrid');
         $this->load->helper(array('flexigrid_helper', 'common_helper'));
         $this->config->load('rp_rancangan_rpjm_desa');
-        
+
         $this->load->model(array(
             'rencanaPembangunan/m_rancangan_rpjm_desa',
             'rencanaPembangunan/m_master_rancangan_rpjm_desa',
             'rencanaPembangunan/m_sumber_dana_desa',
-            'rencanaPembangunan/m_bidang'));      
-       
+            'rencanaPembangunan/m_bidang'));
+
     }
-    
-	
+
+
 	function index()
     {
         $r_m_rpjm_desa_config = $this->config->item('rp_master_rancangan_rpjm_desa');
@@ -33,45 +33,45 @@ class C_rpjmdes extends CI_Controller {
         $data['js_grid'] = $grid_js;
         $data['page_title'] = 'DATA RPJMDes';
         $data['deskripsi_title'] = 'Rencana Pembangunan Jangka Menengah Desa';
-    
 
-		
-		$data['data_sso'] = $this->m_sso->getSso(1);	
+
+
+		$data['data_sso'] = $this->m_sso->getSso(1);
         $data['konten_logo'] = $this->m_logo->getLogo();
-		$data['logo'] = $this->load->view('v_logo', $data, TRUE);		
-		$data['menu'] = $this->load->view('v_navbar', $data, TRUE);			
+		$data['logo'] = $this->load->view('v_logo', $data, TRUE);
+		$data['menu'] = $this->load->view('v_navbar', $data, TRUE);
 		$temp['footer'] = $this->load->view('v_footer',$data,TRUE);
 		$temp['content'] = $this->load->view('web/content/rpjmdes',$data,TRUE);
 		$this->load->view('templateHome',$temp);
 	}
-    public function detail($id) {   
+    public function detail($id) {
         $r_rpjm_desa_config = $this->config->item('content_rp_rancangan_rpjm_desa');
         $colModel = $r_rpjm_desa_config['colModel'];
 
         //Populate flexigrid buttons..
-        
+
 
         $gridParams = $r_rpjm_desa_config['gridParams'];
-        
+
 
         $grid_js = build_grid_js('flex1', site_url('web/c_rpjmdes/load_detail/' . $id), $colModel, 'id_rancangan_rpjm_desa', 'asc', $gridParams);
-        
+
         $data['js_grid']= $grid_js;
-        
+
         $data['id_m_rancangan_rpjm_desa']= $id;
 
         $data['page_title'] = 'DATA RPJMDes';
         $data['deskripsi_title'] = 'Detail Rencana Pembangunan Jangka Menengah Desa';
 
-		$data['data_sso'] = $this->m_sso->getSso(1);	
+    		$data['data_sso'] = $this->m_sso->getSso(1);
         $data['konten_logo'] = $this->m_logo->getLogo();
-		$data['logo'] = $this->load->view('v_logo', $data, TRUE);		
-		$data['menu'] = $this->load->view('v_navbar', $data, TRUE);			
-		$temp['footer'] = $this->load->view('v_footer',$data,TRUE);
-		$temp['content'] = $this->load->view('web/content/rpjmdes',$data,TRUE);
-		$data['templateHome']=$this->load->view('templateHome',$temp);
-    }    
-        
+    		$data['logo'] = $this->load->view('v_logo', $data, TRUE);
+    		$data['menu'] = $this->load->view('v_navbar', $data, TRUE);
+    		$temp['footer'] = $this->load->view('v_footer',$data,TRUE);
+    		$temp['content'] = $this->load->view('web/content/rpjmdes',$data,TRUE);
+    		$data['templateHome']=$this->load->view('templateHome',$temp);
+    }
+
      public function load_detail($id) {
         $this->load->library('flexigrid');
         $this->load->helper('common_helper');
@@ -112,7 +112,7 @@ class C_rpjmdes extends CI_Controller {
         $this->output->set_output($this->flexigrid->json_build($records['record_count'], $record_items));
     }
 
-    
+
     function load_data() {
         $this->load->library('flexigrid');
         $valid_fields = array('id_m_rancangan_rpjm_desa');
@@ -161,7 +161,7 @@ class C_rpjmdes extends CI_Controller {
         //Print please
         $this->output->set_output($this->flexigrid->json_build($records['record_count'], $record_items));
     }
-    
+
         public function export_excel($id_m_rancangan_rpjm_desa) {
 
 
@@ -170,7 +170,7 @@ class C_rpjmdes extends CI_Controller {
 
 
         $rpjm_grouped_by_bidang = $this->m_rancangan_rpjm_desa->getByIdMasterRpjm($id_m_rancangan_rpjm_desa, TRUE);
-		
+
         if (!$rpjm_grouped_by_bidang) {
             $this->session->set_flashdata('attention_message', 'Eksport Excel Gagal, data tidak ditemukan.');
             redirect('rencanaPembangunan/c_rancangan_rpjm_desa', 'refresh');
@@ -210,8 +210,8 @@ class C_rpjmdes extends CI_Controller {
                 $tahun_awal++;
                 $excel_active_sheet->setCellValue(CHR($tahun).'8', 'thn '.$tahun_awal);
             }
-            
-            
+
+
 
             foreach ($rpjm_grouped_by_bidang as $id_bidang => $array_bidang) {
                 $current_bidang = !empty($array_bidang) ? current($array_bidang) : FALSE;
@@ -286,24 +286,24 @@ class C_rpjmdes extends CI_Controller {
                  */
                 $no++;
             }
-            
+
             $current_table_row+=2;
             $excel_active_sheet->setCellValue('Q'.$current_table_row, 'Desa '.$detail_master_rpjm->nama_desa.', Tanggal, '.$detail_master_rpjm->tanggal_disusun);
             $current_table_row+=7;
             $excel_active_sheet->setCellValue('B'.$current_table_row, '( '.strtoupper($detail_master_rpjm->kepala_desa).' )');
             $excel_active_sheet->setCellValue('Q'.$current_table_row, '( '.strtoupper($detail_master_rpjm->disusun_oleh).' )');
-            
+
             //exit;
-            foreach($excel_active_sheet = $this->excel->getActiveSheet()->getRowDimensions() as $rd) { 
-                $rd->setRowHeight(-1); 
+            foreach($excel_active_sheet = $this->excel->getActiveSheet()->getRowDimensions() as $rd) {
+                $rd->setRowHeight(-1);
             }
-            
+
             $this->excel->stream('rpjm_tahun_anggaran_'.  str_replace(' ', '', $detail_master_rpjm->tahun_anggaran).'.xls');
         }
 
         exit;
     }
 
-        
+
 
 }
