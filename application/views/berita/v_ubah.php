@@ -1,15 +1,3 @@
-<script src="<?php echo base_url();?>nic/nicEdit.js"  type="text/javascript"></script>
-<script type="text/javascript">
-var _base_url = '<?= base_url() ?>';
-	bkLib.onDomLoaded(function() {
-		new nicEditor({iconsPath : _base_url + 'nic/nicEditorIcons.gif'}).panelInstance('xxx');
-		new nicEditor({maxHeight : 400}).panelInstance('xxx');
-		new nicEditor(
-		{
-			buttonList:['upload']
-		}).panelInstance('xx1');
-	});
-</script>
 <h3><?= $page_title ?></h3>
 
 <?php $flashmessage = $this->session->flashdata('exist');
@@ -17,10 +5,10 @@ var _base_url = '<?= base_url() ?>';
 
 <?php echo form_open('admin/c_berita/update_berita'); ?>
 
-	<input type="hidden" name="id_pengguna" id="id_pengguna" value="<?= $tempna->id_pengguna ?>" size="20" /> 
+	<input type="hidden" name="id_pengguna" id="id_pengguna" value="<?= $tempna->id_pengguna ?>" size="20" />
 	<input type="hidden" name="id_berita" id="id_berita" value="<?= $hasil->id_berita ?>" size="20" />
 <legend></legend>
-	<div class="form-group"> 
+	<div class="form-group">
     	<label class="col-md-2 control-label" for="judul_berita">Judul Berita </label>
         <div class="col-md-10">
         <input class="form-control input-md"  type="text" name="judul_berita" id="judul_berita" placeholder="Judul Berita"value="<?= $hasil->judul_berita ?>"/>
@@ -29,26 +17,26 @@ var _base_url = '<?= base_url() ?>';
 		</span>
 		</div>
 	</div>
-	<div class="form-group"> 
-		<div class="image-editor ">	
+	<div class="form-group">
+		<div class="image-editor ">
 			<label class="col-md-2 control-label" for="">Gambar Berita</label>
 			<div class="col-md-10">
 				<div id="lihat">
-					<div class="cropit-image-preview" ></div>				
+					<div class="cropit-image-preview" ></div>
 					<input type="range" class="cropit-image-zoom-input" style="width:692px">
 					 <span class="help-block">
 						<div align="left">Gambar harus bertipe .jpg</div>
 					<input type="file" id="userfile" class="cropit-image-input custom" accept="image/*">
-					<input type="hidden" name="image-data" class="hidden-image-data" />	
+					<input type="hidden" name="image-data" class="hidden-image-data" />
 					</span>
 				</div>
 			</div>
-		</div>				
-	</div>	
-<div class="form-group"> 
+		</div>
+	</div>
+<div class="form-group">
 	<label class="col-md-2 control-label" for="isi_berita">Berita</label>
 	 <div class="col-md-10">
-	 <textarea class="form-control input-md" id="xxx" name="isi_berita" ><?= $hasil->isi_berita ?></textarea>
+	 <textarea class="form-control input-md textarea" id="xxx" name="isi_berita" placeholder="Tulis Berita" rows="8" ><?= $hasil->isi_berita ?></textarea>
 	 <span class="help-block">
 	</span>
 	</div>
@@ -58,10 +46,34 @@ var _base_url = '<?= base_url() ?>';
 <span class="help-block">
 <input type="submit" class="btn btn-success" value="Simpan" id="simpan"/>
 <input type="button" class="btn btn-danger" value="Batal" id="batal" onclick="location.href='<?= base_url() ?>admin/c_berita'"/>
-</span>	
+</span>
 </div>
 <?php echo form_close(); ?>
 
+<script src="<?php echo base_url();?>nic/nicEdit.js"  type="text/javascript"></script>
+<script type="text/javascript">
+var _base_url = '<?= base_url() ?>';
+	bkLib.onDomLoaded(function() {
+		new nicEditor().panelInstance('xx1');
+		new nicEditor({fullPanel : true}).panelInstance('xx1');
+		new nicEditor({iconsPath : '../nicEditorIcons.gif'}).panelInstance('xx1');
+		new nicEditor({buttonList : ['fontSize','bold','italic','underline','strikeThrough','subscript','superscript','html','image']}).panelInstance('area4');
+		new nicEditor({maxHeight : 100}).panelInstance('xx1');
+	});
+</script>
+<!--link rel="Stylesheet" type="text/css" href="<?php echo base_url(); ?>assetku/jHtmlArea/style/jHtmlArea.css" />
+<script type="text/javascript" src="<?php echo base_url(); ?>assetku/jHtmlArea/scripts/jHtmlArea-0.8.min.js"></script-->
+
+<!--script src="<?php echo base_url(); ?>assetku/wysihtml5/parser_rules/advanced.js"></script>
+<script src="<?php echo base_url(); ?>assetku/wysihtml5/dist/wysihtml5-0.3.0.min.js"></script>
+<link rel="Stylesheet" type="text/css" href="<?php echo base_url(); ?>assetku/jHtmlArea/style/jHtmlArea.css" /-->
+
+<script src="<?php echo base_url(); ?>assetku/fronteditor/dist/bootstrap3-wysihtml5.all.min.js"></script>
+
+<!--script src="<?php echo base_url(); ?>assetku/fronteditor/dist/bootstrap3-wysihtml5.js"></script-->
+<link rel="Stylesheet" type="text/css" href="<?php echo base_url(); ?>assetku/fronteditor/dist/bootstrap3-wysihtml5.css" />
+
+<script src="<?php echo base_url(); ?>assetku/cropit/jquery.cropit.js"></script>
 <style>
 		/* Show load indicator when image is being loaded */
 		.cropit-image-preview.cropit-image-loading .spinner {
@@ -78,7 +90,7 @@ var _base_url = '<?= base_url() ?>';
 		opacity: .2;
 		}
 
-		
+
       .cropit-image-preview {
         background-color: #f8f8f8;
         background-size: cover;
@@ -106,29 +118,38 @@ var _base_url = '<?= base_url() ?>';
       button[type="submit"] {
         margin-top: 10px;
       }
+
      }
-    </style>	
-<script src="<?php echo base_url(); ?>assetku/cropit/jquery.cropit.js"></script> 
+    </style>
+
 
 
 <script>
 $(function() {
-  
+
+$('#xxx').wysihtml5({
+  toolbar: {
+
+    link: false, //Button to insert a link. Default true
+    image: false, //Button to insert an image. Default true
+  }
+});
+
 $('.image-editor').cropit({
   imageState: {
 	src: '<?php echo site_url($hasil->gambar);?>'
   }
 });
-  
+
 $('form').submit(function() {
 	  // Move cropped image data to hidden input
 	 var imageData = $('.image-editor').cropit('export', {
 		  type: 'image/jpeg',
 		  quality: 1,
 		  originalSize: false
-		});		
+		});
 	  $('.hidden-image-data').val(imageData);
-		
+
 	  // Prevent the form from actually submitting
 	  return true;
 	});
@@ -136,14 +157,14 @@ $('form').submit(function() {
 function nav_active(){
 
 	document.getElementById("a-data-web").className = "collapsed active";
-	
+
 	var r = document.getElementById("pengelola_data_web");
 	r.className = "collapsed";
 
 	var d = document.getElementById("nav-berita");
 	d.className = d.className + "active";
 	}
- 
+
 // very simple to use!
 $(document).ready(function() {
   nav_active();
@@ -158,7 +179,7 @@ function readURL(input) {
         var reader = new FileReader();
 
         reader.onload = function (e) {
-            $('#userfile').attr('src', e.target.result);		
+            $('#userfile').attr('src', e.target.result);
         }
         reader.readAsDataURL(input.files[0]);
     }

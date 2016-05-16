@@ -6,7 +6,7 @@ class M_penduduk extends CI_Model {
     parent::__construct();
     $this->_table='tbl_penduduk';
     $this->load->library('Excel_generator');
-	
+
     //get instance
     $this->CI = get_instance();
   }
@@ -17,16 +17,16 @@ class M_penduduk extends CI_Model {
 		'tbl_penduduk.*,
 		ref_rt.nomor_rt,
 		ref_rw.nomor_rw,
-		ref_dusun.nama_dusun,		
+		ref_dusun.nama_dusun,
 		ref_jen_kel.deskripsi as nama_jen_kel
-		
+
 		')->from($this->_table);
-		
+
 		$this->db->join('ref_rt','tbl_penduduk.id_rt=ref_rt.id_rt'); 													// ke tbl RT
 		$this->db->join('ref_rw','tbl_penduduk.id_rw=ref_rw.id_rw'); 													// ke tbl RW
 		$this->db->join('ref_dusun','tbl_penduduk.id_dusun=ref_dusun.id_dusun'); 										// ke tbl DUSUN
 		$this->db->join('ref_jen_kel','tbl_penduduk.id_jen_kel=ref_jen_kel.id_jen_kel'); 								// ke tbl JENIS KELAMIN
-		
+
 		//$this->db->join('tbl_penduduk','tbl_penduduk.iduser=data_penduduk.iduser');
 		/* $this->db->join('ref_pekerjaan','ref_pekerjaan.id_pekerjaan=data_penduduk.id_pekerjaan');
 		$this->db->join('ref_pendidikan','ref_pendidikan.id_pendidikan=data_penduduk.id_pendidikan');
@@ -48,7 +48,7 @@ class M_penduduk extends CI_Model {
         //Return all
         return $return;
     }
-    
+
     function get_dataForExportExcel()
 	{
 		$this->db->select('
@@ -60,7 +60,7 @@ class M_penduduk extends CI_Model {
 				tbl_penduduk.email as email,
 				tbl_penduduk.no_kitas as no_kitas,
 				tbl_penduduk.no_paspor as no_paspor,
-				
+
 				ref_rt.nomor_rt as nomor_rt,
 				ref_rw.nomor_rw as nomor_rw,
 				ref_dusun.nama_dusun as nama_dusun,
@@ -90,36 +90,36 @@ class M_penduduk extends CI_Model {
 				if(tbl_keluarga.is_jamkesmas  = "N", "TIDAK", "YA") as is_jamkesmas,
 				if(tbl_keluarga.is_pkh  = "N", "TIDAK", "YA") as is_pkh,
 				ref_kelas_sosial.deskripsi as nama_kelas_sosial,
-				
+
 				if(tbl_penduduk.is_sementara  = "N", "TIDAK", "YA")  as is_penduduk_sementara,
 				if(tbl_penduduk.is_bsm  = "N", "TIDAK", "YA") as is_bsm,
-				
+
 		')->from($this->_table);
 		$this->db->select("DATE_FORMAT(tbl_penduduk.tanggal_lahir, '%d/%m/%Y') AS tanggal_lahir", FALSE);
 
-		$this->db->join('ref_rt','tbl_penduduk.id_rt = ref_rt.id_rt','left'); 				
-		$this->db->join('ref_rw','tbl_penduduk.id_rw = ref_rw.id_rw','left'); 												
-		$this->db->join('ref_dusun','tbl_penduduk.id_dusun = ref_dusun.id_dusun','left'); 								
-		$this->db->join('ref_jen_kel','tbl_penduduk.id_jen_kel = ref_jen_kel.id_jen_kel','left'); 	
-		$this->db->join('ref_goldar','tbl_penduduk.id_goldar = ref_goldar.id_goldar','left'); 	
-		$this->db->join('ref_pendidikan as pd1','tbl_penduduk.id_pendidikan = pd1.id_pendidikan','left'); 			
-		$this->db->join('ref_pendidikan as pd2','tbl_penduduk.id_pendidikan_terakhir = pd2.id_pendidikan','left'); 			
-		$this->db->join('ref_agama','tbl_penduduk.id_agama = ref_agama.id_agama','left'); 		
-		$this->db->join('ref_status_kawin','tbl_penduduk.id_status_kawin = ref_status_kawin.id_status_kawin','left'); 	
-		$this->db->join('ref_pekerjaan','tbl_penduduk.id_pekerjaan = ref_pekerjaan.id_pekerjaan','left'); 	
-		$this->db->join('ref_pekerjaan_ped','tbl_penduduk.id_pekerjaan_ped = ref_pekerjaan_ped.id_pekerjaan_ped','left'); 	
-		$this->db->join('ref_kewarganegaraan','tbl_penduduk.id_kewarganegaraan = ref_kewarganegaraan.id_kewarganegaraan','left'); 	
-		$this->db->join('ref_kompetensi','tbl_penduduk.id_kompetensi = ref_kompetensi.id_kompetensi','left'); 					
-		$this->db->join('ref_status_penduduk','tbl_penduduk.id_status_penduduk = ref_status_penduduk.id_status_penduduk','left'); 			
-		$this->db->join('ref_status_tinggal','tbl_penduduk.id_status_tinggal = ref_status_tinggal.id_status_tinggal','left'); 			
-		$this->db->join('ref_difabilitas','tbl_penduduk.id_difabilitas = ref_difabilitas.id_difabilitas','left'); 				
-		$this->db->join('ref_kontrasepsi','tbl_penduduk.id_kontrasepsi = ref_kontrasepsi.id_kontrasepsi','left'); 
-		
-		$this->db->join('tbl_hub_kel','tbl_penduduk.id_penduduk = tbl_hub_kel.id_penduduk','left'); 
-		$this->db->join('tbl_keluarga','tbl_hub_kel.id_keluarga = tbl_keluarga.id_keluarga','left'); 
-		
-		$this->db->join('ref_status_keluarga','tbl_hub_kel.id_status_keluarga = ref_status_keluarga.id_status_keluarga','left'); 
-		$this->db->join('ref_kelas_sosial','tbl_keluarga.id_kelas_sosial = ref_kelas_sosial.id_kelas_sosial','left'); 
+		$this->db->join('ref_rt','tbl_penduduk.id_rt = ref_rt.id_rt','left');
+		$this->db->join('ref_rw','tbl_penduduk.id_rw = ref_rw.id_rw','left');
+		$this->db->join('ref_dusun','tbl_penduduk.id_dusun = ref_dusun.id_dusun','left');
+		$this->db->join('ref_jen_kel','tbl_penduduk.id_jen_kel = ref_jen_kel.id_jen_kel','left');
+		$this->db->join('ref_goldar','tbl_penduduk.id_goldar = ref_goldar.id_goldar','left');
+		$this->db->join('ref_pendidikan as pd1','tbl_penduduk.id_pendidikan = pd1.id_pendidikan','left');
+		$this->db->join('ref_pendidikan as pd2','tbl_penduduk.id_pendidikan_terakhir = pd2.id_pendidikan','left');
+		$this->db->join('ref_agama','tbl_penduduk.id_agama = ref_agama.id_agama','left');
+		$this->db->join('ref_status_kawin','tbl_penduduk.id_status_kawin = ref_status_kawin.id_status_kawin','left');
+		$this->db->join('ref_pekerjaan','tbl_penduduk.id_pekerjaan = ref_pekerjaan.id_pekerjaan','left');
+		$this->db->join('ref_pekerjaan_ped','tbl_penduduk.id_pekerjaan_ped = ref_pekerjaan_ped.id_pekerjaan_ped','left');
+		$this->db->join('ref_kewarganegaraan','tbl_penduduk.id_kewarganegaraan = ref_kewarganegaraan.id_kewarganegaraan','left');
+		$this->db->join('ref_kompetensi','tbl_penduduk.id_kompetensi = ref_kompetensi.id_kompetensi','left');
+		$this->db->join('ref_status_penduduk','tbl_penduduk.id_status_penduduk = ref_status_penduduk.id_status_penduduk','left');
+		$this->db->join('ref_status_tinggal','tbl_penduduk.id_status_tinggal = ref_status_tinggal.id_status_tinggal','left');
+		$this->db->join('ref_difabilitas','tbl_penduduk.id_difabilitas = ref_difabilitas.id_difabilitas','left');
+		$this->db->join('ref_kontrasepsi','tbl_penduduk.id_kontrasepsi = ref_kontrasepsi.id_kontrasepsi','left');
+
+		$this->db->join('tbl_hub_kel','tbl_penduduk.id_penduduk = tbl_hub_kel.id_penduduk','left');
+		$this->db->join('tbl_keluarga','tbl_hub_kel.id_keluarga = tbl_keluarga.id_keluarga','left');
+
+		$this->db->join('ref_status_keluarga','tbl_hub_kel.id_status_keluarga = ref_status_keluarga.id_status_keluarga','left');
+		$this->db->join('ref_kelas_sosial','tbl_keluarga.id_kelas_sosial = ref_kelas_sosial.id_kelas_sosial','left');
 		$this->db->group_by('tbl_penduduk.nik');
 		$query = $this->db->get();
         $this->excel_generator->set_query($query);
@@ -129,21 +129,21 @@ class M_penduduk extends CI_Model {
 	{
       $this->db->insert('tbl_keluarga', $data);
 	}
-	
+
 	function insertHubKel($data)
    {
       $this->db->insert('tbl_hub_kel', $data);
    }
-  
+
 	function cekNIKExist($nik)
-	{	
+	{
 		return $this->db->get_where('tbl_penduduk',array('NIK' => $nik))->row();
 	}
 	function cekNoKKExist($no_kk)
-	{	
+	{
 		return $this->db->get_where('tbl_keluarga',array('no_kk' => $no_kk))->row();
 	}
-	
+
 	//Id Pendidikan
 	function getIdPendidikan($deskripsi)
 	{
@@ -152,10 +152,10 @@ class M_penduduk extends CI_Model {
 		$q = $this->db->get('ref_pendidikan');
 		//if id is unique we want just one row to be returned
 		$data = array_shift($q->result_array());
-		$result = $data['id_pendidikan'];	
-		return  $result;	
+		$result = $data['id_pendidikan'];
+		return  $result;
 	}
-	
+
 	//pekerjaan PED
 	function getIdPekerjaanPED($deskripsi)
 	{
@@ -164,10 +164,10 @@ class M_penduduk extends CI_Model {
 		$q = $this->db->get('ref_pekerjaan_ped');
 		//if id is unique we want just one row to be returned
 		$data = array_shift($q->result_array());
-		$result = $data['id_pekerjaan_ped'];	
-		return  $result;	
+		$result = $data['id_pekerjaan_ped'];
+		return  $result;
 	}
-	
+
 	//kompetensi
 	function getIdKompetensi($deskripsi)
 	{
@@ -176,10 +176,10 @@ class M_penduduk extends CI_Model {
 		$q = $this->db->get('ref_kompetensi');
 		//if id is unique we want just one row to be returned
 		$data = array_shift($q->result_array());
-		$result = $data['id_kompetensi'];	
-		return  $result;	
+		$result = $data['id_kompetensi'];
+		return  $result;
 	}
-	
+
 	//kompetensi
 	function getIdStatusPenduduk($deskripsi)
 	{
@@ -188,10 +188,10 @@ class M_penduduk extends CI_Model {
 		$q = $this->db->get('ref_status_penduduk');
 		//if id is unique we want just one row to be returned
 		$data = array_shift($q->result_array());
-		$result = $data['id_status_penduduk'];	
-		return  $result;	
+		$result = $data['id_status_penduduk'];
+		return  $result;
 	}
-	
+
 	//status tinggal
 	function getIdStatusTinggal($deskripsi)
 	{
@@ -200,10 +200,10 @@ class M_penduduk extends CI_Model {
 		$q = $this->db->get('ref_status_tinggal');
 		//if id is unique we want just one row to be returned
 		$data = array_shift($q->result_array());
-		$result = $data['id_status_tinggal'];	
-		return  $result;	
+		$result = $data['id_status_tinggal'];
+		return  $result;
 	}
-	
+
 	//difabilitas
 	function getIdDifabilitas($deskripsi)
 	{
@@ -212,10 +212,10 @@ class M_penduduk extends CI_Model {
 		$q = $this->db->get('ref_difabilitas');
 		//if id is unique we want just one row to be returned
 		$data = array_shift($q->result_array());
-		$result = $data['id_difabilitas'];	
-		return  $result;	
+		$result = $data['id_difabilitas'];
+		return  $result;
 	}
-	
+
 	//kontrasepsi
 	function getIdKontrasepsi($deskripsi)
 	{
@@ -224,10 +224,10 @@ class M_penduduk extends CI_Model {
 		$q = $this->db->get('ref_kontrasepsi');
 		//if id is unique we want just one row to be returned
 		$data = array_shift($q->result_array());
-		$result = $data['id_kontrasepsi'];	
-		return  $result;	
+		$result = $data['id_kontrasepsi'];
+		return  $result;
 	}
-	
+
 	//kelas sosial
 	function getIdKelasSosial($deskripsi)
 	{
@@ -236,10 +236,10 @@ class M_penduduk extends CI_Model {
 		$q = $this->db->get('ref_kelas_sosial');
 		//if id is unique we want just one row to be returned
 		$data = array_shift($q->result_array());
-		$result = $data['id_kelas_sosial'];	
-		return  $result;	
+		$result = $data['id_kelas_sosial'];
+		return  $result;
 	}
-	
+
 	//Id Keluarga By NoKK
 	function getIdKeluargaByNoKK($no_kk)
 	{
@@ -248,10 +248,10 @@ class M_penduduk extends CI_Model {
 		$q = $this->db->get('tbl_keluarga');
 		//if id is unique we want just one row to be returned
 		$data = array_shift($q->result_array());
-		$result = $data['id_keluarga'];	
-		return  $result;	
+		$result = $data['id_keluarga'];
+		return  $result;
 	}
-	
+
 	 //Id Keluarga By IdKK
 	function getIdStatusKeluarga($deskripsi)
 	{
@@ -260,10 +260,10 @@ class M_penduduk extends CI_Model {
 		$q = $this->db->get('ref_status_keluarga');
 		//if id is unique we want just one row to be returned
 		$data = array_shift($q->result_array());
-		$result = $data['id_status_keluarga'];	
-		return  $result;	
+		$result = $data['id_status_keluarga'];
+		return  $result;
 	}
-	
+
 	 //Id Keluarga By IdKK
 	function getIdKeluargaByIdKK($id)
 	{
@@ -272,10 +272,10 @@ class M_penduduk extends CI_Model {
 		$q = $this->db->get('tbl_keluarga');
 		//if id is unique we want just one row to be returned
 		$data = array_shift($q->result_array());
-		$result = $data['id_keluarga'];	
-		return  $result;	
+		$result = $data['id_keluarga'];
+		return  $result;
 	}
-	
+
 	 //Id Penduduk By NIK
 	function getIdPendudukByNIK($nik)
 	{
@@ -284,10 +284,10 @@ class M_penduduk extends CI_Model {
 		$q = $this->db->get('tbl_penduduk');
 		//if id is unique we want just one row to be returned
 		$data = array_shift($q->result_array());
-		$result = $data['id_penduduk'];	
-		return  $result;	
+		$result = $data['id_penduduk'];
+		return  $result;
 	}
-	
+
    //jenis kelamin
 	function getIdJenKel($deskripsi)
 	{
@@ -296,8 +296,8 @@ class M_penduduk extends CI_Model {
 		$q = $this->db->get('ref_jen_kel');
 		//if id is unique we want just one row to be returned
 		$data = array_shift($q->result_array());
-		$result = $data['id_jen_kel'];	
-		return  $result;	
+		$result = $data['id_jen_kel'];
+		return  $result;
 	}
   //gol darah
 	function getIdGolDar($deskripsi)
@@ -307,8 +307,8 @@ class M_penduduk extends CI_Model {
 		$q = $this->db->get('ref_goldar');
 		//if id is unique we want just one row to be returned
 		$data = array_shift($q->result_array());
-		$result = $data['id_goldar'];	
-		return  $result;	
+		$result = $data['id_goldar'];
+		return  $result;
 	}
   //rt
 		function getIdRt($nomor_rt, $id_rw)
@@ -319,8 +319,8 @@ class M_penduduk extends CI_Model {
 		$q = $this->db->get('ref_rt');
 		//if id is unique we want just one row to be returned
 		$data = array_shift($q->result_array());
-		$result = $data['id_rt'];	
-		return  $result;	
+		$result = $data['id_rt'];
+		return  $result;
 	}
   //rw
 	function getIdRw($nomor_rw)
@@ -330,8 +330,8 @@ class M_penduduk extends CI_Model {
 		$q = $this->db->get('ref_rw');
 		//if id is unique we want just one row to be returned
 		$data = array_shift($q->result_array());
-		$result = $data['id_rw'];	
-		return  $result;	
+		$result = $data['id_rw'];
+		return  $result;
 	}
   //dusun
 	function getIdDusun($nama_dusun)
@@ -341,8 +341,8 @@ class M_penduduk extends CI_Model {
 		$q = $this->db->get('ref_dusun');
 		//if id is unique we want just one row to be returned
 		$data = array_shift($q->result_array());
-		$result = $data['id_dusun'];	
-		return  $result;	
+		$result = $data['id_dusun'];
+		return  $result;
 	}
   //agama
 	function getIdAgama($deskripsi)
@@ -352,8 +352,8 @@ class M_penduduk extends CI_Model {
 		$q = $this->db->get('ref_agama');
 		//if id is unique we want just one row to be returned
 		$data = array_shift($q->result_array());
-		$result = $data['id_agama'];	
-		return  $result;	
+		$result = $data['id_agama'];
+		return  $result;
 	}
   //status perkawinan
 	function getIdStatusKawin($deskripsi)
@@ -363,8 +363,8 @@ class M_penduduk extends CI_Model {
 		$q = $this->db->get('ref_status_kawin');
 		//if id is unique we want just one row to be returned
 		$data = array_shift($q->result_array());
-		$result = $data['id_status_kawin'];	
-		return  $result;	
+		$result = $data['id_status_kawin'];
+		return  $result;
 	}
   //pekerjaan
 	function getIdPekerjaan($deskripsi)
@@ -374,8 +374,8 @@ class M_penduduk extends CI_Model {
 		$q = $this->db->get('ref_pekerjaan');
 		//if id is unique we want just one row to be returned
 		$data = array_shift($q->result_array());
-		$result = $data['id_pekerjaan'];	
-		return  $result;	
+		$result = $data['id_pekerjaan'];
+		return  $result;
 	}
   //kewarganegaraan
 	function getIdKewarganegaraan($deskripsi)
@@ -385,84 +385,84 @@ class M_penduduk extends CI_Model {
 		$q = $this->db->get('ref_kewarganegaraan');
 		//if id is unique we want just one row to be returned
 		$data = array_shift($q->result_array());
-		$result = $data['id_kewarganegaraan'];	
-		return  $result;	
+		$result = $data['id_kewarganegaraan'];
+		return  $result;
 	}
-	
+
   function insertPenduduk($data)
   {
     $this->db->insert($this->_table, $data);
   }
-  
+
   function deletePenduduk($id)
   {
     $this->db->where('id_penduduk', $id);
     $this->db->delete('tbl_hub_kel');
-	
+
 	$this->db->where('id_penduduk', $id);
     $this->db->delete($this->_table);
   }
-  
+
   function getPendudukByNIK($id)
-  {	
+  {
     return $this->db->get_where($this->_table,array('NIK' => $id))->row();
   }
-  
+
   function updatePenduduk($where, $data)
   {
     $this->db->where($where);
     $this->db->update($this->_table, $data);
     return $this->db->affected_rows();
   }
-  
-    function get_pekerjaan() 
-	{      
+
+    function get_pekerjaan()
+	{
       	$records = $this->db->get('ref_pekerjaan');
    		$data=array();
         foreach ($records->result() as $row)
-        {	
+        {
 			$data[''] = '--Pilih--';
         	$data[$row->id_pekerjaan] = $row->jenis_pekerjaan;
         }
         return ($data);
     }
-	
-	function get_pendidikan() 
-	{      
+
+	function get_pendidikan()
+	{
       	$records = $this->db->get('ref_pendidikan');
    		$data=array();
         foreach ($records->result() as $row)
-        {	
+        {
 			$data[''] = '--Pilih--';
         	$data[$row->id_pendidikan] = $row->jenis_pendidikan;
         }
         return ($data);
     }
-	
-	function get_dusun() 
-	{      
+
+	function get_dusun()
+	{
       	$records = $this->db->get('ref_dusun');
    		$data=array();
         foreach ($records->result() as $row)
-        {	
+        {
 			$data[''] = '--Pilih--';
         	$data[$row->id_dusun] = $row->nama_dusun;
         }
         return ($data);
     }
-	
-	function get_noKK() 
-	{      
+
+	function get_noKK()
+	{
       	$records = $this->db->get('data_keluarga');
    		$data=array();
         foreach ($records->result() as $row)
-        {	
+        {
 			$data[''] = '--Pilih--';
         	$data[$row->KK] = $row->nama;
         }
         return ($data);
-    }	
-	
+    }
+
 	function getDataPendudukByIdPenduduk($id_penduduk)
 	{
 		 $this->db->select(
@@ -485,7 +485,7 @@ class M_penduduk extends CI_Model {
 		ref_difabilitas.deskripsi as nama_difabilitas,
 		ref_kontrasepsi.deskripsi as nama_kontrasepsi
 		')->from($this->_table);
-		
+
 		$this->db->join('ref_rt','tbl_penduduk.id_rt=ref_rt.id_rt','left'); 													// ke tbl RT
 		$this->db->join('ref_rw','tbl_penduduk.id_rw=ref_rw.id_rw','left'); 													// ke tbl RW
 		$this->db->join('ref_dusun','tbl_penduduk.id_dusun=ref_dusun.id_dusun','left'); 										// ke tbl DUSUN
@@ -502,26 +502,26 @@ class M_penduduk extends CI_Model {
 		$this->db->join('ref_status_penduduk','tbl_penduduk.id_status_penduduk=ref_status_penduduk.id_status_penduduk','left'); 			// ke tbl STATUS PENDUDUK
 		$this->db->join('ref_status_tinggal','tbl_penduduk.id_status_tinggal=ref_status_tinggal.id_status_tinggal','left'); 				// ke tbl STATUS TINGGAL
 		$this->db->join('ref_difabilitas','tbl_penduduk.id_difabilitas=ref_difabilitas.id_difabilitas','left'); 				// ke tbl DIFABILITAS
-		$this->db->join('ref_kontrasepsi','tbl_penduduk.id_kontrasepsi=ref_kontrasepsi.id_kontrasepsi','left'); 				// ke tbl KONTRASEPSI 
+		$this->db->join('ref_kontrasepsi','tbl_penduduk.id_kontrasepsi=ref_kontrasepsi.id_kontrasepsi','left'); 				// ke tbl KONTRASEPSI
 		$this->db->where('tbl_penduduk.id_penduduk',$id_penduduk);
-		
+
 		$q = $this->db->get();
-		return $q->row();	
-		
+		return $q->row();
+
 	}
-	
+
 	function getDataHubunganKeluargaByIdPenduduk($id_penduduk)
 	{
-		 $this->db->select('*')->from('tbl_hub_kel');	
-		$this->db->join('tbl_keluarga','tbl_hub_kel.id_keluarga=tbl_keluarga.id_keluarga'); 				// ke tbl KONTRASEPSI 
-		$this->db->where('tbl_hub_kel.id_penduduk',$id_penduduk);		
+		 $this->db->select('*')->from('tbl_hub_kel');
+		$this->db->join('tbl_keluarga','tbl_hub_kel.id_keluarga=tbl_keluarga.id_keluarga'); 				// ke tbl KONTRASEPSI
+		$this->db->where('tbl_hub_kel.id_penduduk',$id_penduduk);
 		$q = $this->db->get();
-		return $q->row();	
-		
+		return $q->row();
+
 	}
 
 
-	
+
 }
 
 ?>

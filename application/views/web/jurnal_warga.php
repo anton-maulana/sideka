@@ -55,8 +55,8 @@ echo form_open('web/c_jurnal_warga/simpan_jurnal/', $attributes); ?>
 
 	<legend></legend>
 	<div class="form-group has-success">
-		<input type="submit" class="btn btn-success" value="Kirim" id="kirimJurnal" style="display:none;"/>
-		<div class="alert alert-success" id="infoJurnal">
+		<input type="submit" class="btn btn-success" value="Kirim" id="kirimJurnal"/>
+		<div class="alert alert-success" id="infoJurnal" style="display:none">
 			Menu <b>Jurnalisme Desa</b> dapat digunakan setelah anda melakukan <a href="<?php echo site_url('c_login/')?>">login</a>.
 		</div>
 	</div>
@@ -78,7 +78,8 @@ echo form_open('web/c_jurnal_warga/simpan_jurnal/', $attributes); ?>
 			<?php
 		}
 	}
-	?>
+?>
+
 <?php echo form_close(); ?>
 
 <!--script src="<?php echo base_url();?>nic/nicEdit.js"  type="text/javascript"></script>
