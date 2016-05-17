@@ -5,7 +5,7 @@
 
 <?php
 $attributes = array('name' => 'myform');
-echo form_open_multipart('admin/c_slider_beranda/update_slider_beranda', $attributes); 
+echo form_open_multipart('admin/c_slider_beranda/update_slider_beranda', $attributes);
 ?>
 <fieldset>
 <legend></legend>
@@ -13,17 +13,17 @@ echo form_open_multipart('admin/c_slider_beranda/update_slider_beranda', $attrib
 		 <div class="col-md-12">
 			<input type="hidden"  id="id_slider_beranda" name="id_slider_beranda" value="<?= $hasil->id_slider_beranda?>"/>
 		</div>
-		
-		<div class="form-group"> 	
+
+		<div class="form-group">
     	 <label class="col-md-3 control-label" for="konten_teks">Konten Teks</label>
         <div class="col-md-9">
          <span class="help-block">
 			<input class="form-control input-md"  type="text" name="konten_teks" id="konten_teks" placeholder="Konten Teks" value="<?= $hasil->konten_teks?>"/>
 		</span>
 		</div>
-	</div>	
+	</div>
 	<legend></legend>
-	<div class="form-group"> 	
+	<div class="form-group">
     	 <label class="col-md-3 control-label" for="konten_background">Konten Background</label>
         <div class="col-md-9">
          <span class="help-block">
@@ -35,14 +35,14 @@ echo form_open_multipart('admin/c_slider_beranda/update_slider_beranda', $attrib
 		 <div class="col-md-9">
 			<img id="blah" src='<?php echo site_url($hasil->konten_background);?>' alt="your image"  class='img-responsive img-thumbnail' width="640px"/><br><br>
 		</div>
-	</div>	
+	</div>
 
 	<legend></legend>
-	<div class="form-group"> 	
+	<div class="form-group">
     	 <label class="col-md-3 control-label" for="konten_logo">Konten Logo</label>
         <div class="col-md-9">
          <span class="help-block">
-			<input class="form-control input-md"  type="file" name="konten_logo" id="imgInp1" value="<?=$hasil->konten_logo ?>" multiple>
+			<input class="form-control input-md"  type="file" name="konten_logo" id="imgInp1" value="<?=$hasil->konten_logo ?>" >
 			<div align="right">Gambar harus bertipe .png</div>
 		</span>
 		</div>
@@ -50,7 +50,7 @@ echo form_open_multipart('admin/c_slider_beranda/update_slider_beranda', $attrib
 		 <div class="col-md-3">
 			<img id="blah1" src='<?php echo site_url($hasil->konten_logo);?>' alt="your image"  class='img-responsive img-thumbnail' width="150px" height="150px"/><br><br>
 		</div>
-	</div>	
+	</div>
 
 	<legend></legend>
 <p>
@@ -69,7 +69,7 @@ function readURL_logoDesa(input) {
         reader.onload = function (e) {
             $('#blah').attr('src', e.target.result);
         }
-		
+
         reader.readAsDataURL(input.files[0]);
     }
 }
@@ -91,7 +91,7 @@ function readURL_logoKabupaten(input) {
         reader.onload = function (e) {
             $('#blah1').attr('src', e.target.result);
         }
-		
+
         reader.readAsDataURL(input.files[0]);
     }
 }
@@ -107,14 +107,14 @@ $( document ).ready(function() {
 function nav_active(){
 
 	document.getElementById("a-data-web").className = "collapsed active";
-	
+
 	var r = document.getElementById("pengelola_data_web");
 	r.className = "collapsed";
 
 	var d = document.getElementById("nav-slider");
 	d.className = d.className + "active";
 	}
- 
+
 // very simple to use!
 $(document).ready(function() {
   nav_active();
