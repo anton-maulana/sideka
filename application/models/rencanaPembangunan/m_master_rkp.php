@@ -30,6 +30,13 @@ class M_master_rkp extends CI_Model {
         $this->post_data = array();
     }
 
+    public function getDataMasterRkpTable(){
+      $this->_setSelectAndJoin();
+      $this->db->from($this->_table);
+      $query = $this->db->get();
+      return $query->result();
+    }
+
     public function getPostData() {
         $this->_resetPostData();
         foreach ($this->form_field_names as $key => $field_name) {

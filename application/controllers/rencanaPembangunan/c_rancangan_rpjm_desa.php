@@ -184,7 +184,7 @@ class C_rancangan_rpjm_desa extends C_baseRencanaPembangunan {
 
 
         $rpjm_grouped_by_bidang = $this->m_rancangan_rpjm_desa->getByIdMasterRpjm($id_m_rancangan_rpjm_desa, TRUE);
-		
+
         if (!$rpjm_grouped_by_bidang) {
             $this->session->set_flashdata('attention_message', 'Eksport Excel Gagal, data tidak ditemukan.');
             redirect('rencanaPembangunan/c_rancangan_rpjm_desa', 'refresh');
@@ -224,8 +224,8 @@ class C_rancangan_rpjm_desa extends C_baseRencanaPembangunan {
                 $tahun_awal++;
                 $excel_active_sheet->setCellValue(CHR($tahun).'8', 'thn '.$tahun_awal);
             }
-            
-            
+
+
 
             foreach ($rpjm_grouped_by_bidang as $id_bidang => $array_bidang) {
                 $current_bidang = !empty($array_bidang) ? current($array_bidang) : FALSE;
@@ -252,7 +252,7 @@ class C_rancangan_rpjm_desa extends C_baseRencanaPembangunan {
 //                            $excel_active_sheet->mergetCells('B' . $current_table_row . ':B' . ($current_table_row - 1));
 //                        }
                         $current_bidang_text = $row_current_bidang->bidang;
-                        
+
                         if ($current_sub_bidang_text != $row_current_bidang->sub_bidang) {
                             $excel_active_sheet->setCellValue('D' . $current_table_row, $row_current_bidang->sub_bidang);
                         }
@@ -300,18 +300,18 @@ class C_rancangan_rpjm_desa extends C_baseRencanaPembangunan {
                  */
                 $no++;
             }
-            
+
             $current_table_row+=2;
             $excel_active_sheet->setCellValue('Q'.$current_table_row, 'Desa '.$detail_master_rpjm->nama_desa.', Tanggal, '.$detail_master_rpjm->tanggal_disusun);
             $current_table_row+=7;
             $excel_active_sheet->setCellValue('B'.$current_table_row, '( '.strtoupper($detail_master_rpjm->kepala_desa).' )');
             $excel_active_sheet->setCellValue('Q'.$current_table_row, '( '.strtoupper($detail_master_rpjm->disusun_oleh).' )');
-            
+
             //exit;
-            foreach($excel_active_sheet = $this->excel->getActiveSheet()->getRowDimensions() as $rd) { 
-                $rd->setRowHeight(-1); 
+            foreach($excel_active_sheet = $this->excel->getActiveSheet()->getRowDimensions() as $rd) {
+                $rd->setRowHeight(-1);
             }
-            
+
             $this->excel->stream('rpjm_tahun_anggaran_'.  str_replace(' ', '', $detail_master_rpjm->tahun_anggaran).'.xls');
         }
 
@@ -375,7 +375,7 @@ class C_rancangan_rpjm_desa extends C_baseRencanaPembangunan {
             $detail_master_rpjm = $this->m_master_rancangan_rpjm_desa->getDetail($id_m_rancangan_rpjm_desa);
             $this->m_rancangan_rpjm_desa->calculateTahunPelaksanaan($detail_master_rpjm->tahun_awal);
             unset($detail_master_rpjm);
-            
+
             $temp['id_m_rpjm'] = $id_m_rancangan_rpjm_desa;
             $response = $this->m_rancangan_rpjm_desa->save($id_rancangan_rpjm_desa);
 
@@ -390,7 +390,7 @@ class C_rancangan_rpjm_desa extends C_baseRencanaPembangunan {
             }
 
             $attention_message = $response["message_error"];
-            if ($response["error_number"] != '0' && $id_rancangan_rpjm_desa) {                
+            if ($response["error_number"] != '0' && $id_rancangan_rpjm_desa) {
                 redirect('rencanaPembangunan/c_rancangan_rpjm_desa/detail/'.$temp['id_m_rpjm']);
             } elseif ($response["error_number"] != '0' && !$id_rancangan_rpjm_desa) {
                 redirect('rencanaPembangunan/c_rancangan_rpjm_desa/detail/'.$temp['id_m_rpjm']);
@@ -410,7 +410,7 @@ class C_rancangan_rpjm_desa extends C_baseRencanaPembangunan {
             $this->session->set_flashdata('attention_message', 'Maaf, Data tidak ditemukan.');
             redirect('rencanaPembangunan/c_rancangan_rpjm_desa', 'refresh');
         }
-        
+
 //        var_dump($post_data);exit;
 //        var_dump((!is_null($post_data["kerjasama_antar_desa"]) && $post_data["kerjasama_antar_desa"] != FALSE));
 //        var_dump(!is_null($post_data["kerjasama_pihak_ketiga"]) && $post_data["kerjasama_pihak_ketiga"] != FALSE);exit;
@@ -453,9 +453,9 @@ class C_rancangan_rpjm_desa extends C_baseRencanaPembangunan {
         $this->set('post_data', $post_data);
         $this->set('attention_message', $attention_message);
         $this->set('id_m_rancangan_rpjm_desa', $id_m_rancangan_rpjm_desa);
-		
+
 		$prefix_title = $id_m_rancangan_rpjm_desa ? 'Ubah ' : 'Tambah ';
-		
+
 		$this->set('deskripsi_title', $prefix_title.'APB Desa');
     }
 

@@ -32,6 +32,15 @@ class M_rkp extends CI_Model {
         $this->post_data = array();
     }
 
+    function getDataRkpTable($id_m_rkp){
+
+      $this->_setSelectAndJoin();
+      $this->db->from($this->_table);
+      $this->db->where($this->_table . '.id_m_rkp', $id_m_rkp);
+      $query = $this->db->get();
+      return $query->result();
+    }
+
     public function calculateTahunPelaksanaan($tahun_awal) {
         for ($i = 1; $i <= 6; $i++) {
             $field_tahun_pelaksanaan = 'tahun_pelaksanaan_' . $i;
@@ -183,7 +192,7 @@ class M_rkp extends CI_Model {
 
         //Get contents
         $return['records'] = $this->db->get();
-       
+
         //Build count query
         $this->db->select("count(" . $this->_table . ".id_rancangan_rpjm_desa) as record_count")->from($this->_table);
         $this->db->where($this->_table . '.id_m_rkp', $master_id);
@@ -230,7 +239,7 @@ class M_rkp extends CI_Model {
         $this->db->join('tbl_rp_rancangan_rpjm_desa', 'tbl_rp_rancangan_rpjm_desa.id_rancangan_rpjm_desa = ' . $this->_table . '.id_rancangan_rpjm_desa');
         $this->db->join('tbl_rp_m_rkp', 'tbl_rp_m_rkp.id_m_rkp = ' . $this->_table . '.id_m_rkp');
         $this->db->join('ref_rp_coa', 'ref_rp_coa.id_coa = ' .$this->_table . '.id_bidang');
-        
+
         $this->db->order_by("ref_rp_coa.kode_rekening", "asc");
     }
 
@@ -239,7 +248,7 @@ class M_rkp extends CI_Model {
             $this->db->insert($this->_table, $data);
         }
     }
-    
+
     private function _getByIdMasterRkp($id_m_rkp = FALSE, $tahun_pelaksanaan = FALSE) {
         if ($tahun_pelaksanaan) {
             $this->db->where($tahun_pelaksanaan);
@@ -266,7 +275,7 @@ class M_rkp extends CI_Model {
                 $this->load->model('rencanaPembangunan/m_coa');
 
                 $arr_id_bidang = $this->m_coa->getIdFromConfig();
-                
+
                 $this->_setSelectAndJoin();
                 foreach ($arr_id_bidang as $id_bidang) {
                     $this->db->where($this->_table . '.id_bidang = ' . $id_bidang);

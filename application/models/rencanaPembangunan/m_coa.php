@@ -235,7 +235,7 @@ class M_coa extends CI_Model {
 
     function getDeskripsiBidangFromConfig() {
         $id_coa = $this->getIdFromConfig();
-        
+
         $this->db->where_in($this->_primary_key, $id_coa);
         $q = $this->db->get($this->_table);
         $result_set = array();
@@ -244,7 +244,7 @@ class M_coa extends CI_Model {
             foreach($rs as $record){
                 $result_set[$record->id_coa] = $record->deskripsi;
             }
-            
+
             unset($rs);
         }
         return $result_set;
@@ -292,7 +292,7 @@ class M_coa extends CI_Model {
 
         $this->db->select($select, FALSE);
         $where = "level >= 3 and (deskripsi LIKE '%" . addslashes($keyword) . "%' or kode_rekening LIKE '%" . addslashes($keyword) . "%') ";
-		
+
 		if($is_rpjm_desa){
 			$where .= "  and SUBSTR(kode_rekening,1,1) = '2' ";
 		}
@@ -300,11 +300,11 @@ class M_coa extends CI_Model {
         if($additional_where){
             $this->db->where($additional_where);
         }
-        
+
         if($where_id_coa){
             $where = 'id_coa = '.$where_id_coa;
         }
-        
+
         $this->db->where($where);
         $query = $this->db->get($this->_table);
 
@@ -314,7 +314,7 @@ class M_coa extends CI_Model {
 
         return array();
     }
-    
+
     function getTopLevelCoa(){
         $this->db->where('id_parent_coa', NULL);
         $this->db->order_by('ref_rp_coa.kode_rekening ', null);

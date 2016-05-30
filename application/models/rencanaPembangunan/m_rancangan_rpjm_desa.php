@@ -46,6 +46,13 @@ class M_rancangan_rpjm_desa extends CI_Model {
         $this->post_data = array();
     }
 
+    function getDataRpjmTable($master_id){
+      $this->_setSelectAndJoin();
+      $this->db->from($this->_table);
+      $this->db->where($this->_table . '.id_m_rancangan_rpjm_desa', $master_id);
+      $query = $this->db->get();
+      return $query->result();
+    }
     public function calculateTahunPelaksanaan($tahun_awal) {
         for ($i = 1; $i <= 6; $i++) {
             $field_tahun_pelaksanaan = 'tahun_pelaksanaan_' . $i;
@@ -107,18 +114,18 @@ class M_rancangan_rpjm_desa extends CI_Model {
                 $this->load->model('rencanaPembangunan/m_coa');
 
                 $arr_id_bidang = $this->m_coa->getIdFromConfig();
-                
+
                 foreach ($arr_id_bidang as $id_bidang) {
-                    
+
                     $this->_setSelectAndJoin();
                     $this->db->where($this->_table . '.id_bidang = ' . $id_bidang);
-                    
+
                     if(!array_key_exists($id_bidang, $this->_grouped) || !is_array($this->_grouped[$id_bidang])){
                         $this->_grouped[$id_bidang] = array();
                     }
 
                     $this->_grouped[$id_bidang][] = $this->_getByIdMasterRpjm($id_m_rancangan_rpjm_desa, $tahun_pelaksanaan);
-                   
+
                 }
 
                 return $this->_grouped;
@@ -202,11 +209,11 @@ class M_rancangan_rpjm_desa extends CI_Model {
             if ($id_rancangan_rpjm_desa) {
                 $response["error_message"] = "Perubahan ";
                 $response["error_number"] = "1.2";
-                
+
                 if($this->post_data['swakelola']== null)$this->post_data['swakelola']=0;
                 if($this->post_data['kerjasama_antar_desa']== null)$this->post_data['kerjasama_antar_desa']=0;
                 if($this->post_data['kerjasama_pihak_ketiga']== null)$this->post_data['kerjasama_pihak_ketiga']=0;
-                
+
                 $this->db->where($this->_table . '.id_rancangan_rpjm_desa', $id_rancangan_rpjm_desa);
                 $this->db->update($this->_table, $this->post_data);
             } else {

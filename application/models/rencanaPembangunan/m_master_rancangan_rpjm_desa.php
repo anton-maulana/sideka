@@ -33,6 +33,13 @@ class M_master_rancangan_rpjm_desa extends CI_Model {
         $this->post_data = array();
     }
 
+    public function getDataMasterRpjmTable(){
+      $this->_setSelectAndJoin();
+      $this->db->from($this->_table);
+      $query = $this->db->get();
+      return $query->result();
+    }
+
     public function getPostData() {
         $this->_resetPostData();
         foreach ($this->form_field_names as $key => $field_name) {
@@ -87,15 +94,15 @@ class M_master_rancangan_rpjm_desa extends CI_Model {
             $detail = $this->getDetail($id_m_rancangan_rpjm_desa);
             $selected_field_name = NULL;
             if ($id_bidang) {
-                
+
                 $this->load->model('rencanaPembangunan/m_coa');
                 $arr_id_bidang = $this->m_coa->getIdFromConfig();
-                
+
                 $this->array_total_bidang = array_combine($arr_id_bidang, array_values($this->array_total_bidang));
                 unset($arr_id_bidang);
-				
+
 				//var_dump($this->array_total_bidang, $id_bidang, $sub_total, $_POST);exit;
-                
+
                 $data = array(
                     $this->array_total_bidang[$id_bidang] => $sub_total
                 );
@@ -234,6 +241,7 @@ class M_master_rancangan_rpjm_desa extends CI_Model {
         $this->db->where($this->_table . '.tahun_awal >= ' . $from_year);
 
         $q = $this->db->get($this->_table);
+
         $rs = FALSE;
         if ($q) {
             $rs = $q->result_array();

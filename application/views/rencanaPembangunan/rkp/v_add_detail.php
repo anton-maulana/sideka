@@ -23,13 +23,13 @@ echo $attention_message ? '<p class="message">' . $attention_message . '</p>' : 
 
 
 <div class="form-group">
-    <label class="col-md-5 control-label" for="id_bidang"> Bidang *</label> 
+    <label class="col-md-5 control-label" for="id_bidang"> Bidang *</label>
     <div class="col-md-9">
         <select  class="form-control required" id="slc_bidang" name="id_bidang" aria-describedby="hlpBlock1">
             <option value="">-- Pilih Bidang --</option>
             <?php if ($bidang): ?>
                 <?php foreach ($bidang as $key => $deskripsi): ?>
-                    <option value="<?php echo $key; ?>" <?php echo $post_data && $key == $post_data["id_bidang"] ? "selected=\"selected\"" : ""; ?>><?php echo ucwords(strtolower($deskripsi)); ?></option>
+                    <option value="<?php echo $key; ?>" <?php  echo $post_data && $key == $post_data["id_bidang"] ? "selected=\"selected\"" : ""; ?>><?php echo ucwords(strtolower($deskripsi)); ?></option>
                 <?php endforeach; ?>
             <?php else: ?>
                 <option value=""></option>
@@ -42,7 +42,7 @@ echo $attention_message ? '<p class="message">' . $attention_message . '</p>' : 
 </div>
 
 <div class="form-group">
-    <label class="col-md-5 control-label" for="jenis_kegiatan"> Jenis Kegiatan *</label> 
+    <label class="col-md-5 control-label" for="jenis_kegiatan"> Jenis Kegiatan *</label>
     <div class="col-md-9">
         <input type="hidden" id="inp_jenis_kegiatan" name="jenis_kegiatan" value="" />
         <select  class="form-control input-md required" id="slc_id_rancangan_rpjm_desa" name="id_rancangan_rpjm_desa"  aria-describedby="hlpBlock3">
@@ -55,9 +55,9 @@ echo $attention_message ? '<p class="message">' . $attention_message . '</p>' : 
 </div>
 
 <div class="form-group">
-    <label class="col-md-5 control-label" for="lokasi"> Lokasi</label> 
+    <label class="col-md-5 control-label" for="lokasi"> Lokasi</label>
     <div class="col-md-9">
-        <input class="form-control input-md required" type="text" name="lokasi" id="inp_lokasi" size="80" value="<?php echo $post_data ? $post_data["lokasi"] : ''; ?>" aria-describedby="hlpBlock8" /> 
+        <input class="form-control input-md required" type="text" name="lokasi" id="inp_lokasi" size="80" value="<?php echo $post_data ? $post_data["lokasi"] : ''; ?>" aria-describedby="hlpBlock8" />
         <span id="hlpBlock8" class="help-block">
             <div id="dvAlertinp_lokasi" class="dvAlert"></div>
         </span>
@@ -65,9 +65,9 @@ echo $attention_message ? '<p class="message">' . $attention_message . '</p>' : 
 </div>
 
 <div class="form-group">
-    <label class="col-md-5 control-label" for="tanggal_disusun"> Volume</label> 
+    <label class="col-md-5 control-label" for="tanggal_disusun"> Volume</label>
     <div class="col-md-9">
-        <input class="form-control input-md required" type="text" name="volume" id="inp_volume" size="80" value="<?php echo $post_data ? $post_data["volume"] : ''; ?>" aria-describedby="hlpBlock9" /> 
+        <input class="form-control input-md required" type="text" name="volume" id="inp_volume" size="80" value="<?php echo $post_data ? $post_data["volume"] : ''; ?>" aria-describedby="hlpBlock9" />
         <span id="hlpBlock9" class="help-block">
             <div id="dvAlertinp_volume" class="dvAlert"></div>
         </span>
@@ -75,9 +75,9 @@ echo $attention_message ? '<p class="message">' . $attention_message . '</p>' : 
 </div>
 
 <div class="form-group">
-    <label class="col-md-5 control-label" for="tanggal_disusun"> Sasaran manfaat</label> 
+    <label class="col-md-5 control-label" for="tanggal_disusun"> Sasaran manfaat</label>
     <div class="col-md-9">
-        <input class="form-control input-md required" type="text" name="sasaran_manfaat" id="inp_sasaran_manfaat" size="80" value="<?php echo $post_data ? $post_data["sasaran_manfaat"] : ''; ?>" aria-describedby="hlpBlock9" /> 
+        <input class="form-control input-md required" type="text" name="sasaran_manfaat" id="inp_sasaran_manfaat" size="80" value="<?php echo $post_data ? $post_data["sasaran_manfaat"] : ''; ?>" aria-describedby="hlpBlock9" />
         <span id="hlpBlock9" class="help-block">
             <div id="dvAlertinp_sasaran_manfaat" class="dvAlert"></div>
         </span>
@@ -85,9 +85,9 @@ echo $attention_message ? '<p class="message">' . $attention_message . '</p>' : 
 </div>
 
 <div class="form-group">
-    <label class="col-md-5 control-label" for="tanggal_disusun"> Waktu Pelaksanaan *</label> 
+    <label class="col-md-5 control-label" for="tanggal_disusun"> Waktu Pelaksanaan *</label>
     <div class="col-md-9">
-        <input class="form-control input-md required" type="text" name="waktu_pelaksanaan" id="inp_waktu_pelaksanaan" size="80" value="<?php echo $post_data ? $post_data["waktu_pelaksanaan"] : ''; ?>" aria-describedby="hlpBlock9" /> 
+        <input class="form-control input-md required" type="text" name="waktu_pelaksanaan" id="inp_waktu_pelaksanaan" size="80" value="<?php echo $post_data ? $post_data["waktu_pelaksanaan"] : ''; ?>" aria-describedby="hlpBlock9" />
         <span id="hlpBlock9" class="help-block">
             <div id="dvAlertinp_waktu_pelaksanaan" class="dvAlert"></div>
         </span>
@@ -107,9 +107,9 @@ echo $attention_message ? '<p class="message">' . $attention_message . '</p>' : 
 
 
 <div class="form-group">
-    <label class="col-md-5 control-label" for="tanggal_disusun"> Rencana Pelaksanaan Kegiatan</label> 
+    <label class="col-md-5 control-label" for="tanggal_disusun"> Rencana Pelaksanaan Kegiatan</label>
     <div class="col-md-9">
-        <input class="form-control input-md required" type="text" name="rencana_pelaksanaan_kegiatan" id="inp_rencana_pelaksanaan_kegiatan" size="80" value="<?php echo $post_data ? $post_data["rencana_pelaksanaan_kegiatan"] : ''; ?>" aria-describedby="hlpBlock9" /> 
+        <input class="form-control input-md required" type="text" name="rencana_pelaksanaan_kegiatan" id="inp_rencana_pelaksanaan_kegiatan" size="80" value="<?php echo $post_data ? $post_data["rencana_pelaksanaan_kegiatan"] : ''; ?>" aria-describedby="hlpBlock9" />
 
         <span id="hlpBlock9" class="help-block">
             <div id="dvAlertinp_rencana_pelaksanaan_kegiatan" class="dvAlert"></div>
