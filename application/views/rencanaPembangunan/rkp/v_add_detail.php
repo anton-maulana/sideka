@@ -197,7 +197,7 @@ echo isset($js_rkp_add_detail) ? $js_rkp_add_detail : '';
             if (!$.isEmptyObject(rpjm)) {
 
                 var val = $(this).val(), arr_rpjm = val in rpjm ? rpjm[val] : null;
-
+                console.log(val);
                 ResetInputSelect($("#slc_id_rancangan_rpjm_desa"));
 
                 if (arr_rpjm != null) {
@@ -223,7 +223,7 @@ echo isset($js_rkp_add_detail) ? $js_rkp_add_detail : '';
         $("#slc_id_rancangan_rpjm_desa").change(function () {
             if (!$.isEmptyObject(rpjm)) {
                 var valBidang = $("#slc_bidang").val(), arr_rpjm = valBidang in rpjm ? rpjm[valBidang] : null, idRancanganRpjmDesa = $(this).val(), jumlahBiayaTersedia = 0;
-
+                console.log(arr_rpjm);
                 if (arr_rpjm != null) {
                     $.each(arr_rpjm, function (index, objs) {
                         if (objs.length > 0) {
@@ -249,7 +249,6 @@ echo isset($js_rkp_add_detail) ? $js_rkp_add_detail : '';
                         method: 'POST',
                         data_type: 'json',
                         success: function (response) {
-
                             if (response !== '0') {
                                 $("#inp_jumlah_biaya").val(toRp(parseInt(jumlahBiayaTersedia) - parseInt(response)));
                                 $("#inp_ref_num_jumlah_biaya").val(parseInt(jumlahBiayaTersedia) - parseInt(response));
@@ -265,13 +264,14 @@ echo isset($js_rkp_add_detail) ? $js_rkp_add_detail : '';
         });
 
 
-<?php if (!empty($post_data) && $post_data): ?>
+    <?php if (!empty($post_data) && $post_data): ?>
 
-$("#slc_bidang").change();
+    $("#slc_bidang").change();
 
-$("#slc_id_rancangan_rpjm_desa").val(<?php echo $post_data["id_rancangan_rpjm_desa"]; ?>);
+    $("#slc_id_rancangan_rpjm_desa").val(<?php echo $post_data["id_rancangan_rpjm_desa"]; ?>);
+    console.log();
 
-$("#slc_id_rancangan_rpjm_desa").change();
+    $("#slc_id_rancangan_rpjm_desa").change();
 
     <?php
     foreach (array(

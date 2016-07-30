@@ -24,6 +24,13 @@ class M_master_apbdes extends CI_Model {
         $this->array_total_bidang = $this->ci->config->item('array_total_top_coa');
     }
 
+    public function getDataMasterApbdesTable(){
+      $this->_setSelectAndJoin();
+      $this->db->from($this->_table);
+      $query = $this->db->get();
+      return $query->result();
+    }
+
     private function _resetPostData() {
         $this->post_data = array();
     }

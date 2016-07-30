@@ -21,33 +21,28 @@ class C_rpjmdes extends CI_Controller {
     }
 
 
-	function index()
-    {
+	function index() {
         $post_data = array();
         $data['page_title'] = 'DATA RPJMDes';
         $data['deskripsi_title'] = 'Rencana Pembangunan Jangka Menengah Desa';
-        $data['master_rpjm'] =$this->m_master_rancangan_rpjm_desa->getDataMasterRpjmTable();
-        $post_data=$this->m_master_rancangan_rpjm_desa->getDataMasterRpjmTable();
+        $data['result_rpjm'] =$this->m_master_rancangan_rpjm_desa->getDataMasterRpjmTable();
         $data['post_data']= $post_data;
-        $data['result'] ="";
-
-
     		$data['data_sso'] = $this->m_sso->getSso(1);
         $data['konten_logo'] = $this->m_logo->getLogo();
     		$data['logo'] = $this->load->view('v_logo', $data, TRUE);
     		$data['menu'] = $this->load->view('v_navbar', $data, TRUE);
     		$temp['footer'] = $this->load->view('v_footer',$data,TRUE);
-    		$temp['content'] = $this->load->view('web/content/rpjmdes',$data,TRUE);
+    		$temp['content'] = $this->load->view('web/content/rpjmdes_master',$data,TRUE);
     		$this->load->view('templateHome',$temp);
 	}
 
-  public function changeAnggaran($id_m_rancangan_rpjm_desa = FALSE){
-        $post_data = array();        
+  public function anggaran($tahun_anggaran = FALSE){
+
+        $post_data = array();
         $data['page_title'] = 'DATA RPJMDes';
         $data['deskripsi_title'] = 'Rencana Pembangunan Jangka Menengah Desa';
 
-        $data['result'] =$this->m_rancangan_rpjm_desa->getDataRpjmTable($_POST['tahunAnggaran']);
-        $data['master_rpjm'] =$this->m_master_rancangan_rpjm_desa->getDataMasterRpjmTable();
+        $data['result_rpjm'] =$this->m_rancangan_rpjm_desa->getDataRpjmTable($tahun_anggaran);
 
         $data['data_sso'] = $this->m_sso->getSso(1);
         $data['konten_logo'] = $this->m_logo->getLogo();
@@ -56,11 +51,10 @@ class C_rpjmdes extends CI_Controller {
         $temp['footer'] = $this->load->view('v_footer',$data,TRUE);
         $temp['content'] = $this->load->view('web/content/rpjmdes',$data,TRUE);
         $this->load->view('templateHome',$temp);
-
   }
 
   public function export_excel($id_m_rancangan_rpjm_desa) {
-
+      //var_dump($id_m_rancangan_rpjm_desa);exit;
 
 //        var_dump(APPPATH.'views/rencanaPembangunan/rancangan_rpjm_desa/excel_template/rpjm_template.xls');exit;
         $detail_master_rpjm = $this->m_master_rancangan_rpjm_desa->getDetail($id_m_rancangan_rpjm_desa);

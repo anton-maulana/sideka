@@ -14,6 +14,7 @@ class C_login extends CI_Controller {
     }
 
     function index() {
+        
         if ($this->session->userdata('logged_in')) {
             $role['role'] = $this->session->userdata('logged_in');
             if ($role['role']->role == 'Administrator') {

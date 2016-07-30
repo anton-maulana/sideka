@@ -22,25 +22,36 @@ class C_rkpdes extends CI_Controller {
     {
         $data['page_title'] = 'DATA RKPDes';
         $data['deskripsi_title'] = 'Rencana Kerja Pembangunan  Desa';
-
-        $data['result'] =$this->m_rkp->getDataRkpTable(1);
-        //var_dump($data['result']);exit;
-        $data['master_rkp'] =$this->m_master_rancangan_rpjm_desa->getDataMasterRpjmTable();
-
+        $data['result_rkp'] = $this->m_master_rkp->getDataMasterRkpTable();
     		$data['data_sso'] = $this->m_sso->getSso(1);
         $data['konten_logo'] = $this->m_logo->getLogo();
 
     		$data['logo'] = $this->load->view('v_logo', $data, TRUE);
     		$data['menu'] = $this->load->view('v_navbar', $data, TRUE);
     		$temp['footer'] = $this->load->view('v_footer',$data,TRUE);
-    		$temp['content'] = $this->load->view('web/content/rkpdes',$data,TRUE);
+    		$temp['content'] = $this->load->view('web/content/rkpdes_master',$data,TRUE);
     		$this->load->view('templateHome',$temp);
 
-
         //var_dump($grid_js);exit;
-	}
+}
 
-        public function export_excel($id_m_rkp) {
+public function anggaran($id_m_rkp = FALSE){
+      $post_data = array();
+      $data['page_title'] = 'DATA RKPDes';
+      $data['deskripsi_title'] = 'Rencana Pembangunan Jangka Menengah Desa';
+
+      $data['result_rkp'] =$this->m_rkp->getDataRkpTable($id_m_rkp);
+
+      $data['data_sso'] = $this->m_sso->getSso(1);
+      $data['konten_logo'] = $this->m_logo->getLogo();
+      $data['logo'] = $this->load->view('v_logo', $data, TRUE);
+      $data['menu'] = $this->load->view('v_navbar', $data, TRUE);
+      $temp['footer'] = $this->load->view('v_footer',$data,TRUE);
+      $temp['content'] = $this->load->view('web/content/rkpdes',$data,TRUE);
+      $this->load->view('templateHome',$temp);
+}
+
+public function export_excel($id_m_rkp) {
 
 
 //        var_dump(APPPATH.'views/rencanaPembangunan/rancangan_rpjm_desa/excel_template/rpjm_template.xls');exit;

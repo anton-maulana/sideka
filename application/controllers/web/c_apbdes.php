@@ -7,7 +7,7 @@ class C_apbdes extends CI_Controller {
         parent::__construct();
         $this->load->model('m_logo');
         $this->load->model('sso/m_sso');
-        
+
         $this->load->helper(array('flexigrid_helper', 'common_helper'));
         $this->config->load('rp_apb_desa');
         $this->load->model(array(
@@ -19,34 +19,43 @@ class C_apbdes extends CI_Controller {
             'rencanaPembangunan/m_coa',
             'rencanaPembangunan/m_master_rancangan_rpjm_desa'));
     }
-	
+
 	function index()
     {
-        
-        $r_m_apb_desa_config = $this->config->item('rp_master_apb_desa');
-
-        $colModelM = $r_m_apb_desa_config['colModel'];
-        $gridParams = $r_m_apb_desa_config['gridParams'];
-
-        $grid_js = build_grid_js('flex1', site_url('web/c_apbdes/load_data_master'), $colModelM, 'id_m_apbdes', 'desc', $gridParams);
-
-        $data['js_grid'] = $grid_js;
         $data['page_title'] = 'DATA APBDes';
         $data['deskripsi_title'] = 'Anggaran Pendapatan dan Belanja Desa';
-        
-		$data['data_sso'] = $this->m_sso->getSso(1);	
+        $data['result_apbdes'] = $this->m_master_apbdes->getDataMasterApbdesTable();
+        $data['data_sso'] = $this->m_sso->getSso(1);
         $data['konten_logo'] = $this->m_logo->getLogo();
-        
-		$data['logo'] = $this->load->view('v_logo', $data, TRUE);		
-		$data['menu'] = $this->load->view('v_navbar', $data, TRUE);			
-		$temp['footer'] = $this->load->view('v_footer',$data,TRUE);
-		$temp['content'] = $this->load->view('web/content/apbdes',$data,TRUE);
-		$this->load->view('templateHome',$temp);
-        
-         
+
+        $data['logo'] = $this->load->view('v_logo', $data, TRUE);
+        $data['menu'] = $this->load->view('v_navbar', $data, TRUE);
+        $temp['footer'] = $this->load->view('v_footer',$data,TRUE);
+        $temp['content'] = $this->load->view('web/content/apbdes_master',$data,TRUE);
+        $this->load->view('templateHome',$temp);
+
+
         //var_dump($grid_js);exit;
 	}
-    public function detail($id) {
+
+  public function anggaran($id_m_apbdes = FALSE){
+        $post_data = array();
+        $data['page_title'] = 'Detail APBDes';
+        $data['deskripsi_title'] = 'Anggaran Pembangunan Desa';
+
+        $data['result_apbdes'] =$this->m_apbdes->getDataApbdesTable($id_m_apbdes);
+        //var_dump($data['result']);exit;
+
+        $data['data_sso'] = $this->m_sso->getSso(1);
+        $data['konten_logo'] = $this->m_logo->getLogo();
+        $data['logo'] = $this->load->view('v_logo', $data, TRUE);
+        $data['menu'] = $this->load->view('v_navbar', $data, TRUE);
+        $temp['footer'] = $this->load->view('v_footer',$data,TRUE);
+        $temp['content'] = $this->load->view('web/content/apbdes',$data,TRUE);
+        $this->load->view('templateHome',$temp);
+  }
+
+  public function detail($id) {
         $r_m_rpjm_desa_config = $this->config->item('content_rp_apb_desa');
 
         $colModelM = $r_m_rpjm_desa_config['colModel'];
@@ -59,14 +68,14 @@ class C_apbdes extends CI_Controller {
         $data['js_grid']= $grid_js;
         $data['page_title'] = 'Detail APBDes';
         $data['deskripsi_title'] = 'Anggaran Pendapatan dan Belanja Desa';
-        
-        $data['data_sso'] = $this->m_sso->getSso(1);	
+
+        $data['data_sso'] = $this->m_sso->getSso(1);
         $data['konten_logo'] = $this->m_logo->getLogo();
-		$data['logo'] = $this->load->view('v_logo', $data, TRUE);		
-		$data['menu'] = $this->load->view('v_navbar', $data, TRUE);			
-		$temp['footer'] = $this->load->view('v_footer',$data,TRUE);
-		$temp['content'] = $this->load->view('web/content/apbdes',$data,TRUE);
-		$data['templateHome']=$this->load->view('templateHome',$temp);
+    		$data['logo'] = $this->load->view('v_logo', $data, TRUE);
+    		$data['menu'] = $this->load->view('v_navbar', $data, TRUE);
+    		$temp['footer'] = $this->load->view('v_footer',$data,TRUE);
+    		$temp['content'] = $this->load->view('web/content/apbdes',$data,TRUE);
+    		$data['templateHome']=$this->load->view('templateHome',$temp);
     }
 
     public function load_data_detail($id_m_apbdes = FALSE) {
@@ -96,7 +105,7 @@ class C_apbdes extends CI_Controller {
         //Print please
         $this->output->set_output($this->flexigrid->json_build($records['record_count'], $record_items));
     }
-    
+
     public function load_data_master() {
         $this->load->library('flexigrid');
         $valid_fields = array('id_m_apbdes');
@@ -128,7 +137,7 @@ class C_apbdes extends CI_Controller {
         //Print please
         $this->output->set_output($this->flexigrid->json_build($records['record_count'], $record_items));
     }
-    
+
     public function export_excel($id_m_apbdes) {
 
 
@@ -271,9 +280,9 @@ class C_apbdes extends CI_Controller {
                             $first_third_level = current($second_level_coa->third_level);
                             $last_third_level = end($second_level_coa->third_level);
                             $excel_active_sheet->insertNewRowBefore(($last_third_level->row_location+1), 1);
-                            
+
                             $current_table_row++;
-                            
+
                             $excel_active_sheet->setCellValue('F' . ($last_third_level->row_location+1), 'JUMLAH ( RP )');
                             $excel_active_sheet->setCellValue('G' . ($last_third_level->row_location+1), '=SUM(G' . $first_third_level->row_location.':G'.$last_third_level->row_location.')');
                         }
@@ -291,7 +300,7 @@ class C_apbdes extends CI_Controller {
          */
         $excel_active_sheet->setCellValue('G' . ($sub_total_top_coa_row_location[2] + 2), '=G' . $sub_total_top_coa_row_location[1] . '-G' . $sub_total_top_coa_row_location[2]);
         $current_table_row--;
-        
+
         $excel_active_sheet->setCellValue('H' . $current_table_row, 'Kepala Desa '.strtoupper($detail_master_apbdes->nama_desa));
         $current_table_row+=3;
         $excel_active_sheet->setCellValue('H' . $current_table_row, '( '.strtoupper($detail_master_apbdes->disetujui_oleh).' )');
@@ -302,5 +311,5 @@ class C_apbdes extends CI_Controller {
         exit;
     }
 
-    
+
 }

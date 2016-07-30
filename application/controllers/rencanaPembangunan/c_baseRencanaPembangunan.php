@@ -26,8 +26,8 @@ class C_baseRencanaPembangunan extends CI_Controller {
             'rencanaPembangunan/m_coa',
             'rencanaPembangunan/m_sumber_dana_desa',
         ));
-        //$this->load->model('m_kalkulasi');     
-        //$this->load->model('statistik/m_kk');	
+        //$this->load->model('m_kalkulasi');
+        //$this->load->model('statistik/m_kk');
         $this->_set_logo_and_menu($page_title, $menu);
         unset($full_name);
     }
@@ -157,21 +157,21 @@ class C_baseRencanaPembangunan extends CI_Controller {
 
     public function select_coa() {
         $keyword = $this->input->post('keyword', TRUE);
-        
+
         $initEdit = $this->input->post('initEdit');
-        
+
         $term = $keyword;
         if(!$initEdit){
             $term = $keyword['term'];
         }
-        
+
         $id_top_coa = $this->input->post('id_top_coa', TRUE);
         $inp = $this->input->post('inp', TRUE);
         $where_top_coa = 'id_top_coa = ' . $id_top_coa;
-        
+
 //        var_dump($term, $where_top_coa);exit;
         $rows = $this->m_coa->getCoaForInputSelect($term, $where_top_coa, $initEdit);
-        
+
         if ($inp == 'select2') {
             return $this->to_json(array("results" => $rows), FALSE);
         }
@@ -180,6 +180,7 @@ class C_baseRencanaPembangunan extends CI_Controller {
 
     public function select_jenis_kegiatan($return = FALSE, $is_rpjm = FALSE) {
         $keyword = $this->input->post('keyword', TRUE);
+        //var_dump($keyword);exit;
         $rows = $this->m_coa->getCoaForInputSelect($keyword, FALSE, FALSE, $is_rpjm);
         return $this->to_json($rows, $return);
     }

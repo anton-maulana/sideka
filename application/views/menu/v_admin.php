@@ -32,11 +32,9 @@
 								<li id="nav-berita" class="">
 									<a href="<?php echo site_url('admin/c_berita/');?>">Berita</a>
 								</li>
-								<!--
 								<li id="nav-jurnalisme" class="">
 									<a href="<?php echo site_url('admin/c_jurnalisme/');?>">Jurnalisme Warga</a>
 								</li>
-							-->
 								<li id="nav-sejarah" class="">
 									<a href="<?php echo site_url('admin/c_sejarah/');?>">Sejarah Desa</a>
 								</li>

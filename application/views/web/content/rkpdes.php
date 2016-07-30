@@ -1,51 +1,36 @@
-<?php
-  $post_data = isset($post_data) && !empty($post_data) && $post_data ? $post_data : FALSE;
-?>
-<h2>Rancangan RPJM</h2>
-<h3>Rencana Pembangunan Jangka Menengah</h3>
-<legend></legend>
+<h2>Rancangan RKP </h2>
+<?php if($result_rkp){ ?>
+<form class="form-inline">
+  <div class="form-group">
+    <h3><p>Tahun Anggaran <?php echo $result_rkp[0]->rkp_tahun ?></p></h3>
 
-<div class="form-group">
-    <label class="col-md-2 control-label" for="tahun_anggaran"> Pilih Tahun Anggaran</label>
-    <div class="col-md-2">
-        <input type="hidden" id="anggaran" name="anggaran" value="" />
-        <select  class="form-control inputsm" id="tahunAnggaran" name="tahunAnggaran"  aria-describedby="hlpBlock3">
-            <option value="">Pilih Anggaran</option>
-            <?php foreach ($master_rpjm as $anggaran): ?>
-                <option value="<?php echo $anggaran->tahun_anggaran; ?>" <?php echo $post_data? "selected=\"selected\"" : ""; ?>><?php echo ucwords(strtolower($anggaran->tahun_anggaran)); ?></option>
-            <?php endforeach; var_dump($post_data); ?>
-        </select>
-        <span id="hlpBlock3" class="help-block">
-            <div id="tahunAnggaran" class="dvAlert"></div>
-        </span>
-    </div>
-
-    <button type="button" class="btn btn-success btn-sm pull-right"  title="Download Excell">
-      <i class="fa fa-file-excel-o"></i>
+  </div>
+  <div class="form-group pull-right">
+    <label>
+      Download
+    </label>
+    <button type="button" class="btn btn-success btn-sm "  title="Download Excell" id="downloadExcell">
+      <a href="<?php echo site_url('web/c_rkpdes/export_excel/'.$result_rkp[0]->id_m_rancangan_rpjm_desa);?> "><i class="fa fa-file-excel-o"></i></a>
     </button>
-</div>
+  </div>
+</form>
+<?php } ?>
 
 <legend></legend>
-<div class="table-responsive" >
-      <table class="table table-bordered"  >
+<div class="table-responsive" id="tableDetail">
+      <table class="table table-bordered">
         <thead>
           <tr >
-            <th colspan="3"><p class="text-center">Bidang / Jenis Kegiatan</p></th>
-            <th rowspan="2"><p class="text-center">lokasi rt rw</p></th>
-            <th rowspan="2"><p class="text-center">prakiraan volume</p></th>
+            <th rowspan="2"><p class="text-center">Bidang</p></th>
+            <th rowspan="2"><p class="text-center">Jenis Kegiatan</p></th>
+            <th rowspan="2"><p class="text-center">Lokasi</p></th>
             <th rowspan="2"><p class="text-center">Sasaran / Manfaat</p></th>
             <th rowspan="2"><p class="text-center">Waktu Pelaksanaan</p></th>
-            <th colspan="2"><p class="text-center">Biaya Dan Sumber</p></th>
-            <th colspan="3"><p class="text-center">Prakiraan Pola Pelaksanaan</p></th>
-            <th rowspan="2"><p class="text-center">Rencana Pelaksanaan Kegiatan</p></th>
-
+            <th rowspan="2"><p class="text-center">Jumlah biaya</p></th>
+            <th colspan="3"><p class="text-center">Pola pelaksanaan</p></th>
+            <th rowspan="2"><p class="text-center">Rencana Pelaksanaan kegiatan</p></th>
           </tr>
           <tr>
-            <th>Bidang</th>
-            <th>Sub Bidang</th>
-            <th>Jenis Kegiatan</th>
-            <th>Jumlah</th>
-            <th>Sumber</th>
             <th>Swakelola</th>
             <th>Kerjasama Antar Desa</th>
             <th>Kerjasama Pihak Ketiga</th>
@@ -53,63 +38,47 @@
         </thead>
         <tbody>
           <?php
-
-           $rows=$result;
+          if($result_rkp){
+           $rows=$result_rkp;
            $bidangBefore="";
-           $subBidBefore="";
-           $sub_bidang="";
            foreach ($rows as $row) {
-
-               $subject=$row->bidang;
-               $search = "Bidang";
-               $bidangTrimmed = str_replace($search, '', $subject);
-
-               if($bidangBefore==$row->bidang)$bidangTrimmed="";
-               $bidangBefore = $row->bidang;
-
-               $thn_ke1=$row->tahun_pelaksanaan_1;
-               $thn_ke2=$row->tahun_pelaksanaan_2;
-               $thn_ke3=$row->tahun_pelaksanaan_3;
-               $thn_ke4=$row->tahun_pelaksanaan_4;
-               $thn_ke5=$row->tahun_pelaksanaan_5;
-               $thn_ke6=$row->tahun_pelaksanaan_6;
-               $swakelola=$row->swakelola;
-               $krjantardesa=$row->kerjasama_antar_desa;
-               $krjapihakketiga=$row->kerjasama_pihak_ketiga;
-               if($thn_ke1==null||$thn_ke1==0)$thn_ke1="";else $thn_ke1="V" ;
-               if($thn_ke2==null||$thn_ke2==0)$thn_ke2="";else $thn_ke2="V" ;
-               if($thn_ke3==null||$thn_ke3==0)$thn_ke3="";else $thn_ke3="V" ;
-               if($thn_ke4==null||$thn_ke4==0)$thn_ke4="";else $thn_ke4="V" ;
-               if($thn_ke5==null||$thn_ke5==0)$thn_ke5="";else $thn_ke5="V" ;
-               if($thn_ke6==null||$thn_ke6==0)$thn_ke6="";else $thn_ke6="V" ;
-               if($swakelola==null||$swakelola==0)$swakelola="";else $swakelola="V" ;
-               if($krjantardesa==null||$krjantardesa==0)$krjantardesa="";else $krjantardesa="V" ;
-               if($krjapihakketiga==null||$krjapihakketiga==0)$krjapihakketiga="";else $krjapihakketiga="V" ;
                echo'
                <tr>
-                <td>'.$bidangTrimmed .'</td>
-                <td>'.$row->sub_bidang.'</td>
+                <td>'.$row->bidang .'</td>
                 <td>'.$row->jenis_kegiatan .'</td>
-                <td>'.$row->lokasi_rt_rw .'</td>
-                <td>'.$row->prakiraan_volume .'</td>
+                <td>'.$row->lokasi .'</td>
                 <td>'.$row->sasaran_manfaat .'</td>
-                <td>'.$thn_ke1.'</td>
-                <td>'.$thn_ke2.'</td>
-                <td>'.$thn_ke3.'</td>
-                <td>'.$thn_ke4.'</td>
-                <td>'.$thn_ke5.'</td>
-                <td>'.$thn_ke6.'</td>
-                <td>'.rupiah_display($row->jumlah_biaya) .'</td>
-                <td>'.$row->sumber_biaya .'</td>
-                <td>'.$swakelola.'</td>
-                <td>'.$krjantardesa.'</td>
-                <td>'.$krjapihakketiga .'</td>
+                <td>'.$row->waktu_pelaksanaan .'</td>
+                <td>'.rupiah_display($row->jumlah_biaya).'</td>
+                <td>'.$row->swakelola .'</td>
+                <td>'.$row->kerjasama_antar_desa.'</td>
+                <td>'.$row->kerjasama_pihak_ketiga.'</td>
+                <td>'.$row->rencana_pelaksanaan_kegiatan.'</td>
                </tr>'
                ;}
+             }
           ?>
         </tbody>
       </table>
     </div>
+
+
+<script>
+  <?php if ($result_rkp) {
+    ?>
+    $('#tableDetail').show();
+    $('#anggaran').show();
+    $('#downloadExcell').show();
+    <?php
+  } else {
+    ?>
+    $('#tableDetail').hide();
+    $('#anggaran').hide();
+    $('#downloadExcell').hide();
+    <?php
+  }
+  ?>
+</script>
 
 <style>
 .table-responsive {

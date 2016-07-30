@@ -33,7 +33,6 @@ class M_rkp extends CI_Model {
     }
 
     function getDataRkpTable($id_m_rkp){
-
       $this->_setSelectAndJoin();
       $this->db->from($this->_table);
       $this->db->where($this->_table . '.id_m_rkp', $id_m_rkp);

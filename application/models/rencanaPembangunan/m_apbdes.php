@@ -26,6 +26,14 @@ class M_apbdes extends CI_Model {
         $this->post_data = array();
     }
 
+    function getDataApbdesTable($id_m_apbdes){
+      $this->_setSelectAndJoin();
+      $this->db->from($this->_table);
+      $this->db->where($this->_table . '.id_m_apbdes', $id_m_apbdes);
+      $query = $this->db->get();
+      return $query->result();
+    }
+
     public function getPostData($id_m_apbdes = FALSE) {
         if (!$id_m_apbdes) {
             $this->session->set_flashdata('id_master_not_found', TRUE);
@@ -115,10 +123,10 @@ class M_apbdes extends CI_Model {
             if ($id) {
                 $response["error_message"] = "Perubahan ";
                 $response["error_number"] = "1.2";
-                
+
                 $this->update($this->post_data, $id);
-                
-                
+
+
             } else {
                 $response["error_message"] = "Data baru ";
                 $response["error_number"] = "1.1";
@@ -225,7 +233,7 @@ class M_apbdes extends CI_Model {
 
         //Get contents
         $return['records'] = $this->db->get();
-        
+
         //Build count query
         $this->db->join('ref_rp_coa ref_rp_coa_a', 'ref_rp_coa_a.id_coa = ' . $this->_table . '.id_top_coa');
         $this->db->join('ref_rp_coa ref_rp_coa_b', 'ref_rp_coa_b.id_coa = ' . $this->_table . '.id_coa');

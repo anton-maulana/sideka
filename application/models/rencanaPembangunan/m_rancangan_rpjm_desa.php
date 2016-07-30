@@ -53,6 +53,7 @@ class M_rancangan_rpjm_desa extends CI_Model {
       $query = $this->db->get();
       return $query->result();
     }
+
     public function calculateTahunPelaksanaan($tahun_awal) {
         for ($i = 1; $i <= 6; $i++) {
             $field_tahun_pelaksanaan = 'tahun_pelaksanaan_' . $i;

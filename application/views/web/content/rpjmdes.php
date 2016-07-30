@@ -1,43 +1,28 @@
-<?php
-  $post_data = isset($post_data) ? $post_data : FALSE;
-  $id_m_rancangan_rpjm_desa = isset($id_m_rancangan_rpjm_desa) ? $id_m_rancangan_rpjm_desa : FALSE;
-  $index=0;
-?>
 <h2>Rancangan RPJM </h2>
-<?php if($result){?>
-<h3><p>Tahun Anggaran <?php echo $result[0]->tahun_anggaran ?></p></h3>
-<?php
-}
-?>
-<legend></legend>
-<?php
- echo form_open_multipart('web/c_rpjmdes/changeAnggaran/', array('id' => 'frmRpjmDes'));
-?>
-<div class="form-group">
-    <label class="col-md-2 control-label"> Pilih Tahun Anggaran</label>
-    <div class="col-md-2">
-        <input type="hidden" value="" />
-        <select  class="form-control inputsm" id="tahunAnggaran" name="tahunAnggaran"  aria-describedby="hlpBlock3" >
-            <option value="">Pilih Anggaran</option>
-            <?php foreach ($master_rpjm as $master_rpjms): ?>
-                <option value="<?php echo $master_rpjms->id_m_rancangan_rpjm_desa;$master_rpjms->tahun_anggaran; ?>" <?php echo ($master_rpjms->id_m_rancangan_rpjm_desa==$index)
-                ?"selected=\"selected\"" : ""; ?>><?php echo ucwords(strtolower($master_rpjms->tahun_anggaran)); $index++;?></option>
-            <?php endforeach; ?>
-        </select>
-    </div>
-    <input type="submit" value="Simpan" class="btn btn-success" id="simpan"/>
+<?php if($result_rpjm){ ?>
 
-    <button type="button" class="btn btn-success btn-sm pull-right"  title="Download Excell">
-        <a href="<?php echo site_url('web/c_rpjmdes/export_excel/');?>"><i class="fa fa-file-excel-o"></i></a>
+<form class="form-inline">
+  <div class="form-group">
+    <h3><p>Tahun Anggaran <?php echo $result_rpjm[0]->tahun_anggaran ?></p></h3>
+
+  </div>
+  <div class="form-group pull-right">
+    <label>
+        Download
+    </label>
+    <button type="button" class="btn btn-success btn-sm "  title="Download Excell" id="downloadExcell">
+      <a href="<?php echo site_url('web/c_rpjmdes/export_excel/'.$result_rpjm[0]->id_m_rancangan_rpjm_desa);?> "><i class="fa fa-file-excel-o"></i></a>
     </button>
-</div>
+  </div>
+</form>
+<?php } ?>
 
 <legend></legend>
 <div class="table-responsive" id="tableDetail">
       <table class="table table-bordered">
         <thead>
           <tr >
-            <th colspan="3"><p class="text-center">Bidang / Jenis Kegiatan</p></th>
+            <th colspan="2"><p class="text-center">Bidang / Jenis Kegiatan</p></th>
             <th rowspan="2"><p class="text-center">lokasi rt rw</p></th>
             <th rowspan="2"><p class="text-center">prakiraan volume</p></th>
             <th rowspan="2"><p class="text-center">Sasaran / Manfaat</p></th>
@@ -64,11 +49,9 @@
         </thead>
         <tbody>
           <?php
-          if($result){
-           $rows=$result;
+          if($result_rpjm){
+           $rows=$result_rpjm;
            $bidangBefore="";
-           $subBidBefore="";
-           $sub_bidang="";
            foreach ($rows as $row) {
 
                $subject=$row->bidang;
@@ -125,19 +108,20 @@
 
 
 <script>
-  <?php if ($result) {
+  <?php if ($result_rpjms) {
     ?>
     $('#tableDetail').show();
     $('#anggaran').show();
+    $('#downloadExcell').show();
     <?php
   } else {
     ?>
     $('#tableDetail').hide();
     $('#anggaran').hide();
+    $('#downloadExcell').hide();
     <?php
   }
   ?>
-
 </script>
 
 <style>

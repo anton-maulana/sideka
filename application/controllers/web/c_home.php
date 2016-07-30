@@ -12,19 +12,18 @@ class C_home extends CI_Controller {
 		$this->load->helper('text');
 		$this->load->model('sso/m_sso');
     }
-	
+
 	function index()
     {
-		$data['data_sso'] = $this->m_sso->getSso(1);
-		
+
 		/* $data['berita'] = $this->m_berita->get_recent_berita();
-		$data['menu'] = $this->load->view('web/menu/home', $data, TRUE);		
+		$data['menu'] = $this->load->view('web/menu/home', $data, TRUE);
 		$temp['content'] = $this->load->view('web/home',$data,TRUE);
 		$this->load->view('templateHome',$temp); */
 		$data['konten_logo'] = $this->m_logo->getLogo();
 		$data['slider_row'] = $this->m_slider_beranda->getSliderBerandaRow();
 		$data['slider_beranda'] = $this->m_slider_beranda->getSliderBeranda();
-		
+
 		$data['berita'] = $this->m_berita->get_recent_berita();
 		$data['logo'] = $this->load->view('v_logo', $data, TRUE);
 		$data['menu'] = $this->load->view('v_navbar', $data, TRUE);
@@ -33,12 +32,12 @@ class C_home extends CI_Controller {
 		$temp['footer'] = $this->load->view('v_footer',$data,TRUE);
 		$this->load->view('templateHome',$temp);
 	}
-	
+
 	function get_detail_berita($id){
 		$data['data_sso'] = $this->m_sso->getSso(1);
 		$data['konten_logo'] = $this->m_logo->getLogo();
 		/* $data['berita'] = $this->m_berita->getBeritaByIdberita($id);
-		$data['menu'] = $this->load->view('web/menu/berita', $data, TRUE);		
+		$data['menu'] = $this->load->view('web/menu/berita', $data, TRUE);
 		$temp['content'] = $this->load->view('web/detail_berita',$data,TRUE);
 		$this->load->view('templateHome',$temp); */
 		$data['berita'] = $this->m_berita->getBeritaByIdberita($id);
