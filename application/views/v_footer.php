@@ -3,7 +3,11 @@
 		<div class="row">
 			<div class="col-sm-6">
 				<div class="footer-content">
+<<<<<<< HEAD
 					<h2>SIDeKa</h2>
+=======
+					<h2>SIDeKa</h2>					
+>>>>>>> f116a20c8be190662fb8a357c43f3c153e02482b
 					<legend></legend>
 					<p><h4>Sistem Informasi Desa dan Kawasan</h4></p>
 					<div class="row">
@@ -13,7 +17,11 @@
 							<li><i class="fa fa"></i>Jl. Kuningan Mulia, Kav.</li>
 							<li><i class="fa "></i>9C Jakarta Selatan, 12910 <br></li>
 							<li><i class="fa fa-map-marker"></i>Jl. Tebet Utara III-H No. 17</li>
+<<<<<<< HEAD
 							<li><i class="fa fa"></i>Jakarta Selatan, 10240</li>
+=======
+							<li><i class="fa fa"></i>Jakarta Selatan, 10240</li>							
+>>>>>>> f116a20c8be190662fb8a357c43f3c153e02482b
 						</ul>
 						</div>
 						<div class="col-md-6 col-sm-12 col-xs-12">
@@ -41,8 +49,13 @@
 				<div class="footer-content">
 					<h2>Kontak Kami</h2>
 					<h4></h4>
+<<<<<<< HEAD
 					<legend></legend>
 					<?php
+=======
+					<legend></legend>								
+					<?php 
+>>>>>>> f116a20c8be190662fb8a357c43f3c153e02482b
 					$attributes = array('id' => 'formKontak');
 					echo form_open('c_kontak/simpan_kontak/', $attributes); ?>
 						<div class="form-group has-feedback">
@@ -57,6 +70,7 @@
 							<label class="sr-only" for="pesan">Pesan</label>
 							<textarea class="form-control input-md" rows="5" placeholder="Pesan" id="pesan" name="pesan" required></textarea>
 						</div>
+<<<<<<< HEAD
 
 						<!--div class="form-group has-feedback">
 						<input class="form-control input-md" type="text" id="aunt" name="aunt" placeholder="Masukan Kode Diatas" required>
@@ -67,6 +81,20 @@
 						</div>
 					<?php echo form_close(); ?>
 
+=======
+						
+						<!--div class="form-group has-feedback">
+						<input class="form-control input-md" type="text" id="aunt" name="aunt" placeholder="Masukan Kode Diatas" required>
+						</div-->
+						
+						<div class="form-group has-feedback">
+							<button id="kirim" name="kirim" class="btn btn-default" style="display:none;">Kirim</button>
+						</div>
+						<a id="kirimLogin" href="https://auth.klikindonesia.or.id/authorize.php?scope=authorizations&appid=<?php echo $data_sso->app_id;?>&access_type=login" class="btn btn-default" role="button">Kirim</a>
+					
+					<?php echo form_close(); ?>
+					
+>>>>>>> f116a20c8be190662fb8a357c43f3c153e02482b
 				</div>
 			</div>
 		</div>
@@ -86,7 +114,11 @@
 </html>
 <!-- Alertify CSS -->
 <link rel="stylesheet" href="<?php echo base_url(); ?>assetku/alertify/themes/alertify.core.css" />
+<<<<<<< HEAD
 <link rel="stylesheet" href="<?php echo base_url(); ?>assetku/alertify/themes/alertify.default.css" id="toggleCSS" />
+=======
+<link rel="stylesheet" href="<?php echo base_url(); ?>assetku/alertify/themes/alertify.default.css" id="toggleCSS" />	 
+>>>>>>> f116a20c8be190662fb8a357c43f3c153e02482b
 
 <!-- Alertify JavaScript -->
 <script src="<?php echo base_url(); ?>assetku/alertify/lib/alertify.min.js"></script>
@@ -95,6 +127,7 @@
 
 $(function() {
 /* 	$('#aunt').realperson({chars: $.realperson.alphanumeric,regenerate: '',length: 5});
+<<<<<<< HEAD
 
 	$('.realperson-challenge').click(function() {
 		window.location.reload(1);
@@ -102,6 +135,15 @@ $(function() {
 
 	$('#formKontak').submit(function(event) {
 
+=======
+	
+	$('.realperson-challenge').click(function() { 
+		window.location.reload(1);
+	}); */
+	
+	$('#formKontak').submit(function(event) { 
+	
+>>>>>>> f116a20c8be190662fb8a357c43f3c153e02482b
 	$.ajax({
 		type: "POST",
 		url: "<?=site_url("c_kontak/simpan_kontak/");?>",
@@ -122,7 +164,11 @@ $(function() {
 				}, 1000);
 			} */
 		}
+<<<<<<< HEAD
 	});
+=======
+	});			
+>>>>>>> f116a20c8be190662fb8a357c43f3c153e02482b
 	//return true;
 	event.preventDefault();
 	});

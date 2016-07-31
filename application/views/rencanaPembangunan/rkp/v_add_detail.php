@@ -23,13 +23,21 @@ echo $attention_message ? '<p class="message">' . $attention_message . '</p>' : 
 
 
 <div class="form-group">
+<<<<<<< HEAD
     <label class="col-md-5 control-label" for="id_bidang"> Bidang *</label>
+=======
+    <label class="col-md-5 control-label" for="id_bidang"> Bidang *</label> 
+>>>>>>> f116a20c8be190662fb8a357c43f3c153e02482b
     <div class="col-md-9">
         <select  class="form-control required" id="slc_bidang" name="id_bidang" aria-describedby="hlpBlock1">
             <option value="">-- Pilih Bidang --</option>
             <?php if ($bidang): ?>
                 <?php foreach ($bidang as $key => $deskripsi): ?>
+<<<<<<< HEAD
                     <option value="<?php echo $key; ?>" <?php  echo $post_data && $key == $post_data["id_bidang"] ? "selected=\"selected\"" : ""; ?>><?php echo ucwords(strtolower($deskripsi)); ?></option>
+=======
+                    <option value="<?php echo $key; ?>" <?php echo $post_data && $key == $post_data["id_bidang"] ? "selected=\"selected\"" : ""; ?>><?php echo ucwords(strtolower($deskripsi)); ?></option>
+>>>>>>> f116a20c8be190662fb8a357c43f3c153e02482b
                 <?php endforeach; ?>
             <?php else: ?>
                 <option value=""></option>
@@ -42,7 +50,11 @@ echo $attention_message ? '<p class="message">' . $attention_message . '</p>' : 
 </div>
 
 <div class="form-group">
+<<<<<<< HEAD
     <label class="col-md-5 control-label" for="jenis_kegiatan"> Jenis Kegiatan *</label>
+=======
+    <label class="col-md-5 control-label" for="jenis_kegiatan"> Jenis Kegiatan *</label> 
+>>>>>>> f116a20c8be190662fb8a357c43f3c153e02482b
     <div class="col-md-9">
         <input type="hidden" id="inp_jenis_kegiatan" name="jenis_kegiatan" value="" />
         <select  class="form-control input-md required" id="slc_id_rancangan_rpjm_desa" name="id_rancangan_rpjm_desa"  aria-describedby="hlpBlock3">
@@ -55,9 +67,15 @@ echo $attention_message ? '<p class="message">' . $attention_message . '</p>' : 
 </div>
 
 <div class="form-group">
+<<<<<<< HEAD
     <label class="col-md-5 control-label" for="lokasi"> Lokasi</label>
     <div class="col-md-9">
         <input class="form-control input-md required" type="text" name="lokasi" id="inp_lokasi" size="80" value="<?php echo $post_data ? $post_data["lokasi"] : ''; ?>" aria-describedby="hlpBlock8" />
+=======
+    <label class="col-md-5 control-label" for="lokasi"> Lokasi</label> 
+    <div class="col-md-9">
+        <input class="form-control input-md required" type="text" name="lokasi" id="inp_lokasi" size="80" value="<?php echo $post_data ? $post_data["lokasi"] : ''; ?>" aria-describedby="hlpBlock8" /> 
+>>>>>>> f116a20c8be190662fb8a357c43f3c153e02482b
         <span id="hlpBlock8" class="help-block">
             <div id="dvAlertinp_lokasi" class="dvAlert"></div>
         </span>
@@ -65,9 +83,15 @@ echo $attention_message ? '<p class="message">' . $attention_message . '</p>' : 
 </div>
 
 <div class="form-group">
+<<<<<<< HEAD
     <label class="col-md-5 control-label" for="tanggal_disusun"> Volume</label>
     <div class="col-md-9">
         <input class="form-control input-md required" type="text" name="volume" id="inp_volume" size="80" value="<?php echo $post_data ? $post_data["volume"] : ''; ?>" aria-describedby="hlpBlock9" />
+=======
+    <label class="col-md-5 control-label" for="tanggal_disusun"> Volume</label> 
+    <div class="col-md-9">
+        <input class="form-control input-md required" type="text" name="volume" id="inp_volume" size="80" value="<?php echo $post_data ? $post_data["volume"] : ''; ?>" aria-describedby="hlpBlock9" /> 
+>>>>>>> f116a20c8be190662fb8a357c43f3c153e02482b
         <span id="hlpBlock9" class="help-block">
             <div id="dvAlertinp_volume" class="dvAlert"></div>
         </span>
@@ -75,9 +99,15 @@ echo $attention_message ? '<p class="message">' . $attention_message . '</p>' : 
 </div>
 
 <div class="form-group">
+<<<<<<< HEAD
     <label class="col-md-5 control-label" for="tanggal_disusun"> Sasaran manfaat</label>
     <div class="col-md-9">
         <input class="form-control input-md required" type="text" name="sasaran_manfaat" id="inp_sasaran_manfaat" size="80" value="<?php echo $post_data ? $post_data["sasaran_manfaat"] : ''; ?>" aria-describedby="hlpBlock9" />
+=======
+    <label class="col-md-5 control-label" for="tanggal_disusun"> Sasaran manfaat</label> 
+    <div class="col-md-9">
+        <input class="form-control input-md required" type="text" name="sasaran_manfaat" id="inp_sasaran_manfaat" size="80" value="<?php echo $post_data ? $post_data["sasaran_manfaat"] : ''; ?>" aria-describedby="hlpBlock9" /> 
+>>>>>>> f116a20c8be190662fb8a357c43f3c153e02482b
         <span id="hlpBlock9" class="help-block">
             <div id="dvAlertinp_sasaran_manfaat" class="dvAlert"></div>
         </span>
@@ -85,9 +115,15 @@ echo $attention_message ? '<p class="message">' . $attention_message . '</p>' : 
 </div>
 
 <div class="form-group">
+<<<<<<< HEAD
     <label class="col-md-5 control-label" for="tanggal_disusun"> Waktu Pelaksanaan *</label>
     <div class="col-md-9">
         <input class="form-control input-md required" type="text" name="waktu_pelaksanaan" id="inp_waktu_pelaksanaan" size="80" value="<?php echo $post_data ? $post_data["waktu_pelaksanaan"] : ''; ?>" aria-describedby="hlpBlock9" />
+=======
+    <label class="col-md-5 control-label" for="tanggal_disusun"> Waktu Pelaksanaan *</label> 
+    <div class="col-md-9">
+        <input class="form-control input-md required" type="text" name="waktu_pelaksanaan" id="inp_waktu_pelaksanaan" size="80" value="<?php echo $post_data ? $post_data["waktu_pelaksanaan"] : ''; ?>" aria-describedby="hlpBlock9" /> 
+>>>>>>> f116a20c8be190662fb8a357c43f3c153e02482b
         <span id="hlpBlock9" class="help-block">
             <div id="dvAlertinp_waktu_pelaksanaan" class="dvAlert"></div>
         </span>
@@ -107,9 +143,15 @@ echo $attention_message ? '<p class="message">' . $attention_message . '</p>' : 
 
 
 <div class="form-group">
+<<<<<<< HEAD
     <label class="col-md-5 control-label" for="tanggal_disusun"> Rencana Pelaksanaan Kegiatan</label>
     <div class="col-md-9">
         <input class="form-control input-md required" type="text" name="rencana_pelaksanaan_kegiatan" id="inp_rencana_pelaksanaan_kegiatan" size="80" value="<?php echo $post_data ? $post_data["rencana_pelaksanaan_kegiatan"] : ''; ?>" aria-describedby="hlpBlock9" />
+=======
+    <label class="col-md-5 control-label" for="tanggal_disusun"> Rencana Pelaksanaan Kegiatan</label> 
+    <div class="col-md-9">
+        <input class="form-control input-md required" type="text" name="rencana_pelaksanaan_kegiatan" id="inp_rencana_pelaksanaan_kegiatan" size="80" value="<?php echo $post_data ? $post_data["rencana_pelaksanaan_kegiatan"] : ''; ?>" aria-describedby="hlpBlock9" /> 
+>>>>>>> f116a20c8be190662fb8a357c43f3c153e02482b
 
         <span id="hlpBlock9" class="help-block">
             <div id="dvAlertinp_rencana_pelaksanaan_kegiatan" class="dvAlert"></div>
@@ -197,7 +239,11 @@ echo isset($js_rkp_add_detail) ? $js_rkp_add_detail : '';
             if (!$.isEmptyObject(rpjm)) {
 
                 var val = $(this).val(), arr_rpjm = val in rpjm ? rpjm[val] : null;
+<<<<<<< HEAD
                 console.log(val);
+=======
+
+>>>>>>> f116a20c8be190662fb8a357c43f3c153e02482b
                 ResetInputSelect($("#slc_id_rancangan_rpjm_desa"));
 
                 if (arr_rpjm != null) {
@@ -223,7 +269,11 @@ echo isset($js_rkp_add_detail) ? $js_rkp_add_detail : '';
         $("#slc_id_rancangan_rpjm_desa").change(function () {
             if (!$.isEmptyObject(rpjm)) {
                 var valBidang = $("#slc_bidang").val(), arr_rpjm = valBidang in rpjm ? rpjm[valBidang] : null, idRancanganRpjmDesa = $(this).val(), jumlahBiayaTersedia = 0;
+<<<<<<< HEAD
                 console.log(arr_rpjm);
+=======
+
+>>>>>>> f116a20c8be190662fb8a357c43f3c153e02482b
                 if (arr_rpjm != null) {
                     $.each(arr_rpjm, function (index, objs) {
                         if (objs.length > 0) {
@@ -249,6 +299,10 @@ echo isset($js_rkp_add_detail) ? $js_rkp_add_detail : '';
                         method: 'POST',
                         data_type: 'json',
                         success: function (response) {
+<<<<<<< HEAD
+=======
+
+>>>>>>> f116a20c8be190662fb8a357c43f3c153e02482b
                             if (response !== '0') {
                                 $("#inp_jumlah_biaya").val(toRp(parseInt(jumlahBiayaTersedia) - parseInt(response)));
                                 $("#inp_ref_num_jumlah_biaya").val(parseInt(jumlahBiayaTersedia) - parseInt(response));
@@ -264,6 +318,7 @@ echo isset($js_rkp_add_detail) ? $js_rkp_add_detail : '';
         });
 
 
+<<<<<<< HEAD
     <?php if (!empty($post_data) && $post_data): ?>
 
     $("#slc_bidang").change();
@@ -272,6 +327,15 @@ echo isset($js_rkp_add_detail) ? $js_rkp_add_detail : '';
     console.log();
 
     $("#slc_id_rancangan_rpjm_desa").change();
+=======
+<?php if (!empty($post_data) && $post_data): ?>
+
+$("#slc_bidang").change();
+
+$("#slc_id_rancangan_rpjm_desa").val(<?php echo $post_data["id_rancangan_rpjm_desa"]; ?>);
+
+$("#slc_id_rancangan_rpjm_desa").change();
+>>>>>>> f116a20c8be190662fb8a357c43f3c153e02482b
 
     <?php
     foreach (array(
@@ -289,4 +353,8 @@ echo isset($js_rkp_add_detail) ? $js_rkp_add_detail : '';
 
 <?php endif; ?>
     });
+<<<<<<< HEAD
 </script>
+=======
+</script>
+>>>>>>> f116a20c8be190662fb8a357c43f3c153e02482b
