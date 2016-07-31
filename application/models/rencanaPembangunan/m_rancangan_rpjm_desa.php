@@ -50,6 +50,7 @@ class M_rancangan_rpjm_desa extends CI_Model {
       $this->_setSelectAndJoin();
       $this->db->from($this->_table);
       $this->db->where($this->_table . '.id_m_rancangan_rpjm_desa', $master_id);
+      $this->db->order_by('bidang', 'asc');
       $query = $this->db->get();
       return $query->result();
     }

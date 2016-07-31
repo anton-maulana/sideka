@@ -27,6 +27,7 @@ class M_master_apbdes extends CI_Model {
     public function getDataMasterApbdesTable(){
       $this->_setSelectAndJoin();
       $this->db->from($this->_table);
+
       $query = $this->db->get();
       return $query->result();
     }

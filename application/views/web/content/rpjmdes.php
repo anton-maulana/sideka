@@ -22,16 +22,16 @@
       <table class="table table-bordered">
         <thead>
           <tr >
-            <th colspan="2"><p class="text-center">Bidang / Jenis Kegiatan</p></th>
+            <th colspan="3"><p class="text-center">Bidang / Jenis Kegiatan</p></th>
             <th rowspan="2"><p class="text-center">lokasi rt rw</p></th>
             <th rowspan="2"><p class="text-center">prakiraan volume</p></th>
             <th rowspan="2"><p class="text-center">Sasaran / Manfaat</p></th>
-            <th rowspan="2"><p class="text-center">Tahun 1</p></th>
-            <th rowspan="2"><p class="text-center">Tahun 2</p></th>
-            <th rowspan="2"><p class="text-center">Tahun 3</p></th>
-            <th rowspan="2"><p class="text-center">Tahun 4</p></th>
-            <th rowspan="2"><p class="text-center">Tahun 5</p></th>
-            <th rowspan="2"><p class="text-center">Tahun 6</p></th>
+            <?php
+            $tahunawal = intval($result_rpjm[0]->tahun_awal);
+            $tahunakhir = intval($result_rpjm[0]->tahun_akhir);
+            for ($tahunawal; $tahunawal <= $tahunakhir; $tahunawal++) {
+                echo '<th>Tahun</th>';
+            } ?>
             <th colspan="2"><p class="text-center">Prakiraan Biaya Dan Sumber</p></th>
             <th colspan="3"><p class="text-center">Prakiraan Pola Pelaksanaan</p></th>
 
@@ -40,6 +40,13 @@
             <th>Bidang</th>
             <th>Sub Bidang</th>
             <th>Jenis Kegiatan</th>
+            <?php
+            $tahunawal = intval($result_rpjm[0]->tahun_awal);
+            $tahunakhir = intval($result_rpjm[0]->tahun_akhir);
+            for ($tahunawal; $tahunawal <= $tahunakhir; $tahunawal++) {
+                echo '<th>'.$tahunawal.'</th>';
+            } ?>
+
             <th>Jumlah</th>
             <th>Sumber</th>
             <th>Swakelola</th>
@@ -50,10 +57,8 @@
         <tbody>
           <?php
           if($result_rpjm){
-           $rows=$result_rpjm;
-           $bidangBefore="";
-           foreach ($rows as $row) {
-
+            $bidangBefore="";
+            foreach ($result_rpjm as $row) {
                $subject=$row->bidang;
                $search = "Bidang";
                $bidangTrimmed = str_replace($search, '', $subject);
@@ -87,7 +92,7 @@
                 <td>'.$row->lokasi_rt_rw .'</td>
                 <td>'.$row->prakiraan_volume .'</td>
                 <td>'.$row->sasaran_manfaat .'</td>
-                <td>'.$thn_ke1.'</td>
+                <td>'.$thn_ke2.'</td>
                 <td>'.$thn_ke2.'</td>
                 <td>'.$thn_ke3.'</td>
                 <td>'.$thn_ke4.'</td>
