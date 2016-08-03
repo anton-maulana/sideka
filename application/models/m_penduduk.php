@@ -13,19 +13,25 @@ class M_penduduk extends CI_Model {
 	public function get_penduduk_flexigrid()
     {
         //Build contents query
-        $this->db->select(
+    $this->db->select(
 		'tbl_penduduk.*,
 		ref_rt.nomor_rt,
 		ref_rw.nomor_rw,
 		ref_dusun.nama_dusun,
-		ref_jen_kel.deskripsi as nama_jen_kel
+		ref_jen_kel.deskripsi as nama_jen_kel,
+    tbl_keluarga.no_kk,
+    ref_status_keluarga.deskripsi
 
 		')->from($this->_table);
-
+    // ke tbl JENIS KELAMIN
+    $this->db->join('tbl_hub_kel','tbl_penduduk.id_penduduk=tbl_hub_kel.id_penduduk');
+    $this->db->join('tbl_keluarga','tbl_hub_kel.id_keluarga=tbl_keluarga.id_keluarga');
+    $this->db->join('ref_status_keluarga','tbl_hub_kel.id_status_keluarga=ref_status_keluarga.id_status_keluarga');
 		$this->db->join('ref_rt','tbl_penduduk.id_rt=ref_rt.id_rt'); 													// ke tbl RT
 		$this->db->join('ref_rw','tbl_penduduk.id_rw=ref_rw.id_rw'); 													// ke tbl RW
 		$this->db->join('ref_dusun','tbl_penduduk.id_dusun=ref_dusun.id_dusun'); 										// ke tbl DUSUN
-		$this->db->join('ref_jen_kel','tbl_penduduk.id_jen_kel=ref_jen_kel.id_jen_kel'); 								// ke tbl JENIS KELAMIN
+		$this->db->join('ref_jen_kel','tbl_penduduk.id_jen_kel=ref_jen_kel.id_jen_kel');
+    $this->db->order_by('no_kk', 'asc');									// ke tbl JENIS KELAMIN
 
 		//$this->db->join('tbl_penduduk','tbl_penduduk.iduser=data_penduduk.iduser');
 		/* $this->db->join('ref_pekerjaan','ref_pekerjaan.id_pekerjaan=data_penduduk.id_pekerjaan');
@@ -38,9 +44,9 @@ class M_penduduk extends CI_Model {
 
         //Build count query
         $this->db->select("count(id_penduduk) as record_count")->from($this->_table);
+
         $record_count = $this->db->get();
         $row = $record_count->row();
-
         //Get Record Count
         $return['record_count'] = $row->record_count;
 

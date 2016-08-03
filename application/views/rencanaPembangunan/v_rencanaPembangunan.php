@@ -21,11 +21,7 @@ function rupiah($data) {
         <legend></legend>
     </div>
     <div class="col-md-6" >
-<<<<<<< HEAD
         <img src="<?php echo site_url($logo_desa); ?>" style="float:right; height:fixed; width:250px; margin-top:20px; margin-bottom:-40px;"> 		
-=======
-        <img src="<?php echo site_url($logo_desa); ?>" style="float:right; height:fixed; width:250px; margin-top:20px; margin-bottom:-40px;">
->>>>>>> f116a20c8be190662fb8a357c43f3c153e02482b
     </div>
     <div class="col-md-12">
         <!--
@@ -39,7 +35,6 @@ function rupiah($data) {
     </div>
 </div>
 <br>
-<<<<<<< HEAD
 <div class="row">
     <div class="col-md-6">
         <div class="table-responsive">
@@ -197,8 +192,6 @@ foreach ($spp as $rows) {
 
 
 </div>
-=======
->>>>>>> f116a20c8be190662fb8a357c43f3c153e02482b
 <!-- /.row -->
 
 
@@ -334,8 +327,4 @@ foreach ($spp as $rows) {
 
 <script type="text/javascript" src="<?php echo base_url(); ?>assetku/highchart/highcharts.js"></script>
 <script type="text/javascript" src="<?php echo base_url(); ?>assetku/highchart/highcharts-3d.js"></script>
-<<<<<<< HEAD
 <script type="text/javascript" src="<?php echo base_url(); ?>assetku/highchart/exporting.js"></script>
-=======
-<script type="text/javascript" src="<?php echo base_url(); ?>assetku/highchart/exporting.js"></script>
->>>>>>> f116a20c8be190662fb8a357c43f3c153e02482b

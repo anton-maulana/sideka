@@ -112,15 +112,17 @@ class C_penduduk extends CI_Controller {
 
     function lists() {
 		$colModel['id_penduduk'] = array('ID',30,TRUE,'left',0);
-        $colModel['nik'] = array('NIK',150,TRUE,'left',2);
-        $colModel['nama'] = array('Nama Penduduk',200,TRUE,'left',2);
+    $colModel['nik'] = array('NIK',150,TRUE,'left',2);
+    $colModel['nama'] = array('Nama Penduduk',200,TRUE,'left',2);
 		$colModel['tempat_lahir'] = array('Tempat Lahir', 100,TRUE,'left',2);
-        $colModel['tanggal_lahir'] = array('Tanggal lahir',80,TRUE,'center',2);
+    $colModel['tanggal_lahir'] = array('Tanggal lahir',80,TRUE,'center',2);
 		$colModel['ref_jen_kel.deskripsi'] = array('Jenis Kelamin',80,TRUE,'center',2);
 		$colModel['no_telp'] = array('No Telp',85,TRUE,'center',2);
 		$colModel['ref_dusun.nama_dusun'] = array('Dusun',80,TRUE,'center',2);
 		$colModel['ref_rw.nomor_rw'] = array('RW',30,TRUE,'center',2);
 		$colModel['ref_rt.nomor_rt'] = array('RT',30,TRUE,'center',2);
+    $colModel['tbl_keluarga.no_kk'] = array('No KK',150,TRUE,'center',2);
+    $colModel['ref_status_keluarga.deskripsi'] = array('Status Keluarga',150,TRUE,'center',2);
 		//$colModel['pendapatan_per_bulan'] = array('Pendapatan /bln',100,TRUE,'right',2);
 		$colModel['aksi'] = array('AKSI',70,FALSE,'center',0);
 
@@ -439,7 +441,7 @@ class C_penduduk extends CI_Controller {
 
 		$valid_fields = array('id_penduduk','nik','nama','tempat_lahir','tanggal_lahir','ref_jen_kel.deskripsi',
 		'no_telp',
-		'ref_dusun.nama_dusun','ref_rw.nomor_rw','ref_rt.nomor_rt');//Ingat Tambahkan pendapatan per bulan
+		'ref_dusun.nama_dusun','ref_rw.nomor_rw','ref_rt.nomor_rt','tbl_keluarga.no_kk'.'ref_status_keluarga.deskripsi');//Ingat Tambahkan pendapatan per bulan
 
 		$this->flexigrid->validate_post('id_penduduk','DESC',$valid_fields);
 		$records = $this->m_penduduk->get_penduduk_flexigrid();
@@ -456,14 +458,17 @@ class C_penduduk extends CI_Controller {
                 $row->id_penduduk,
 				$row->id_penduduk,
 				$row->nik,
-                $row->nama,
+        $row->nama,
 				$row->tempat_lahir,
-                date('j-m-Y ',strtotime($row->tanggal_lahir)),
+        date('j-m-Y ',strtotime($row->tanggal_lahir)),
 				$row->nama_jen_kel,
 				$row->no_telp,
-                $row->nama_dusun,
-                $row->nomor_rw,
+        $row->nama_dusun,
+        $row->nomor_rw,
 				$row->nomor_rt,
+        $row->no_kk,
+        $row->deskripsi,
+
 				//$row->pendapatan_per_bulan,
 //				'<input type="button" value="Edit" class="ubah" onclick="edit_penduduk(\''.$row->id_penduduk.'\')"/>
 //				<input type="button" value="Detil" id="detil" class="detil" onclick="detil_penduduk(\''.$row->id_penduduk.'\')"/>'

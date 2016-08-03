@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-=======
-
-
->>>>>>> f116a20c8be190662fb8a357c43f3c153e02482b
 <h1>Tambah Berita</h1>
 <?php $flashmessage = $this->session->flashdata('exist');
 	echo ! empty($flashmessage) ? '<p class="message">' . $flashmessage . '</p>': ''; ?>
@@ -64,33 +59,9 @@
 
 <?php echo form_close(); ?>
 
-<<<<<<< HEAD
 
 <script src="<?php echo base_url(); ?>assetku/fronteditor/dist/bootstrap3-wysihtml5.all.min.js"></script>
 
-=======
-<!--script src="<?php echo base_url();?>nic/nicEdit.js"  type="text/javascript"></script>
-<script type="text/javascript">
-	var _base_url = '<?= base_url() ?>';
-	bkLib.onDomLoaded(function() {
-        new nicEditor().panelInstance('xx1');
-        new nicEditor({fullPanel : true}).panelInstance('xx1');
-        new nicEditor({iconsPath : '../nicEditorIcons.gif'}).panelInstance('xx1');
-        new nicEditor({buttonList : ['fontSize','bold','italic','underline','strikeThrough','subscript','superscript','html','image']}).panelInstance('area4');
-        new nicEditor({maxHeight : 100}).panelInstance('xx1');
-  });
-</script-->
-<!--link rel="Stylesheet" type="text/css" href="<?php echo base_url(); ?>assetku/jHtmlArea/style/jHtmlArea.css" />
-<script type="text/javascript" src="<?php echo base_url(); ?>assetku/jHtmlArea/scripts/jHtmlArea-0.8.min.js"></script-->
-
-<!--script src="<?php echo base_url(); ?>assetku/wysihtml5/parser_rules/advanced.js"></script>
-<script src="<?php echo base_url(); ?>assetku/wysihtml5/dist/wysihtml5-0.3.0.min.js"></script>
-<link rel="Stylesheet" type="text/css" href="<?php echo base_url(); ?>assetku/jHtmlArea/style/jHtmlArea.css" /-->
-
-<script src="<?php echo base_url(); ?>assetku/fronteditor/dist/bootstrap3-wysihtml5.all.min.js"></script>
-
-<!--script src="<?php echo base_url(); ?>assetku/fronteditor/dist/bootstrap3-wysihtml5.js"></script-->
->>>>>>> f116a20c8be190662fb8a357c43f3c153e02482b
 <link rel="Stylesheet" type="text/css" href="<?php echo base_url(); ?>assetku/fronteditor/dist/bootstrap3-wysihtml5.css" />
 
 <script src="<?php echo base_url(); ?>assetku/cropit/jquery.cropit.js"></script>
@@ -140,15 +111,6 @@
 
 <script>
 $(function() {
-<<<<<<< HEAD
-=======
-/* var editor = new wysihtml5.Editor("wysihtml5-textarea", { // id of textarea element
-  toolbar:      "wysihtml5-toolbar", // id of toolbar element
-  parserRules:  wysihtml5ParserRules, // defined in parser rules set
-
-}); */
-
->>>>>>> f116a20c8be190662fb8a357c43f3c153e02482b
 
 $('#some-textarea').wysihtml5({
   toolbar: {

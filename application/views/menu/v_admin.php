@@ -2,33 +2,21 @@
 <br>
 <div class="navbar-default sidebar" role="navigation">
 <ul id="sidebar_menu" class="sidebar-nav nav">
-<<<<<<< HEAD
 			<li class="sidebar-brand" >
-=======
-			<li class="sidebar-brand" > 
->>>>>>> f116a20c8be190662fb8a357c43f3c153e02482b
 				<a id="menu-toggle" href="#"><i class="fa fa-align-justify fa-fw "></i> <span>Menu</span></a>
 			</li>
 			</ul>
 <div id="sidebar-wrapper">
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
-<<<<<<< HEAD
 
-=======
-                        
->>>>>>> f116a20c8be190662fb8a357c43f3c153e02482b
                         <li>
                             <a class="" href="<?php echo site_url('admin/c_admin/');?>" id="a-admin" class="" ><i class="fa fa-home fa-fw"></i> Beranda</a>
                         </li>
 						<li>
                             <a class="" href="<?php echo site_url('admin/c_user/');?>" id="a-user" class="" ><i class="fa fa-user fa-fw"></i> Pengguna</a>
                         </li>
-<<<<<<< HEAD
 
-=======
-                        
->>>>>>> f116a20c8be190662fb8a357c43f3c153e02482b
                         <!---------------------DROPDOWN 1--------------------------------------------------------------->
 						<li class="dropdownmenu">
 						<a id="a-data-web" class="collapsed" data-toggle="collapse" href="#pengelola_data_web">
@@ -70,15 +58,9 @@
 						</div>
 						</li>
 						<!------------------------------------------------------------------------------------>
-<<<<<<< HEAD
 
 
 
-=======
-						
-						
-												
->>>>>>> f116a20c8be190662fb8a357c43f3c153e02482b
 				<!---------------------DROPDOWN 2--------------------------------------------------------------->
 						<li class="dropdownmenu">
 						<a id="a-data-wilayah" class="collapsed" data-toggle="collapse" href="#pengelola_data_wilayah">
@@ -110,20 +92,13 @@
 						</div>
 						</li>
 						<!------------------------------------------------------------------------------------>
-<<<<<<< HEAD
 
 						<!---------------------DROPDOWN 3--------------------------------------------------------------->
 
-=======
-						
-						<!---------------------DROPDOWN 3--------------------------------------------------------------->
-						
->>>>>>> f116a20c8be190662fb8a357c43f3c153e02482b
 						<li class="dropdownmenu">
 						<a id="a-data-ped" class="collapsed" data-toggle="collapse" href="#ped">
 						<i class="fa fa-leaf fa-fw"></i> Pengelolaan Potensi Desa<span class="fa arrow"></span></a>
 						<div id="ped" class="collapse">
-<<<<<<< HEAD
 							<ul id="yw6" class="nav nav-pills nav-stacked nav-second-level">
 								<li id="nav-ped-sub" class="">
 									<a href="<?php echo site_url('ped/c_ped_sub/');?>"><i class="fa fa-th-large fa-fw"></i> Data Jenis Potensi Desa</a>
@@ -138,34 +113,13 @@
 							</ul>
 						</div>
 						</li>
-=======
-							<ul id="yw6" class="nav nav-pills nav-stacked nav-second-level">								
-								<li id="nav-ped-sub" class="">	
-									<a href="<?php echo site_url('ped/c_ped_sub/');?>"><i class="fa fa-th-large fa-fw"></i> Data Jenis Potensi Desa</a>
-								</li>
-								<li id="nav-ped" class="">	
-									<a href="<?php echo site_url('ped/c_ped/');?>"><i class="fa fa-tree fa-fw"></i> Data Detil Potensi Desa</a>
-								</li>
-								<li id="nav-ped-kategori" class="">	
-									<a href="<?php echo site_url('ped/c_ped_kategori/');?>"><i class="fa fa-th fa-fw"></i> Pustaka Lahan</a>
-								</li>
-								
-							</ul>
-						</div>
-						</li>		
->>>>>>> f116a20c8be190662fb8a357c43f3c153e02482b
 						<!------------------------------------------------------------------------------------
 						<li class="dropdownmenu">
 						<a class="collapsed" data-toggle="collapse" href="#pengelola_ekonomi_desa">
 						<i class="fa fa-list fa-fw"></i> Potensi Ekonomi Desa <span class="fa arrow"></span></a>
 						<div id="pengelola_ekonomi_desa" class="collapse">
-<<<<<<< HEAD
 							<ul id="" class="nav nav-pills nav-stacked nav-second-level">
 
-=======
-							<ul id="" class="nav nav-pills nav-stacked nav-second-level">																
-								
->>>>>>> f116a20c8be190662fb8a357c43f3c153e02482b
 								<li id="nav-pertanian" class="">
 									<a href="<?php echo site_url('admin/c_ped_pertanian/');?>">Pertanian</a>
 								</li>
@@ -188,15 +142,9 @@
 						</div>
 						</li>
 						<!------------------------------------------------------------------------------------>
-<<<<<<< HEAD
 
 						<li>
 							<a href="<?php echo site_url('pustaka/c_perangkat/');?>" id="a-perangkat" class=""><i class="fa fa-star fa-fw"></i> Perangkat Desa</a>
-=======
-														
-						<li>
-							<a href="<?php echo site_url('pustaka/c_perangkat/');?>" id="a-perangkat" class=""><i class="fa fa-star fa-fw"></i> Perangkat Desa</a>							
->>>>>>> f116a20c8be190662fb8a357c43f3c153e02482b
 						</li>
 						<li>
 							<a href="<?php echo site_url('c_kontak/');?>" id="a-kontak" class=""><i class="fa fa-envelope fa-fw"></i> Kontak</a>
@@ -205,40 +153,23 @@
 							<a href="<?php echo site_url('admin/c_sso/');?>" id="a-sso" class=""><i class="fa fa-gear fa-fw"></i> Pengaturan SSO</a>
 						</li>
 
-<<<<<<< HEAD
 
 
 
 
-=======
-						
-						
-			
-						
->>>>>>> f116a20c8be190662fb8a357c43f3c153e02482b
 						</li>
 					</ul>
                 </div>
                 <!-- /.sidebar-collapse -->
             </div></div>
         <!-- /.navbar-static-side -->
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> f116a20c8be190662fb8a357c43f3c153e02482b
         <script>
 $("#menu-toggle").click(function(e) {
         e.preventDefault();
         $("#sidebar_menu").toggleClass("active");
         $("#sidebar-wrapper").toggleClass("active");
         $("#page-wrapper").toggleClass("active");
-<<<<<<< HEAD
 
 });
 </script>
-=======
-		
-});
-</script>
->>>>>>> f116a20c8be190662fb8a357c43f3c153e02482b

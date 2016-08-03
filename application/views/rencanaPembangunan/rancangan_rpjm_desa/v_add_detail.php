@@ -11,7 +11,6 @@ $id_m_rancangan_rpjm_desa = isset($id_m_rancangan_rpjm_desa) ? $id_m_rancangan_r
 echo $attention_message ? '<p class="message">' . $attention_message . '</p>' : '';
 ?>
 
-<<<<<<< HEAD
 <?php
     $id_rancangan_rpjm_desa = false;
 
@@ -21,17 +20,6 @@ echo $attention_message ? '<p class="message">' . $attention_message . '</p>' : 
     if($id_rancangan_rpjm_desa != false){
          echo form_open_multipart('rencanaPembangunan/c_rancangan_rpjm_desa/add_detail/' . $id_m_rancangan_rpjm_desa . '/'
         . $id_rancangan_rpjm_desa, array('id' => 'frmTambahDetailRPJM'));
-=======
-<?php 
-    $id_rancangan_rpjm_desa = false;
-    
-    if(isset($post_data['id_rancangan_rpjm_desa']))
-        $id_rancangan_rpjm_desa = $post_data['id_rancangan_rpjm_desa'];
-     
-    if($id_rancangan_rpjm_desa != false){
-         echo form_open_multipart('rencanaPembangunan/c_rancangan_rpjm_desa/add_detail/' . $id_m_rancangan_rpjm_desa . '/' 
-        . $id_rancangan_rpjm_desa, array('id' => 'frmTambahDetailRPJM')); 
->>>>>>> f116a20c8be190662fb8a357c43f3c153e02482b
     }
     else{
         echo form_open_multipart('rencanaPembangunan/c_rancangan_rpjm_desa/add_detail/' . $id_m_rancangan_rpjm_desa, array('id' => 'frmTambahDetailRPJM'));
@@ -239,17 +227,9 @@ echo isset($js_general_helper) ? $js_general_helper : '';
             echo "remCheck('" . $inp_check . "');";
         endif;
     }
-<<<<<<< HEAD
 
-=======
-    
->>>>>>> f116a20c8be190662fb8a357c43f3c153e02482b
     ?>
 
 <?php endif; ?>
 });
-<<<<<<< HEAD
 </script>
-=======
-</script>
->>>>>>> f116a20c8be190662fb8a357c43f3c153e02482b

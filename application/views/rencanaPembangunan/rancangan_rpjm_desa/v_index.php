@@ -93,21 +93,7 @@ echo $js_grid;
 
     });
 </script>
-<<<<<<< HEAD
 
-=======
-<!--
-<p>
-    Untuk mengisikan data RPJM gunakan template yang telah disediakan.<br />
-    Isikan konten seperlunya, jagalah keotentikan template sehingga sistem dapat membacanya dengan sempurna.
-</p>
-<span class="help-block">
-
-    <a href="<?php echo base_url() . 'uploads/temp_upload_excel/rpjm/template/RPJMTemplate.xls'; ?>" class="btn btn-success">Download Template RPJM</a>
-
-</span>
--->
->>>>>>> f116a20c8be190662fb8a357c43f3c153e02482b
 <table id="flex1" style="display:none"></table>
 
 
