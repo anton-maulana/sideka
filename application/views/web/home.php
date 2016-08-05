@@ -55,5 +55,4 @@
 	$(document).ready(function(){
 		document.getElementById("displayPhoto").src = <?php echo site_url($berita);?>
 	});
-	console.log("masuk sini");
 </script>

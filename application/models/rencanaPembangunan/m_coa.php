@@ -285,6 +285,11 @@ class M_coa extends CI_Model {
         return $arr_key;
     }
 
+
+    function getCoaBidangForInputSelect(){
+
+    }
+
     function getCoaForInputSelect($keyword = '', $additional_where = FALSE, $where_id_coa = FALSE, $is_rpjm_desa = FALSE) {
 
         $select = $this->_table . ".id_coa as id, " .
@@ -293,9 +298,9 @@ class M_coa extends CI_Model {
         $this->db->select($select, FALSE);
         $where = "level >= 3 and (deskripsi LIKE '%" . addslashes($keyword) . "%' or kode_rekening LIKE '%" . addslashes($keyword) . "%') ";
 
-		if($is_rpjm_desa){
-			$where .= "  and SUBSTR(kode_rekening,1,1) = '2' ";
-		}
+    		if($is_rpjm_desa){
+    			$where .= "  and SUBSTR(kode_rekening,1,1) = '2' ";
+    		}
 
         if($additional_where){
             $this->db->where($additional_where);

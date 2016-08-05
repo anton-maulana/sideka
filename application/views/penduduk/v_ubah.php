@@ -6,14 +6,14 @@
 <?php echo form_open_multipart('datapenduduk/c_penduduk/update_penduduk'); ?>
 <legend></legend>
 <fieldset>
-	<input type="hidden" name="id_penduduk" id="id_penduduk" value="<?= $result->id_penduduk ?>" size="20" /> 
-	<input type="hidden" name="foto" id="foto" value="<?= $result->foto ?>" size="20" /> 
-	
+	<input type="hidden" name="id_penduduk" id="id_penduduk" value="<?= $result->id_penduduk ?>" size="20" />
+	<input type="hidden" name="foto" id="foto" value="<?= $result->foto ?>" size="20" />
+
    <div class="form-group">
-	<label class="col-md-0 control-label" for=""><h4>Data Kepala Keluarga</h4></label> 
+	<label class="col-md-0 control-label" for=""><h4>Data Kepala Keluarga</h4></label>
 	  <legend></legend>
-   </div> 
- 
+   </div>
+
 <div class="form-group">
 		<label class="col-md-3 control-label" for="is_sementara"> Status Penduduk Sementara</label>
         <div class="col-md-9">
@@ -24,72 +24,73 @@
 		<input type="radio" name="is_sementara"  value="N" <?php echo set_radio('is_sementara','N',$result->is_sementara=='N');?> />Tidak
 		</div>
 	</div></div>
-	
+
    <div class="form-group">
-    	 <label class="col-md-3 control-label" for="nik">NIK</label>  
+    	 <label class="col-md-3 control-label" for="nik">NIK</label>
         <div class="col-md-9">
-         <input class="form-control input-md"type="text" name="nik" value="<?= $result->nik?>" size="30" autofocus required/> 
+         <input class="form-control input-md"type="text" name="nik" value="<?= $result->nik?>" size="30" autofocus required/>
          <span class="help-block">
          </span></div>
 	</div>
 	<div class="form-group">
-    	 <label class="col-md-3 control-label" for="nama">Nama</label>  
+    	 <label class="col-md-3 control-label" for="nama">Nama</label>
         <div class="col-md-9">
          <input class="form-control input-md"type="text" name="nama" value="<?= $result->nama?>" style="text-transform: uppercase" size="30" />
          <span class="help-block">
          </span> </div>
 	</div>
 	<div class="form-group">
-    	<label class="col-md-3 control-label" for="tempat_lahir">Tempat/Tgl Lahir </label>  
-        <div class="col-md-5">
-         <input class="form-control input-md" type="text" name="tempat_lahir" value="<?= $result->tempat_lahir?>" size="30" style="text-transform: uppercase"/>
-         <span class="help-block"></span> 
-		</div>
-		
-        <div class="col-md-4">         
-        <a href="javascript:NewCssCal('ttl','ddmmyyyy')">
-         <div class="input-group">
-							 <span class="input-group-addon">
-								<span class="fa fa-table"></span>
-							</span>
-							<input class="form-control input-md" type="text" name="tanggal_lahir" id="ttl" value="<?= date('d-m-Y', strtotime($result->tanggal_lahir))?>" size="20" readonly="readonly"/>
-        </div>
-		</a>
-		<span class="help-block">
+    	<label class="col-md-3 control-label" for="tempat_lahir">Tempat/Tgl Lahir </label>
+      <div class="col-md-5">
+	         <input class="form-control input-md" type="text" name="tempat_lahir" value="<?= $result->tempat_lahir?>" size="30" style="text-transform: uppercase"/>
+	         <span class="help-block"></span>
+		 	</div>
+      <div class="col-md-4">
+				<div class="form-group">
+        	<a href="javascript:NewCssCal('ttl','ddmmyyyy')">
+	         <div class="input-group">
+								 <span class="input-group-addon">
+									<span class="fa fa-table"></span>
+								</span>
+								<input class="form-control input-md" type="text" name="tanggal_lahir" id="ttl" value="<?= date('d-m-Y', strtotime($result->tanggal_lahir))?>" size="20" readonly="readonly"/>
+	        </div>
+				</a>
+			  </div>
+		    <span class="help-block">
         </span>
-			
-		</div>		
+		</div>
 	</div>
+
 	<div class="form-group">
 		<label class="col-md-3 control-label" for="id_jen_kel">Jenis Kelamin</label>
 		<div class="col-md-9">
 			<ul class="kelamin">
 			   <li>
-				   <input name="id_jen_kel" class="id_jen_kel" type="radio" id="laki" value="1" <?php echo set_radio('id_jen_kel','1',$result->id_jen_kel=='1');?>> Laki Laki      
-				</li>       
+				   <input name="id_jen_kel" class="id_jen_kel" type="radio" id="laki" value="1" <?php echo set_radio('id_jen_kel','1',$result->id_jen_kel=='1');?>> Laki Laki
+				</li>
 				<li>
 					<input name="id_jen_kel" class="id_jen_kel" type="radio" id="perempuan" value="2" <?php echo set_radio('id_jen_kel','2',$result->id_jen_kel=='2');?>> Perempuan
 					<ul id="list-perempuan">
 						<li>
-							<input type="radio" name="hamil" class="tidakHamil" id="tidakHamil" checked="true" value="N">Tidak Hamil<br>			
+							<input type="radio" name="hamil" class="tidakHamil" id="tidakHamil" checked="true" value="N">Tidak Hamil<br>
 						</li>
 						<li>
-							<input type="radio" name="hamil" class="sedangHamil" id="sedangHamil" value="Y">Sedang Hamil<br>						
+							<input type="radio" name="hamil" class="sedangHamil" id="sedangHamil" value="Y">Sedang Hamil<br>
 							<ul id="list-sedangHamil">
 								<li>
 									<input type="radio" name="is_resti" checked="true" value="N">Normal<br>
-									<input type="radio" name="is_resti" value="Y">Resiko Tinggi<br>									
+									<input type="radio" name="is_resti" value="Y">Resiko Tinggi<br>
 									<!-- Text input-->
 									<div class="form-group">
-									  <label class="control-label" for="keterangan">Keterangan</label>  
+									  <label class="control-label" for="keterangan">Keterangan</label>
 									  <div>
 									  <input id="keterangan" name="keterangan" type="text" placeholder="Keterangan" class="form-control input-md" >
-									  <span class="help-block"><?php echo form_error('keterangan', '<p class="field_error">','</p>')?></span>  
+									  <span class="help-block"><?php echo form_error('keterangan', '<p class="field_error">','</p>')?></span>
 									  </div>
 									</div>
 									<!-- Text input-->
 									<div class="form-group">
-									  <label class="control-label" for="tgl_hpl">Tanggal Perkiraan Lahir</label>  
+									  <label class="control-label" for="tgl_hpl">Tanggal Perkiraan Lahir</label>
 									  <div>
 									  <a href="javascript:NewCssCal('tgl_hpl','ddmmyyyy')">
 										 <div class="input-group">
@@ -99,29 +100,30 @@
 											<input class="form-control" type="text" readonly="readonly"  name="tgl_hpl" id="tgl_hpl" size="20" placeholder="Tgl-Bln-Thn" class="form-control input-md"  />
 											</div>
 											</a>
-										<span class="help-block"><?php echo form_error('tgl_hpl', '<p class="field_error">','</p>')?></span>  
+										<span class="help-block"><?php echo form_error('tgl_hpl', '<p class="field_error">','</p>')?></span>
 									  </div>
 									</div>
 								</li>
 							</ul>
 						<li>
-					</ul>	
-				</li> 
+					</ul>
+				</li>
 			</ul>
 		</div>
 	</div>
 	<div class="form-group">
-    	 <label class="col-md-3 control-label" for="no_telp">No Telepon </label> 
+    	 <label class="col-md-3 control-label" for="no_telp">No Telepon </label>
         <div class="col-md-9">
-         <input class="form-control input-md"type="text" name="no_telp" value="<?= $result->no_telp?>" size="30" /> 
+         <input class="form-control input-md"type="text" name="no_telp" value="<?= $result->no_telp?>" size="30" />
          <span class="help-block">
          </span></div>
-	</div>	
+	</div>
 	<div class="form-group">
     	 <label class="col-md-3 control-label" for="email">Email  </label>
         <div class="col-md-9">
-         <input class="form-control input-md"type="text" name="email" value="<?= $result->email?>" size="30" /> 
+         <input class="form-control input-md"type="text" name="email" value="<?= $result->email?>" size="30" />
          <span class="help-block">
+					 </span></div>
 	</div>
 	<div class="form-group">
     	 <label class="col-md-3 control-label" for="no_kitas">No KITAS  </label>
@@ -137,7 +139,7 @@
          <span class="help-block">
          </span> </div>
 	</div>
-	
+
 	<div class="form-group">
     	 <label class="col-md-3 control-label" for="id_agama">Agama </label>
         <div class="col-md-9">
@@ -187,7 +189,7 @@
     	 <label class="col-md-3 control-label" for="id_pekerjaan">Pekerjaan </label>
         <div class="col-md-3">
          <?php $id = 'id="id_pekerjaan" class="form-control input-md" required';
-				echo form_dropdown('id_pekerjaan',$id_pekerjaan,$result->id_pekerjaan,$id)?> 
+				echo form_dropdown('id_pekerjaan',$id_pekerjaan,$result->id_pekerjaan,$id)?>
          <span class="help-block"></span>
 		</div>
 	</div>
@@ -195,16 +197,16 @@
     	<label class="col-md-3 control-label" for="id_pekerjaan_ped">Potensi Ekonomi Desa </label>
         <div class="col-md-3">
          <?php $id = 'id="id_pekerjaan_ped" class="form-control input-md"';
-				echo form_dropdown('id_pekerjaan_ped',$id_pekerjaan_ped,$result->id_pekerjaan_ped,$id)?> 
+				echo form_dropdown('id_pekerjaan_ped',$id_pekerjaan_ped,$result->id_pekerjaan_ped,$id)?>
          <span class="help-block"><br></span>
 		</div>
 	</div>
 	<!--<div class="form-group">
-		<label class="col-md-3 control-label" for="pendapatan_per_bulan">Pendapatan Per Bulan </label> 
+		<label class="col-md-3 control-label" for="pendapatan_per_bulan">Pendapatan Per Bulan </label>
 		<div class="col-md-9">
-		<input class="form-control input-md" type="text" name="pendapatan_per_bulan" value="<?= $result->pendapatan_per_bulan?>" id="pendapatan_per_bulan" size="30" onkeypress="return numbersonly(event)"/> 
+		<input class="form-control input-md" type="text" name="pendapatan_per_bulan" value="<?= $result->pendapatan_per_bulan?>" id="pendapatan_per_bulan" size="30" onkeypress="return numbersonly(event)"/>
 		<span class="help-block"></span>
-		</div>	
+		</div>
 	</div>-->
 	<div class="form-group">
     	<label class="col-md-3 control-label" for="id_kewarganegaraan"> Kewarganegaraan </label>
@@ -220,13 +222,13 @@
          <?php $id = 'id="id_kompetensi" class="form-control input-md"';
 				echo form_dropdown('id_kompetensi',$id_kompetensi,$result->id_kompetensi,$id)?>
          <span class="help-block">
-         </span></div> 
+         </span></div>
 	</div>
 	<div class="form-group">
     	 <label class="col-md-3 control-label" for="id_status_kawin">Status Kawin </label>
         <div class="col-md-9">
          <?php $id = 'id="id_status_kawin" class="form-control input-md"';
-				echo form_dropdown('id_status_kawin',$id_status_kawin,$result->id_status_kawin,$id)?> 
+				echo form_dropdown('id_status_kawin',$id_status_kawin,$result->id_status_kawin,$id)?>
          <span class="help-block">
          </span></div>
 	</div>
@@ -236,13 +238,13 @@
          <?php $id = 'id="id_status_penduduk" class="form-control input-md"';
 				echo form_dropdown('id_status_penduduk',$id_status_penduduk,$result->id_status_penduduk,$id)?>
          <span class="help-block">
-         </span></div> 
+         </span></div>
 	</div>
 	<div class="form-group">
     	<label class="col-md-3 control-label" for="id_status_tinggal"> Status Tinggal </label>
         <div class="col-md-9">
          <?php $id = 'id="id_status_tinggal" class="form-control input-md"';
-				echo form_dropdown('id_status_tinggal',$id_status_tinggal,$result->id_status_tinggal,$id)?> 
+				echo form_dropdown('id_status_tinggal',$id_status_tinggal,$result->id_status_tinggal,$id)?>
          <span class="help-block">
          </span></div>
 	</div>
@@ -250,7 +252,7 @@
     	 <label class="col-md-3 control-label" for="id_difabilitas">Difabilitas </label>
         <div class="col-md-9">
          <?php $id = 'id="id_difabilitas" class="form-control input-md"';
-				echo form_dropdown('id_difabilitas',$id_difabilitas,$result->id_difabilitas,$id)?> 
+				echo form_dropdown('id_difabilitas',$id_difabilitas,$result->id_difabilitas,$id)?>
          <span class="help-block">
          </span></div>
 	</div>
@@ -258,32 +260,32 @@
     	 <label class="col-md-3 control-label" for="id_kontrasepsi">Kontrasepsi </label>
         <div class="col-md-9">
          <?php $id = 'id="id_kontrasepsi" class="form-control input-md"';
-				echo form_dropdown('id_kontrasepsi',$id_kontrasepsi,$result->id_kontrasepsi,$id)?> 
+				echo form_dropdown('id_kontrasepsi',$id_kontrasepsi,$result->id_kontrasepsi,$id)?>
          <span class="help-block">
          </span></div>
-	</div>	
-	<div class="form-group"> 
-		<div class="image-editor ">	
+	</div>
+	<div class="form-group">
+		<div class="image-editor ">
 			<label class="col-md-3 control-label" for="userfile">Foto</label>
 			<div class="col-md-4">
 				<div id="lihat">
-					<div class="cropit-image-preview" ></div>				
+					<div class="cropit-image-preview" ></div>
 					<input type="range" class="cropit-image-zoom-input" style="width: 350px">
 					<br>
 				</div>
 				<input type="file" id="userfile" class="cropit-image-input custom" accept="image/*">
-				<input type="hidden" name="image-data" class="hidden-image-data" />				
+				<input type="hidden" name="image-data" class="hidden-image-data" />
 			</div>
-			
-		</div>				
-	</div>		
+
+		</div>
+	</div>
 	<legend>
 		<br>
 	</legend>
 
 	<div class="form-group">
 		  <label class="col-md-0 control-label" for="simpan"></label>
-		  <div class="col-md-9">		
+		  <div class="col-md-9">
 		<button id="simpan" name="simpan" class="btn btn-success">Simpan</button>
 		<button id="batal" name="batal" class="btn btn-danger" onclick="location.href='<?= base_url() ?>datapenduduk/c_penduduk'">Batal</button>
 		 <span class="help-block"></span></div>
@@ -308,7 +310,7 @@
 		opacity: .2;
 		}
 
-		
+
       .cropit-image-preview {
         background-color: #f8f8f8;
         background-size: cover;
@@ -337,27 +339,27 @@
         margin-top: 10px;
       }
      }
-    </style>	
-<script src="<?php echo base_url(); ?>assetku/cropit/jquery.cropit.js"></script> 
+    </style>
+<script src="<?php echo base_url(); ?>assetku/cropit/jquery.cropit.js"></script>
 
 <script>
 $(function() {
-  
+
 $('.image-editor').cropit({
   imageState: {
 	src: '<?php echo site_url($result->foto);?>'
   }
 });
-  
+
 $('form').submit(function() {
 	  // Move cropped image data to hidden input
 	 var imageData = $('.image-editor').cropit('export', {
 		  type: 'image/jpeg',
 		  quality: 2,
 		  originalSize: false
-		});		
+		});
 	  $('.hidden-image-data').val(imageData);
-		
+
 	  // Prevent the form from actually submitting
 	  return true;
 	});
@@ -366,15 +368,15 @@ $('form').submit(function() {
 </script>
 <script>
 function nav_active(){
-	
+
 	document.getElementById("a-data-kependudukan").className = "collapsed active";
-	
+
 	document.getElementById("kependudukan").className = "collapsed";
 
 	var d = document.getElementById("nav-penduduk");
 	d.className = d.className + "active";
 	}
- 
+
 // very simple to use!
 $(document).ready(function() {
   nav_active();
@@ -388,7 +390,7 @@ function readURL(input) {
         var reader = new FileReader();
 
         reader.onload = function (e) {
-            $('#userfile').attr('src', e.target.result);		
+            $('#userfile').attr('src', e.target.result);
         }
         reader.readAsDataURL(input.files[0]);
     }
@@ -426,14 +428,14 @@ $(".tidakHamil").click(function(){
 $("#id_pendidikan").change(function(){
     var e = document.getElementById("id_pendidikan");
 	var strUser = e.options[e.selectedIndex].text;
-	
+
 	if(strUser=="Sedang SD/Sederajat" || strUser=="Sedang SMP/Sederajat" || strUser=="Sedang SMA/Sederajat")
 	{document.getElementById("bsm").style.display = 'block';}
 	else
 	{
 		document.getElementById("bsm").style.display = 'none';
 		$("#radio_tidak").prop("checked", true)
-	}	
+	}
 });
 function readURL(input) {
 
@@ -451,19 +453,19 @@ function readURL(input) {
 $("#imgInp").change(function(){
     readURL(this);
 	{document.getElementById("blah").style.display = 'block';}
-	
+
 });
 
 
 $( document ).ready(function() {
-   
-   var cek = $('input[name="is_bsm"]:checked').val();  
-   if(cek == 'Y') 
+
+   var cek = $('input[name="is_bsm"]:checked').val();
+   if(cek == 'Y')
    {
 		document.getElementById("bsm").style.display = 'block';
    }
    else document.getElementById("bsm").style.display = 'none';
-   
+
    	document.getElementById("lihat").style.display = "block";
 	$(".cropit-image-preview").reload();
 

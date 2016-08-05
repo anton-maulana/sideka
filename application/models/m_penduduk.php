@@ -126,9 +126,10 @@ class M_penduduk extends CI_Model {
 
 		$this->db->join('ref_status_keluarga','tbl_hub_kel.id_status_keluarga = ref_status_keluarga.id_status_keluarga','left');
 		$this->db->join('ref_kelas_sosial','tbl_keluarga.id_kelas_sosial = ref_kelas_sosial.id_kelas_sosial','left');
+    $this->db->order_by('no_kk', 'asc');
 		$this->db->group_by('tbl_penduduk.nik');
 		$query = $this->db->get();
-        $this->excel_generator->set_query($query);
+    $this->excel_generator->set_query($query);
 	}
 
 	function insertKeluarga($data)
@@ -405,7 +406,10 @@ class M_penduduk extends CI_Model {
     $this->db->where('id_penduduk', $id);
     $this->db->delete('tbl_hub_kel');
 
-	$this->db->where('id_penduduk', $id);
+    $this->db->where('id_penduduk', $id);
+    $this->db->delete('tbl_perangkat');
+
+	  $this->db->where('id_penduduk', $id);
     $this->db->delete($this->_table);
   }
 

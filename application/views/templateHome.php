@@ -14,6 +14,9 @@
 	<meta name="author" content="">
 	<link rel="shortcut" href="images/favicon.ico" />
 
+	<!-- jQuery Version 1.11.0 -->
+	<script type="text/javascript" src="<?php echo base_url(); ?>assetku/js/jquery-1.11.0.js"></script>
+
 	<link rel="stylesheet" href="<?php echo base_url();?>assetku/css/old/style.css" media="screen" />
 	<link rel="stylesheet" href="<?php echo base_url();?>assetku/fancybox/jquery.fancybox.css" media="screen" />
 
@@ -38,10 +41,6 @@
 	<!-- Alertify CSS -->
 	<link rel="stylesheet" href="<?php echo base_url(); ?>assetku/alertify/themes/alertify.core.css" />
 	<link rel="stylesheet" href="<?php echo base_url(); ?>assetku/alertify/themes/alertify.default.css" id="toggleCSS" />
-
-	<!-- jQuery Version 1.11.0 -->
-	<script type="text/javascript" src="<?php echo base_url(); ?>assetku/js/jquery-1.11.0.js"></script>
-
 
 </head>
 <body>

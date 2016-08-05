@@ -15,8 +15,7 @@ class C_berita extends CI_Controller {
 
 	function index()
     {
-		$data['data_sso'] = $this->m_sso->getSso(1);
-    	$data['konten_logo'] = $this->m_logo->getLogo();
+    //var_dump("masuk sini");exit;
 		$data['berita'] = $this->m_berita->get_recent_berita_all();
 
 		//pagination
@@ -44,14 +43,15 @@ class C_berita extends CI_Controller {
 		$config['last_tag_open'] = '<li>';
 		$config['last_tag_close'] = '</li>';
 
-    $this->pagination->initialize($config);        
+    $this->pagination->initialize($config);
     $pag = $this->db->get($this->m_berita->berita_all(), $config['per_page'], $this->uri->segment(4));  //$this->m_berita->berita_all( $config['per_page']); //
     //$pag = $this->m_berita->berita_all( 6,4); //
     $data['berita'] = $pag->result();
-
+    $data['data_sso'] = $this->m_sso->getSso(1);
+    $data['konten_logo'] = $this->m_logo->getLogo();
 		$data['logo'] = $this->load->view('v_logo', $data, TRUE);
 		$data['menu'] = $this->load->view('v_navbar', $data, TRUE);
-		$data['content'] = $this->load->view('web/berita',$data,TRUE);
+		$temp['content'] = $this->load->view('web/berita',$data,TRUE);
 		$temp['footer'] = $this->load->view('v_footer',$data,TRUE);
 		$this->load->view('templateHome',$temp);
 	}

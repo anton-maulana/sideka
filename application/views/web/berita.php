@@ -95,13 +95,8 @@
 				var d = document.getElementById("nav-berita");
 				d.className = d.className + "active";
 				}
-		$(document).ready(function(){
-			document.getElementById("displayPhoto").src = <?php echo site_url($berita);?>;
 
+		$(document).ready(function(){
 			});
 			/* masuk ke dalam berita.php */
 	</script>
-
-	<style>
-
-	</style>

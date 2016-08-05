@@ -25,7 +25,7 @@
 			</ul>
 		</li>
 		<li id="nav-peta"><a href="<?php echo site_url('web/c_peta/');?>">Peta Desa</a></li>
-		
+
 		<li id="nav-lembaga" class="dropdown">
 			<a class="dropdown-toggle dropdownhover" data-toggle="dropdown" href="#">Lembaga Desa <span class="caret"></span></a>
 			<ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
@@ -33,34 +33,34 @@
 				<li><a  href="<?php echo site_url('web/c_rt_rw/');?>">Lembaga Kemasyarakatan Desa</a></li>
 			</ul>
 		</li>
-		
+
 		<li id="nav-statistik" class="dropdown">
-			<a class="dropdown-toggle dropdownhover" data-toggle="dropdown" href="#"> 
+			<a class="dropdown-toggle dropdownhover" data-toggle="dropdown" href="#">
 				Statistik Desa <span class="caret"></span>
 			</a>
 			<ul class="dropdown-menu">
 				<li><a href="<?php echo site_url('web/c_statistik_pekerjaan');?>">Pekerjaan</a></li>
-				
+
 				<li><a href="<?php echo site_url('web/c_statistik_pendidikan');?>">Pendidikan</a></li>
 				<li><a href="<?php echo site_url('web/c_statistik_status_kawin');?>">Status Kawin</a></li>
-				
-				<li><a href="<?php echo site_url('web/c_statistik_goldar');?>">Golongan Darah</a></li>				
-				<li><a href="<?php echo site_url('web/c_statistik_agama');?>">Agama</a></li>				
-				
 
-				<li><a href="<?php echo site_url('web/c_statistik_kelas_sosial');?>">Kelas Sosial</a></li>				
-				<li><a href="<?php echo site_url('web/c_statistik_raskin');?>">Raskin</a></li>				
-				<li><a href="<?php echo site_url('web/c_statistik_jamkesmas');?>">Jamkesmas</a></li>				
-				<li><a href="<?php echo site_url('web/c_statistik_pkh');?>">Program Keluarga Harapan</a></li>			
-				<li><a href="<?php echo site_url('web/c_statistik_kk');?>">Kepala Keluarga</a></li>	
+				<li><a href="<?php echo site_url('web/c_statistik_goldar');?>">Golongan Darah</a></li>
+				<li><a href="<?php echo site_url('web/c_statistik_agama');?>">Agama</a></li>
+
+
+				<li><a href="<?php echo site_url('web/c_statistik_kelas_sosial');?>">Kelas Sosial</a></li>
+				<li><a href="<?php echo site_url('web/c_statistik_raskin');?>">Raskin</a></li>
+				<li><a href="<?php echo site_url('web/c_statistik_jamkesmas');?>">Jamkesmas</a></li>
+				<li><a href="<?php echo site_url('web/c_statistik_pkh');?>">Program Keluarga Harapan</a></li>
+				<li><a href="<?php echo site_url('web/c_statistik_kk');?>">Kepala Keluarga</a></li>
 				<li><a href="<?php echo site_url('web/c_statistik_gizi_buruk');?>">Gizi Buruk</a></li>
 				<li><a href="<?php echo site_url('web/c_statistik_kehamilan');?>">Kehamilan</a></li>
 				<li><a href="<?php echo site_url('web/c_statistik_buruh_migran');?>">Buruh Migran</a></li>
-				<li><a href="<?php echo site_url('web/c_statistik_bsm');?>">Bantuan Siswa Miskin</a></li>						
-				<li><a href="<?php echo site_url('web/c_statistik_piramida');?>">Piramida Penduduk</a></li>				
-			</ul>			
+				<li><a href="<?php echo site_url('web/c_statistik_bsm');?>">Bantuan Siswa Miskin</a></li>
+				<li><a href="<?php echo site_url('web/c_statistik_piramida');?>">Piramida Penduduk</a></li>
+			</ul>
 		</li>
-		
+
 		<li id="nav-keuangan" class="dropdown">
 			<a class="dropdown-toggle dropdownhover" data-toggle="dropdown" href="#">KEUANGAN DESA <span class="caret"></span></a>
 			<ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
@@ -69,7 +69,7 @@
 				<li><a href="<?php echo site_url('web/c_apbdes/');?>">APBDES</a></li>
 			</ul>
 		</li>
-		
+
 		<li id="nav-regulasi"><a href="<?php echo site_url('web/c_regulasi/');?>">Regulasi</a></li>
 
 	</ul>
@@ -80,24 +80,24 @@
 			<i class="fa fa-search"></i>
 		</a>
 		<div class="hidden" id="navbar-search-box">
-		
-		<?php $this->load->helper(array('form', 'search')); ?>		
+
+		<?php $this->load->helper(array('form', 'search')); ?>
 		<?php echo form_open('web/c_pages/search/');?>
-		<?php echo validation_errors(); ?>	
-		<fieldset>			
+		<?php echo validation_errors(); ?>
+		<fieldset>
 			<div class="input-group">
 				<input type="text" class="form-control" name="keyword" id="keyword" autofocus placeholder="Masukkan Kata Kunci">
 				<span class="input-group-btn">
 					<button class="btn btn-default" value="Submit" name="submit" type="submit">Cari</button>
 				</span>
-			</div>		
+			</div>
 			</fieldset>
 		<?php echo form_close(); ?>
-		
-			
-		<li><a id="sso" href="<?php echo site_url('c_login/');?>"><i class="fa fa-user fa-fw"></i> LOGIN</a></li>		
+
+
+		<li><a id="sso" href="<?php echo site_url('c_login/');?>"><i class="fa fa-user fa-fw"></i> LOGIN</a></li>
 		</div>
-	</li>	
+	</li>
 </ul>
 
 </div>
